@@ -17,6 +17,7 @@ import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
 import { Route as FindAClassRouteImport } from './routes/find-a-class'
 import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymnastics'
 import { Route as RecreationalGymnasticsRouteImport } from './routes/recreational-gymnastics'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -59,6 +60,11 @@ const RecreationalGymnasticsRoute = RecreationalGymnasticsRouteImport.update({
   path: '/recreational-gymnastics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
   id: '/book-a-trial_/confirmation',
   path: '/book-a-trial/confirmation',
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
+  '/schedule': typeof ScheduleRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
+  '/schedule': typeof ScheduleRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
+  '/schedule': typeof ScheduleRoute
   '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/find-a-class'
     | '/preschool-gymnastics'
     | '/recreational-gymnastics'
+    | '/schedule'
     | '/book-a-trial/confirmation'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/find-a-class'
     | '/preschool-gymnastics'
     | '/recreational-gymnastics'
+    | '/schedule'
     | '/book-a-trial/confirmation'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/find-a-class'
     | '/preschool-gymnastics'
     | '/recreational-gymnastics'
+    | '/schedule'
     | '/book-a-trial_/confirmation'
   fileRoutesById: FileRoutesById
 }
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   FindAClassRoute: typeof FindAClassRoute
   PreschoolGymnasticsRoute: typeof PreschoolGymnasticsRoute
   RecreationalGymnasticsRoute: typeof RecreationalGymnasticsRoute
+  ScheduleRoute: typeof ScheduleRoute
   BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
 }
 
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RecreationalGymnasticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-a-trial_/confirmation': {
       id: '/book-a-trial_/confirmation'
       path: '/book-a-trial/confirmation'
@@ -224,8 +244,19 @@ const rootRouteChildren: RootRouteChildren = {
   FindAClassRoute: FindAClassRoute,
   PreschoolGymnasticsRoute: PreschoolGymnasticsRoute,
   RecreationalGymnasticsRoute: RecreationalGymnasticsRoute,
+  ScheduleRoute: ScheduleRoute,
   BookATrialConfirmationRoute: BookATrialConfirmationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

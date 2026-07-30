@@ -90,7 +90,11 @@ function FindAClass() {
           </table>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
-          Don't see a time that works? Call{" "}
+          Want live openings and instant online enrollment?{" "}
+          <Link to="/schedule" className="font-semibold text-primary">
+            See the live schedule
+          </Link>
+          . Don't see a time that works? Call{" "}
           <a href="tel:+18162297775" className="font-semibold text-primary">
             (816) 229-7775
           </a>{" "}
