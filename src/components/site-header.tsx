@@ -33,13 +33,13 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <nav className="hidden items-center gap-7 lg:flex">
             {NAV.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.to}
+                to={item.to}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-ink"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <a
@@ -70,14 +70,14 @@ export function SiteHeader() {
       <div className={cn("border-t border-border lg:hidden", open ? "block" : "hidden")}>
         <nav className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
           {NAV.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.to}
+              to={item.to}
               onClick={() => setOpen(false)}
               className="border-b border-border py-3 font-display text-base font-semibold text-ink last:border-0"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <a
             href="tel:+18162297775"

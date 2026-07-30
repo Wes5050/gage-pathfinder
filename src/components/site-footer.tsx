@@ -49,14 +49,14 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <a href="/find-a-class" className="hover:text-primary">
+              <Link to="/find-a-class" className="hover:text-primary">
                 Find a class
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/camps-and-events" className="hover:text-primary">
+              <Link to="/camps-and-events" className="hover:text-primary">
                 Camps &amp; events
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
