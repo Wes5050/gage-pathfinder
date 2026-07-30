@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
+import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
+import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
+import { Route as FindAClassRouteImport } from './routes/find-a-class'
+import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymnastics'
+import { Route as RecreationalGymnasticsRouteImport } from './routes/recreational-gymnastics'
 import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +24,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookATrialRoute = BookATrialRouteImport.update({
   id: '/book-a-trial',
   path: '/book-a-trial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampsAndEventsRoute = CampsAndEventsRouteImport.update({
+  id: '/camps-and-events',
+  path: '/camps-and-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DragonNinjaRoute = DragonNinjaRouteImport.update({
+  id: '/dragon-ninja',
+  path: '/dragon-ninja',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindAClassRoute = FindAClassRouteImport.update({
+  id: '/find-a-class',
+  path: '/find-a-class',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreschoolGymnasticsRoute = PreschoolGymnasticsRouteImport.update({
+  id: '/preschool-gymnastics',
+  path: '/preschool-gymnastics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecreationalGymnasticsRoute = RecreationalGymnasticsRouteImport.update({
+  id: '/recreational-gymnastics',
+  path: '/recreational-gymnastics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
@@ -31,31 +67,83 @@ const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/camps-and-events': typeof CampsAndEventsRoute
+  '/dragon-ninja': typeof DragonNinjaRoute
+  '/find-a-class': typeof FindAClassRoute
+  '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/camps-and-events': typeof CampsAndEventsRoute
+  '/dragon-ninja': typeof DragonNinjaRoute
+  '/find-a-class': typeof FindAClassRoute
+  '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/camps-and-events': typeof CampsAndEventsRoute
+  '/dragon-ninja': typeof DragonNinjaRoute
+  '/find-a-class': typeof FindAClassRoute
+  '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book-a-trial' | '/book-a-trial/confirmation'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/book-a-trial'
+    | '/camps-and-events'
+    | '/dragon-ninja'
+    | '/find-a-class'
+    | '/preschool-gymnastics'
+    | '/recreational-gymnastics'
+    | '/book-a-trial/confirmation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book-a-trial' | '/book-a-trial/confirmation'
-  id: '__root__' | '/' | '/book-a-trial' | '/book-a-trial_/confirmation'
+  to:
+    | '/'
+    | '/about'
+    | '/book-a-trial'
+    | '/camps-and-events'
+    | '/dragon-ninja'
+    | '/find-a-class'
+    | '/preschool-gymnastics'
+    | '/recreational-gymnastics'
+    | '/book-a-trial/confirmation'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/book-a-trial'
+    | '/camps-and-events'
+    | '/dragon-ninja'
+    | '/find-a-class'
+    | '/preschool-gymnastics'
+    | '/recreational-gymnastics'
+    | '/book-a-trial_/confirmation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BookATrialRoute: typeof BookATrialRoute
+  CampsAndEventsRoute: typeof CampsAndEventsRoute
+  DragonNinjaRoute: typeof DragonNinjaRoute
+  FindAClassRoute: typeof FindAClassRoute
+  PreschoolGymnasticsRoute: typeof PreschoolGymnasticsRoute
+  RecreationalGymnasticsRoute: typeof RecreationalGymnasticsRoute
   BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
 }
 
@@ -68,11 +156,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-a-trial': {
       id: '/book-a-trial'
       path: '/book-a-trial'
       fullPath: '/book-a-trial'
       preLoaderRoute: typeof BookATrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/camps-and-events': {
+      id: '/camps-and-events'
+      path: '/camps-and-events'
+      fullPath: '/camps-and-events'
+      preLoaderRoute: typeof CampsAndEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dragon-ninja': {
+      id: '/dragon-ninja'
+      path: '/dragon-ninja'
+      fullPath: '/dragon-ninja'
+      preLoaderRoute: typeof DragonNinjaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/find-a-class': {
+      id: '/find-a-class'
+      path: '/find-a-class'
+      fullPath: '/find-a-class'
+      preLoaderRoute: typeof FindAClassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preschool-gymnastics': {
+      id: '/preschool-gymnastics'
+      path: '/preschool-gymnastics'
+      fullPath: '/preschool-gymnastics'
+      preLoaderRoute: typeof PreschoolGymnasticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recreational-gymnastics': {
+      id: '/recreational-gymnastics'
+      path: '/recreational-gymnastics'
+      fullPath: '/recreational-gymnastics'
+      preLoaderRoute: typeof RecreationalGymnasticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/book-a-trial_/confirmation': {
@@ -87,19 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BookATrialRoute: BookATrialRoute,
+  CampsAndEventsRoute: CampsAndEventsRoute,
+  DragonNinjaRoute: DragonNinjaRoute,
+  FindAClassRoute: FindAClassRoute,
+  PreschoolGymnasticsRoute: PreschoolGymnasticsRoute,
+  RecreationalGymnasticsRoute: RecreationalGymnasticsRoute,
   BookATrialConfirmationRoute: BookATrialConfirmationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -97,12 +97,12 @@ function Home() {
                 Book a free trial
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-              <a
-                href="/find-a-class"
+              <Link
+                to="/find-a-class"
                 className="inline-flex items-center justify-center rounded-full border border-ink-foreground/30 px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-ink-foreground transition-colors hover:bg-ink-foreground/10"
               >
                 Find a class
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -134,20 +134,20 @@ function Home() {
                 Start where your child is today.
               </h2>
             </div>
-            <a
-              href="/find-a-class"
+            <Link
+              to="/find-a-class"
               className="inline-flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wide text-primary"
             >
               Compare all programs
               <ArrowRight className="h-4 w-4" aria-hidden />
-            </a>
+            </Link>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {PROGRAMS.map((p) => (
-              <a
+              <Link
                 key={p.name}
-                href={p.href}
+                to={p.href}
                 className="group overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-xl"
               >
                 <img
@@ -167,7 +167,7 @@ function Home() {
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">{p.blurb}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
