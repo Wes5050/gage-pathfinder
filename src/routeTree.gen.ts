@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
+import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const BookATrialRoute = BookATrialRouteImport.update({
   path: '/book-a-trial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
+  id: '/book-a-trial_/confirmation',
+  path: '/book-a-trial/confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book-a-trial': typeof BookATrialRoute
+  '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book-a-trial'
+  fullPaths: '/' | '/book-a-trial' | '/book-a-trial/confirmation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book-a-trial'
-  id: '__root__' | '/' | '/book-a-trial'
+  to: '/' | '/book-a-trial' | '/book-a-trial/confirmation'
+  id: '__root__' | '/' | '/book-a-trial' | '/book-a-trial_/confirmation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookATrialRoute: typeof BookATrialRoute
+  BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookATrialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-a-trial_/confirmation': {
+      id: '/book-a-trial_/confirmation'
+      path: '/book-a-trial/confirmation'
+      fullPath: '/book-a-trial/confirmation'
+      preLoaderRoute: typeof BookATrialConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookATrialRoute: BookATrialRoute,
+  BookATrialConfirmationRoute: BookATrialConfirmationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
