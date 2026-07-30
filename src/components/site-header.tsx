@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { label: "Find a Class", to: "/find-a-class" },
+  { label: "Enroll", to: "/schedule" },
   { label: "Programs", to: "/preschool-gymnastics" },
   { label: "Camps & Events", to: "/camps-and-events" },
   { label: "About", to: "/about" },
