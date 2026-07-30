@@ -54,6 +54,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/schedule" className="hover:text-primary">
+                Live schedule &amp; enroll
+              </Link>
+            </li>
+            <li>
               <Link to="/camps-and-events" className="hover:text-primary">
                 Camps &amp; events
               </Link>
