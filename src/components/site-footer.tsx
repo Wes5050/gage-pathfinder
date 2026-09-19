@@ -6,8 +6,11 @@ import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const footerGroups = [
   { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics & Tumbling", "/recreational-gymnastics"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
-  { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", "/camps-and-events"], ["Competitive Teams", "/about"], ["About GAGE", "/about"]] },
+  { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity], ["Competitive Teams", "/about"], ["About GAGE", "/about"]] },
 ] as const;
+
+type FooterPath = "/about";
+const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteFooter() {
   return (
@@ -18,7 +21,7 @@ export function SiteFooter() {
           <p className="mt-5 max-w-xs text-sm leading-6 text-ink-foreground/65">Helping Blue Springs kids find strength, confidence, skills, and a love of movement.</p>
           <p className="mt-6 font-display text-[10px] font-black uppercase text-primary">Gymnastics · Ninja · Tumbling · Camps</p>
         </div>
-        {footerGroups.map((group) => <div key={group.title}><h2 className="font-display text-xs font-black uppercase text-primary">{group.title}</h2><ul className="mt-5 space-y-3">{group.links.map(([label, to]) => <li key={label}><Link to={to} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</Link></li>)}</ul></div>)}
+        {footerGroups.map((group) => <div key={group.title}><h2 className="font-display text-xs font-black uppercase text-primary">{group.title}</h2><ul className="mt-5 space-y-3">{group.links.map(([label, to]) => <li key={label}>{isExternal(to) ? <a href={to} target="_blank" rel="noreferrer" onClick={() => trackCta(label.toUpperCase(), "footer")} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</a> : <Link to={to as FooterPath} onClick={() => trackCta(label.toUpperCase(), "footer")} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</Link>}</li>)}</ul></div>)}
         <div>
           <h2 className="font-display text-xs font-black uppercase text-primary">Visit GAGE</h2>
           <a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer" className="mt-5 flex gap-2 text-sm leading-6 text-ink-foreground/70 hover:text-ink-foreground"><MapPin className="mt-1 h-4 w-4 shrink-0" />{siteConfig.address}</a>
@@ -26,6 +29,7 @@ export function SiteFooter() {
           <a href={`mailto:${siteConfig.email}`} className="mt-1 block text-sm text-ink-foreground/70">{siteConfig.email}</a>
           <div className="mt-5 space-y-1 text-xs text-ink-foreground/50">{siteConfig.hours.map((hour) => <p key={hour}>{hour}</p>)}</div>
           <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("PARENT PORTAL", "footer"); forwardIclassProHandoff(event, { program_name: "Parent Portal", monthly_tuition: 0, source_section: "footer", destination_url: siteConfig.external.parentPortal }); }} className="mt-6 inline-block font-display text-xs font-black uppercase text-primary">Parent Portal →</a>
+          <a href={siteConfig.external.parentLogin} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("PARENT LOGIN", "footer"); forwardIclassProHandoff(event, { program_name: "Parent Login", monthly_tuition: 0, source_section: "footer", destination_url: siteConfig.external.parentLogin }); }} className="mt-2 block font-display text-xs font-black uppercase text-ink-foreground/60 hover:text-ink-foreground">Parent Login →</a>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10"><div className="mx-auto max-w-[1440px] px-5 py-6 text-xs text-ink-foreground/45 sm:px-8 lg:px-10">© {new Date().getFullYear()} GAGE Center · Blue Springs, Missouri</div></div>

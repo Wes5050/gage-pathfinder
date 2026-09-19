@@ -11,9 +11,12 @@ const GROUPS = [
   { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/recreational-gymnastics"], ["Pre-Team", "/find-a-class"]] },
   { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events"]] },
   { label: "Camps & Events", items: [["Camps", "/camps-and-events"], ["Clinics", "/camps-and-events"], ["Parent Night Out", "/camps-and-events"], ["Events", "/camps-and-events"], ["Meets", "/camps-and-events"]] },
-  { label: "Birthdays & Play", items: [["Birthday Parties", "/camps-and-events"], ["Bump City", "/camps-and-events"]] },
+  { label: "Birthdays & Play", items: [["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity]] },
   { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/about"], ["Careers", "/about"]] },
 ] as const;
+
+type NavPath = "/about";
+const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -35,8 +38,10 @@ export function SiteHeader() {
                     {group.label}<ChevronDown className="h-3.5 w-3.5" aria-hidden />
                   </button>
                   <div className="invisible absolute left-1/2 top-full w-64 -translate-x-1/2 border-t-2 border-primary bg-ink p-3 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    {group.items.map(([label, to]) => (
-                      <Link key={label} to={to} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</Link>
+                    {group.items.map(([label, to]) => isExternal(to) ? (
+                      <a key={label} href={to} target="_blank" rel="noreferrer" onClick={() => trackCta(label.toUpperCase(), "header_desktop")} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</a>
+                    ) : (
+                      <Link key={label} to={to as NavPath} onClick={() => trackCta(label.toUpperCase(), "header_desktop")} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</Link>
                     ))}
                   </div>
                 </div>
@@ -44,7 +49,7 @@ export function SiteHeader() {
             </nav>
             <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("PARENT PORTAL", "header_desktop"); forwardIclassProHandoff(event, { program_name: "Parent Portal", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.parentPortal }); }} className="hidden font-display text-[11px] font-bold uppercase text-muted-foreground hover:text-ink xl:block">Parent Portal</a>
             <Button asChild size="lg" className="hidden rounded-none px-6 font-display text-xs font-black uppercase shadow-lg sm:inline-flex">
-              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "header_desktop"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.trial }); }}>Try a class free</a>
+              <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "header_desktop"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.booking }); }}>Try a class free</a>
             </Button>
             <Button variant="outline" size="icon" className="rounded-none lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
               {open ? <X aria-hidden /> : <Menu aria-hidden />}
@@ -58,7 +63,7 @@ export function SiteHeader() {
               <div key={group.label} className="border-b border-border py-3">
                 <p className="font-display text-xs font-black uppercase text-primary">{group.label}</p>
                 <div className="mt-1 grid grid-cols-2 gap-x-3">
-                  {group.items.map(([label, to]) => <Link key={label} to={to} onClick={() => setOpen(false)} className="py-2 text-sm font-semibold text-ink">{label}</Link>)}
+                  {group.items.map(([label, to]) => isExternal(to) ? <a key={label} href={to} target="_blank" rel="noreferrer" onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</a> : <Link key={label} to={to as NavPath} onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</Link>)}
                 </div>
               </div>
             ))}
@@ -69,8 +74,8 @@ export function SiteHeader() {
 
       <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Quick actions">
         <Link to="/find-a-class" onClick={() => trackCta("FIND A CLASS", "mobile_dock")} className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find a class</Link>
-        <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "mobile_dock"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.trial }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try a class free</a>
-        <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL", "mobile_dock")} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
+        <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "mobile_dock"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.booking }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try a class free</a>
+        <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL (816) 229-7775", "mobile_dock")} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
       </nav>
     </>
   );

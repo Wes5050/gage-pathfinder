@@ -47,7 +47,7 @@ export function PageShell({
               Ready for the first brave step?
             </h2>
             <Button asChild size="lg" className="rounded-none font-display text-sm font-black uppercase">
-              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.trial }); }}>Try a class free<ArrowRight aria-hidden /></a>
+              <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.booking }); }}>Try a class free<ArrowRight aria-hidden /></a>
             </Button>
           </div>
         </section>

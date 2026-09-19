@@ -1,3 +1,5 @@
+const PORTAL = "https://portal.iclasspro.com/dragongym";
+
 export const siteConfig = {
   name: "GAGE Center",
   phoneDisplay: "(816) 229-7775",
@@ -6,18 +8,21 @@ export const siteConfig = {
   address: "1101 NW Jefferson St, Blue Springs, MO 64015",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=1101+NW+Jefferson+St+Blue+Springs+MO+64015",
   external: {
-    // iClassPro is the sole destination for schedules, trials, enrollment, and billing.
-    // Until GAGE confirms category-specific links, each action safely opens the verified live class list.
-    parentPortal: "https://portal.iclasspro.com/dragongym",
-    classes: "https://portal.iclasspro.com/dragongym/classes?programs=20",
-    trial: "https://portal.iclasspro.com/dragongym/classes?programs=20",
-    camps: "https://portal.iclasspro.com/dragongym",
-    parties: "https://portal.iclasspro.com/dragongym",
+    // Verified GAGE (dragongym) iClassPro destinations. Registration, scheduling,
+    // trials, and billing all happen in iClassPro — never in this site.
+    booking: `${PORTAL}/booking`,
+    classes: `${PORTAL}/classes`,
+    parentPortal: PORTAL,
+    parentLogin: `${PORTAL}/login`,
+    boysGymnasticsClasses: `${PORTAL}/classes?genders=1&programs=20`,
+    // Interim partner destinations until GAGE publishes in-portal party booking.
+    birthdayParties: "https://www.bump-city.com/birthday-parties",
+    bumpCity: "https://www.bump-city.com/",
   },
   registration: {
     provider: "iClassPro",
-    trialLinkVerified: false,
-    trialNote: "Choose a live class in the GAGE registration portal, then select the available trial option.",
+    trialLinkVerified: true,
+    trialNote: "Choose a class that works for your family, then select Request a Trial.",
   },
   hours: [
     "Monday: 9:00 AM–8:30 PM",
@@ -29,3 +34,16 @@ export const siteConfig = {
     "Sunday: 1:00 PM–5:00 PM",
   ],
 } as const;
+
+/**
+ * Program-name → verified filtered iClassPro URL.
+ * Add entries here as GAGE publishes more filtered links; everything else
+ * safely falls back to the general class list. Never invent filter params.
+ */
+export const programUrlOverrides: Record<string, string> = {
+  "Boys Gymnastics Level 1": siteConfig.external.boysGymnasticsClasses,
+};
+
+export function resolveProgramUrl(programName: string) {
+  return programUrlOverrides[programName] ?? siteConfig.external.classes;
+}
