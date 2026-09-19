@@ -11,12 +11,12 @@ export const Route = createFileRoute("/dragon-ninja")({
       {
         name: "description",
         content:
-          "Ninja warrior style obstacle training for ages 5–14 in Blue Springs, MO. Build strength, agility and grit on warped walls, rings and quad steps.",
+          "Fun Ninja obstacle classes for ages 5–14 in Blue Springs, MO. Kids climb, jump, swing, and build confidence while letting their energy loose.",
       },
       { property: "og:title", content: "Dragon Ninja Obstacle Classes | GAGE Center" },
       {
         property: "og:description",
-        content: "Obstacle training that turns energy into strength and confidence.",
+        content: "Adventure, obstacles, confidence, and a whole lot of fun.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,18 +26,18 @@ export const Route = createFileRoute("/dragon-ninja")({
 });
 
 const HIGHLIGHTS = [
-  "Warped wall, cargo net and quad steps",
-  "Grip, core and landing mechanics coached every class",
-  "Level-up challenge nights each month",
-  "A favorite for kids who want sport without a scoreboard",
+  "Climb, jump, swing, and conquer fun obstacles",
+  "Cheer on new friends and celebrate every win",
+  "Build confidence by trying something new",
+  "A positive place to let all that energy loose",
 ];
 
 function Page() {
   return (
     <PageShell
       eyebrow="Ages 5–14"
-      title="Dragon Ninja."
-      intro="Obstacle course training built on real gymnastics fundamentals. Kids climb, swing, jump and problem-solve — and get stronger without noticing."
+      title="Adventure starts here."
+      intro="Climb, jump, conquer obstacles, and let that energy loose. Dragon Ninja turns every class into a new adventure with friends cheering each other on."
       image={ninja.url}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
@@ -52,7 +52,7 @@ function Page() {
           ))}
         </ul>
 
-        <div className="mt-16 bg-ink p-7 text-ink-foreground"><h2 className="font-display text-2xl font-black uppercase">See live Ninja openings</h2><p className="mt-2 text-sm text-ink-foreground/65">Current times, openings, and registration are always up to date in our secure class portal.</p><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("ENROLL NOW", "programs_grid"); forwardIclassProHandoff(event, { program_name: "Ninja Warrior Training", monthly_tuition: 95, source_section: "ninja_program_page", destination_url: siteConfig.external.classes }); }} className="mt-6 inline-block bg-primary px-6 py-3 font-display text-xs font-black uppercase text-primary-foreground">View live classes →</a></div>
+        <div className="mt-16 bg-ink p-7 text-ink-foreground"><p className="font-display text-xs font-black uppercase text-primary">It starts with one try</p><h2 className="mt-3 font-display text-2xl font-black uppercase">Find their next adventure</h2><p className="mt-2 text-sm text-ink-foreground/65">Choose a class that works for your family, then select Request a Trial.</p><a href={siteConfig.external.ninjaClasses} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "programs_grid"); forwardIclassProHandoff(event, { program_name: "Ninja Warrior Training", monthly_tuition: 95, source_section: "ninja_program_page", destination_url: siteConfig.external.ninjaClasses }); }} className="mt-6 inline-block bg-primary px-6 py-3 font-display text-xs font-black uppercase text-primary-foreground">View Ninja classes & try free →</a></div>
       </section>
     </PageShell>
   );

@@ -1,3 +1,9 @@
+# Site-wide One Kreative correction
+- [ ] Apply “Fun first. Growth follows.” across the homepage and every public page
+- [ ] Align shared navigation, footer, page shells, and reusable program CTAs
+- [ ] Preserve verified registration links, analytics, UTM attribution, pricing, and business details
+- [ ] Remove “Olympic” from all website copy and complete responsive QA
+
 # Phase 1 rebuild
 
 - [x] Centralize iClassPro and contact links

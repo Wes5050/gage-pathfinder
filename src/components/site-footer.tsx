@@ -18,7 +18,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] lg:px-10">
         <div>
           <div className="flex items-center gap-3"><img src={dragon.url} alt="" width={46} height={46} className="h-11 w-11" /><span className="font-display text-xl font-black uppercase">GAGE Center</span></div>
-          <p className="mt-5 max-w-xs text-sm leading-6 text-ink-foreground/65">Helping Blue Springs kids find strength, confidence, skills, and a love of movement.</p>
+          <p className="mt-5 max-w-xs text-sm leading-6 text-ink-foreground/65">Fun first. Growth follows. A welcoming place for Blue Springs kids to move, make friends, and discover what they love.</p>
           <p className="mt-6 font-display text-[10px] font-black uppercase text-primary">Gymnastics · Ninja · Tumbling · Camps</p>
         </div>
         {footerGroups.map((group) => <div key={group.title}><h2 className="font-display text-xs font-black uppercase text-primary">{group.title}</h2><ul className="mt-5 space-y-3">{group.links.map(([label, to]) => <li key={label}>{isExternal(to) ? <a href={to} target="_blank" rel="noreferrer" onClick={() => trackCta(label.toUpperCase(), "footer")} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</a> : <Link to={to as FooterPath} onClick={() => trackCta(label.toUpperCase(), "footer")} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</Link>}</li>)}</ul></div>)}

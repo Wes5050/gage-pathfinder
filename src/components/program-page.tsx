@@ -61,6 +61,7 @@ export function ProgramHero({ eyebrow, title, message, image, imageAlt, programN
       <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
         <div className="max-w-4xl">
           <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
+          <p className="mt-4 font-display text-sm font-black uppercase text-ink-foreground">One class. A whole lot of fun.</p>
           <h1 className="mt-5 max-w-4xl font-display text-[2.85rem] font-black uppercase leading-[.84] text-ink-foreground sm:text-[clamp(3.4rem,8.5vw,7.8rem)]">{title}</h1>
           <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">{message}</p>
           {details ? <p className="mt-6 font-display text-xs font-black uppercase tracking-widest text-ink-foreground/70">{details}</p> : null}
@@ -97,14 +98,14 @@ export function ProgramFaq({ items }: { items: ProgramFaqItem[] }) {
   return (
     <section className="bg-secondary py-20 sm:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-        <div><p className="eyebrow">Before the first class</p><h2 className="section-title mt-4">Good questions. Clear answers.</h2></div>
+        <div><p className="eyebrow">Before the first class</p><h2 className="section-title mt-4">Good questions. Friendly answers.</h2></div>
         <Accordion type="single" collapsible className="border-t border-border">{items.map((item) => <AccordionItem key={item.question} value={item.question}><AccordionTrigger className="py-6 font-display text-sm font-black uppercase text-ink hover:no-underline">{item.question}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 text-base leading-7 text-muted-foreground">{item.answer}</AccordionContent></AccordionItem>)}</Accordion>
       </div>
     </section>
   );
 }
 
-export function ProgramFinalCta({ image, imageAlt, programName, eyebrow = "The first step is theirs", headline = <>They're ready.<br />Are you?</>, body = "Find a great place for your child to start.", ctaLabel = "Try a class free", ctaAnchor }: { image: string; imageAlt: string; programName: string; eyebrow?: string; headline?: ReactNode; body?: ReactNode; ctaLabel?: string; ctaAnchor?: string }) {
+export function ProgramFinalCta({ image, imageAlt, programName, eyebrow = "It starts with one try", headline = <>The fun starts<br />here.</>, body = "One class. A whole lot of fun.", ctaLabel = "Try a class free", ctaAnchor }: { image: string; imageAlt: string; programName: string; eyebrow?: string; headline?: ReactNode; body?: ReactNode; ctaLabel?: string; ctaAnchor?: string }) {
   const finalCta = ctaAnchor ? (
     <a
       href={ctaAnchor}

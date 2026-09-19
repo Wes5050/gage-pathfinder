@@ -44,7 +44,7 @@ export function PageShell({
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
           <div className="grid gap-6 rounded-3xl bg-secondary px-6 py-12 sm:px-12 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
             <h2 className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-ink">
-              Ready for the first brave step?
+              It starts with one try.
             </h2>
             <Button asChild size="lg" className="rounded-none font-display text-sm font-black uppercase">
               <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.booking }); }}>Try a class free<ArrowRight aria-hidden /></a>
