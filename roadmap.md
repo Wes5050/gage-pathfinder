@@ -11,6 +11,6 @@
 # Privacy-conscious analytics
 
 - [x] Add typed, DNT-aware telemetry dispatcher
-- [ ] Instrument class finder and homepage conversion actions
-- [ ] Instrument shared navigation, footer, and iClassPro handoffs
+- [x] Instrument class finder and homepage conversion actions
+- [x] Instrument shared navigation, footer, and iClassPro handoffs
 - [ ] Verify event payloads and navigation behavior

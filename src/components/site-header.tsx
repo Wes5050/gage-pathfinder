@@ -42,7 +42,7 @@ export function SiteHeader() {
                 </div>
               ))}
             </nav>
-            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="hidden font-display text-[11px] font-bold uppercase text-muted-foreground hover:text-ink xl:block">Parent Portal</a>
+            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={() => { trackCta("PARENT PORTAL", "header_desktop"); trackIclassProHandoff({ program_name: "Parent Portal", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.parentPortal }); }} className="hidden font-display text-[11px] font-bold uppercase text-muted-foreground hover:text-ink xl:block">Parent Portal</a>
             <Button asChild size="lg" className="hidden rounded-none font-display text-xs font-black uppercase sm:inline-flex">
               <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={() => { trackCta("TRY A CLASS FREE", "header_desktop"); trackIclassProHandoff({ program_name: "All Programs", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.trial }); }}>Try a class free</a>
             </Button>
@@ -62,7 +62,7 @@ export function SiteHeader() {
                 </div>
               </div>
             ))}
-            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="block py-4 font-display text-xs font-black uppercase text-ink">Parent Portal</a>
+            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={() => { trackCta("PARENT PORTAL", "mobile_dock"); trackIclassProHandoff({ program_name: "Parent Portal", monthly_tuition: 0, source_section: "mobile_menu", destination_url: siteConfig.external.parentPortal }); }} className="block py-4 font-display text-xs font-black uppercase text-ink">Parent Portal</a>
           </nav>
         </div>
       </header>
@@ -70,7 +70,7 @@ export function SiteHeader() {
       <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Quick actions">
         <Link to="/find-a-class" onClick={() => trackCta("FIND A CLASS", "mobile_dock")} className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find a class</Link>
         <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={() => { trackCta("TRY FREE", "mobile_dock"); trackIclassProHandoff({ program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.trial }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try free</a>
-        <a href={siteConfig.phoneHref} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
+        <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL", "mobile_dock")} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
       </nav>
     </>
   );
