@@ -24,8 +24,8 @@
 
 # Phase 1 corrections
 
-- [ ] Correct finder recommendations and unsupported fallbacks
-- [ ] Clarify iClassPro trial-link configuration
-- [ ] Replace unverified testimonials and event timing
-- [ ] Update verified hours and pricing language
-- [ ] Verify responsive homepage, analytics, and UTM handoffs
+- [x] Correct finder recommendations and unsupported fallbacks
+- [x] Clarify iClassPro trial-link configuration
+- [x] Replace unverified testimonials and event timing
+- [x] Update verified hours and pricing language
+- [x] Verify responsive homepage, analytics, and UTM handoffs
