@@ -9,6 +9,7 @@ import { events } from "@/data/events";
 import { recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
+import hero from "@/assets/gage-hero.jpg.asset.json";
 import heroFun from "@/assets/gage-hero-fun.jpg";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
