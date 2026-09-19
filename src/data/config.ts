@@ -15,6 +15,7 @@ export const siteConfig = {
     parentPortal: PORTAL,
     parentLogin: `${PORTAL}/login`,
     boysGymnasticsClasses: `${PORTAL}/classes?genders=1&programs=20`,
+    girlsGymnasticsClasses: `${PORTAL}/classes?genders=0&programs=20`,
     // Interim partner destinations until GAGE publishes in-portal party booking.
     birthdayParties: "https://www.bump-city.com/birthday-parties",
     bumpCity: "https://www.bump-city.com/",
@@ -42,6 +43,7 @@ export const siteConfig = {
  */
 export const programUrlOverrides: Record<string, string> = {
   "Boys Gymnastics Level 1": siteConfig.external.boysGymnasticsClasses,
+  "Girls Gymnastics Level 1": siteConfig.external.girlsGymnasticsClasses,
 };
 
 export function resolveProgramUrl(programName: string) {
