@@ -44,9 +44,9 @@ const googleReviews = [
     experience: "Gymnastics",
   },
   {
-    quote: "Coach Jameson is so amazing with my son and is always working to keep him safe in the preschool class even when he isn't paired with my son for teaching. He's a great coach and extremely patient.",
-    attribution: "Yesenia S.",
-    experience: "Preschool",
+    quote: "My kid has had a great time every Saturday with friendly staff. Teaching a 1 year old how to balance and tumble with patience and grace.",
+    attribution: "Mary E.",
+    experience: "Parent + Tot",
   },
   {
     quote: "We’ve loved our time at Gage! Ninja, dragon fly gymnastics, parents night out and birthday parties…They have it all! The staff are great and always welcome the kids when they come in for class!",
