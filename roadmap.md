@@ -45,8 +45,8 @@
 
 # Phase 2 — Recreational Gymnastics page
 
-- [ ] Build reusable program-page sections
-- [ ] Create immersive recreational gymnastics page
-- [ ] Wire verified girls and boys class handoffs
-- [ ] Reuse authentic Google reviews and add FAQs
+- [x] Build reusable program-page sections
+- [x] Create immersive recreational gymnastics page
+- [x] Wire verified girls and boys class handoffs
+- [x] Reuse authentic Google reviews and add FAQs
 - [ ] Verify desktop, mobile, analytics, and UTM behavior
