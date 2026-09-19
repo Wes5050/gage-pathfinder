@@ -45,6 +45,8 @@ export const siteConfig = {
 export const programUrlOverrides: Record<string, string> = {
   "Boys Gymnastics Level 1": siteConfig.external.boysGymnasticsClasses,
   "Girls Gymnastics Level 1": siteConfig.external.girlsGymnasticsClasses,
+  "Ninja Warrior Training": siteConfig.external.ninjaClasses,
+  "Ninja Warrior Training Daytime": siteConfig.external.ninjaClasses,
 };
 
 export function resolveProgramUrl(programName: string) {
