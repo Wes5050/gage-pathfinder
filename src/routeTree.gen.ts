@@ -16,6 +16,7 @@ import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
 import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
 import { Route as FindAClassRouteImport } from './routes/find-a-class'
 import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymnastics'
+import { Route as RecreationGymnatsticsRouteImport } from './routes/recreation-gymnatstics'
 import { Route as RecreationalGymnasticsRouteImport } from './routes/recreational-gymnastics'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
@@ -55,6 +56,11 @@ const PreschoolGymnasticsRoute = PreschoolGymnasticsRouteImport.update({
   path: '/preschool-gymnastics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecreationGymnatsticsRoute = RecreationGymnatsticsRouteImport.update({
+  id: '/recreation-gymnatstics',
+  path: '/recreation-gymnatstics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecreationalGymnasticsRoute = RecreationalGymnasticsRouteImport.update({
   id: '/recreational-gymnastics',
   path: '/recreational-gymnastics',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
+  '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
+    | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/book-a-trial/confirmation'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
+    | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/book-a-trial/confirmation'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
+    | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/book-a-trial_/confirmation'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   DragonNinjaRoute: typeof DragonNinjaRoute
   FindAClassRoute: typeof FindAClassRoute
   PreschoolGymnasticsRoute: typeof PreschoolGymnasticsRoute
+  RecreationGymnatsticsRoute: typeof RecreationGymnatsticsRoute
   RecreationalGymnasticsRoute: typeof RecreationalGymnasticsRoute
   ScheduleRoute: typeof ScheduleRoute
   BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreschoolGymnasticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recreation-gymnatstics': {
+      id: '/recreation-gymnatstics'
+      path: '/recreation-gymnatstics'
+      fullPath: '/recreation-gymnatstics'
+      preLoaderRoute: typeof RecreationGymnatsticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recreational-gymnastics': {
       id: '/recreational-gymnastics'
       path: '/recreational-gymnastics'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   DragonNinjaRoute: DragonNinjaRoute,
   FindAClassRoute: FindAClassRoute,
   PreschoolGymnasticsRoute: PreschoolGymnasticsRoute,
+  RecreationGymnatsticsRoute: RecreationGymnatsticsRoute,
   RecreationalGymnasticsRoute: RecreationalGymnasticsRoute,
   ScheduleRoute: ScheduleRoute,
   BookATrialConfirmationRoute: BookATrialConfirmationRoute,
