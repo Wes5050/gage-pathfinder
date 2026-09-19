@@ -20,4 +20,4 @@
 - [x] Capture sanitized campaign parameters for the session
 - [x] Enrich analytics events without cookies or PII
 - [x] Forward active campaign values into every iClassPro handoff
-- [ ] Verify telemetry and outbound URLs with and without Do Not Track
+- [x] Verify telemetry and outbound URLs with and without Do Not Track
