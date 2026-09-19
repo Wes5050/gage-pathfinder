@@ -148,5 +148,41 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    letter-spacing: 0;
+    overflow-x: hidden;
   }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection { background: var(--primary); color: var(--primary-foreground); }
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@utility section-title {
+  max-width: 56rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.45rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-reveal { animation: reveal-up 300ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

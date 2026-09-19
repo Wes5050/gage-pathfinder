@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
+import { siteConfig } from "@/data/config";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -66,12 +67,10 @@ function Page() {
               Visit us
             </h2>
             <address className="mt-4 not-italic text-sm text-muted-foreground">
-              1101 NW Jefferson St
+               {siteConfig.address}
               <br />
-              Blue Springs, MO 64015
-              <br />
-              <a href="tel:+18162297775" className="font-semibold text-primary">
-                (816) 229-7775
+              <a href={siteConfig.phoneHref} className="font-semibold text-primary">
+                {siteConfig.phoneDisplay}
               </a>
             </address>
             <p className="mt-4 text-sm text-muted-foreground">

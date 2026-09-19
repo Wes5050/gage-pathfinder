@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
+import { siteConfig } from "@/data/config";
 
 export const Route = createFileRoute("/camps-and-events")({
   head: () => ({
@@ -70,8 +71,8 @@ function Page() {
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
           To reserve a camp day or party, call{" "}
-          <a href="tel:+18162297775" className="font-semibold text-primary">
-            (816) 229-7775
+          <a href={siteConfig.phoneHref} className="font-semibold text-primary">
+            {siteConfig.phoneDisplay}
           </a>
           .
         </p>

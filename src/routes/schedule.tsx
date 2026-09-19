@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, RefreshCw, ShieldCheck, Ticket } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
+import { siteConfig } from "@/data/config";
 
-const PORTAL = "https://portal.iclasspro.com/dragongym";
-const CLASSES_URL = `${PORTAL}/classes`;
-const FEATURED_URL = `${PORTAL}/classes?programs=20`;
+const CLASSES_URL = siteConfig.external.classes;
+const FEATURED_URL = siteConfig.external.classes;
 
 export const Route = createFileRoute("/schedule")({
   head: () => ({
@@ -123,8 +123,8 @@ function SchedulePage() {
             Open it in a new tab
           </a>{" "}
           or call{" "}
-          <a href="tel:+18162297775" className="font-semibold text-primary">
-            (816) 229-7775
+          <a href={siteConfig.phoneHref} className="font-semibold text-primary">
+            {siteConfig.phoneDisplay}
           </a>{" "}
           and we'll walk you through it.
         </p>
