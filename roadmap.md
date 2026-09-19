@@ -36,3 +36,9 @@
 - [x] Trial CTAs -> /booking with "Request a Trial" microcopy
 - [x] Birthday + Bump City links -> bump-city.com
 - [x] UTM appending preserves existing query params
+
+## Google reviews showcase
+
+- [x] Replace the homepage placeholder with curated authentic Google reviews
+- [x] Add direct Google Maps review access and outbound CTA tracking
+- [x] Verify desktop and mobile presentation

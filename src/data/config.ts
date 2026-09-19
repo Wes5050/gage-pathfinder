@@ -6,7 +6,7 @@ export const siteConfig = {
   phoneHref: "tel:+18162297775",
   email: "info@gagecenter.com",
   address: "1101 NW Jefferson St, Blue Springs, MO 64015",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=1101+NW+Jefferson+St+Blue+Springs+MO+64015",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=GAGE+Center+1101+NW+Jefferson+St+Blue+Springs+MO+64015",
   external: {
     // Verified GAGE (dragongym) iClassPro destinations. Registration, scheduling,
     // trials, and billing all happen in iClassPro — never in this site.
