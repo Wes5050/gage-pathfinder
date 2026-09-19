@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 import dragon from "@/assets/gage-dragon.png.asset.json";
 import { siteConfig } from "@/data/config";
+import { trackCta, trackIclassProHandoff } from "@/lib/analytics";
 
 const footerGroups = [
   { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics & Tumbling", "/recreational-gymnastics"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
@@ -24,7 +25,7 @@ export function SiteFooter() {
           <a href={siteConfig.phoneHref} className="mt-3 block text-sm font-bold">{siteConfig.phoneDisplay}</a>
           <a href={`mailto:${siteConfig.email}`} className="mt-1 block text-sm text-ink-foreground/70">{siteConfig.email}</a>
           <div className="mt-5 space-y-1 text-xs text-ink-foreground/50">{siteConfig.hours.map((hour) => <p key={hour}>{hour}</p>)}</div>
-          <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="mt-6 inline-block font-display text-xs font-black uppercase text-primary">Parent Portal →</a>
+          <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={() => { trackCta("PARENT PORTAL", "footer"); trackIclassProHandoff({ program_name: "Parent Portal", monthly_tuition: 0, source_section: "footer", destination_url: siteConfig.external.parentPortal }); }} className="mt-6 inline-block font-display text-xs font-black uppercase text-primary">Parent Portal →</a>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10"><div className="mx-auto max-w-[1440px] px-5 py-6 text-xs text-ink-foreground/45 sm:px-8 lg:px-10">© {new Date().getFullYear()} GAGE Center · Blue Springs, Missouri</div></div>
