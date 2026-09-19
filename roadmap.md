@@ -29,3 +29,10 @@
 - [x] Replace unverified testimonials and event timing
 - [x] Update verified hours and pricing language
 - [x] Verify responsive homepage, analytics, and UTM handoffs
+
+## Verified iClassPro wiring (done)
+- [x] Centralized booking/classes/portal/login/boys-gymnastics URLs in src/data/config.ts
+- [x] Program-to-URL resolver (programUrlOverrides/resolveProgramUrl)
+- [x] Trial CTAs -> /booking with "Request a Trial" microcopy
+- [x] Birthday + Bump City links -> bump-city.com
+- [x] UTM appending preserves existing query params
