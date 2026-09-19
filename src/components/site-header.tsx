@@ -1,93 +1,76 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import dragon from "@/assets/gage-dragon.png.asset.json";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/data/config";
 import { cn } from "@/lib/utils";
 
-const NAV = [
-  { label: "Find a Class", to: "/find-a-class" },
-  { label: "Enroll", to: "/schedule" },
-  { label: "Programs", to: "/preschool-gymnastics" },
-  { label: "Camps & Events", to: "/camps-and-events" },
-  { label: "About", to: "/about" },
-];
+const GROUPS = [
+  { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/recreational-gymnastics"], ["Pre-Team", "/find-a-class"]] },
+  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events"]] },
+  { label: "Camps & Events", items: [["Camps", "/camps-and-events"], ["Clinics", "/camps-and-events"], ["Parent Night Out", "/camps-and-events"], ["Events", "/camps-and-events"], ["Meets", "/camps-and-events"]] },
+  { label: "Birthdays & Play", items: [["Birthday Parties", "/camps-and-events"], ["Bump City", "/camps-and-events"]] },
+  { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/about"], ["Careers", "/about"]] },
+] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:py-4">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5">
-          <img
-            src={dragon.url}
-            alt="GAGE Center dragon logo"
-            width={40}
-            height={40}
-            className="h-9 w-9 shrink-0"
-          />
-          <span className="truncate font-display text-lg font-extrabold tracking-tight text-ink">
-            Gage<span className="font-normal">Center</span>
-          </span>
-        </Link>
-
-        <div className="flex items-center gap-2">
-          <nav className="hidden items-center gap-7 lg:flex">
-            {NAV.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-ink"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <a
-            href="tel:+18162297775"
-            className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-secondary sm:inline-flex"
-          >
-            <Phone className="h-4 w-4" aria-hidden />
-            (816) 229-7775
-          </a>
-          <Link
-            to="/book-a-trial"
-            className="inline-flex shrink-0 items-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
-          >
-            Book a Trial
+    <>
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl">
+        <div className="mx-auto grid h-16 max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5" aria-label="GAGE Center home">
+            <img src={dragon.url} alt="" width={44} height={44} className="h-10 w-10 shrink-0" />
+            <span className="truncate font-display text-lg font-black uppercase text-ink">GAGE Center</span>
           </Link>
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border lg:hidden"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
 
-      <div className={cn("border-t border-border lg:hidden", open ? "block" : "hidden")}>
-        <nav className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
-          {NAV.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              onClick={() => setOpen(false)}
-              className="border-b border-border py-3 font-display text-base font-semibold text-ink last:border-0"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a
-            href="tel:+18162297775"
-            className="py-3 font-display text-base font-semibold text-primary"
-          >
-            Call (816) 229-7775
-          </a>
-        </nav>
-      </div>
-    </header>
+          <div className="flex items-center gap-2 lg:gap-4">
+            <nav className="hidden items-center lg:flex" aria-label="Primary navigation">
+              {GROUPS.map((group) => (
+                <div key={group.label} className="group relative">
+                  <button type="button" className="flex h-20 items-center gap-1 px-3 font-display text-[11px] font-bold uppercase text-ink transition-colors hover:text-primary">
+                    {group.label}<ChevronDown className="h-3.5 w-3.5" aria-hidden />
+                  </button>
+                  <div className="invisible absolute left-1/2 top-full w-64 -translate-x-1/2 border-t-2 border-primary bg-ink p-3 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    {group.items.map(([label, to]) => (
+                      <Link key={label} to={to} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </nav>
+            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="hidden font-display text-[11px] font-bold uppercase text-muted-foreground hover:text-ink xl:block">Parent Portal</a>
+            <Button asChild size="lg" className="hidden rounded-none font-display text-xs font-black uppercase sm:inline-flex">
+              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer">Try a class free</a>
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-none lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+              {open ? <X aria-hidden /> : <Menu aria-hidden />}
+            </Button>
+          </div>
+        </div>
+
+        <div className={cn("border-t border-border bg-background lg:hidden", open ? "block" : "hidden")}>
+          <nav className="max-h-[calc(100vh-8rem)] overflow-y-auto px-4 py-3" aria-label="Mobile navigation">
+            {GROUPS.map((group) => (
+              <div key={group.label} className="border-b border-border py-3">
+                <p className="font-display text-xs font-black uppercase text-primary">{group.label}</p>
+                <div className="mt-1 grid grid-cols-2 gap-x-3">
+                  {group.items.map(([label, to]) => <Link key={label} to={to} onClick={() => setOpen(false)} className="py-2 text-sm font-semibold text-ink">{label}</Link>)}
+                </div>
+              </div>
+            ))}
+            <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="block py-4 font-display text-xs font-black uppercase text-ink">Parent Portal</a>
+          </nav>
+        </div>
+      </header>
+
+      <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Quick actions">
+        <Link to="/find-a-class" className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find a class</Link>
+        <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try free</a>
+        <a href={siteConfig.phoneHref} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
+      </nav>
+    </>
   );
 }

@@ -1,76 +1,33 @@
 import { Link } from "@tanstack/react-router";
+import { Instagram, Facebook, MapPin } from "lucide-react";
 import dragon from "@/assets/gage-dragon.png.asset.json";
+import { siteConfig } from "@/data/config";
+
+const footerGroups = [
+  { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics & Tumbling", "/recreational-gymnastics"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
+  { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", "/camps-and-events"], ["Competitive Teams", "/about"], ["About GAGE", "/about"]] },
+] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-ink-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+    <footer className="bg-ink pb-16 text-ink-foreground lg:pb-0">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] lg:px-10">
         <div>
-          <div className="flex items-center gap-2.5">
-            <img src={dragon.url} alt="" width={36} height={36} className="h-9 w-9" loading="lazy" />
-            <span className="font-display text-lg font-extrabold tracking-tight">
-              Gage<span className="font-normal">Center</span>
-            </span>
-          </div>
-          <p className="mt-4 max-w-xs text-sm text-ink-foreground/70">
-            Movement builds confidence. Gymnastics, tumbling and ninja programs for Blue Springs
-            families since day one.
-          </p>
+          <div className="flex items-center gap-3"><img src={dragon.url} alt="" width={46} height={46} className="h-11 w-11" /><span className="font-display text-xl font-black uppercase">GAGE Center</span></div>
+          <p className="mt-5 max-w-xs text-sm leading-6 text-ink-foreground/65">Helping Blue Springs kids find strength, confidence, skills, and a love of movement.</p>
+          <div className="mt-6 flex gap-3"><a href="#" aria-label="GAGE on Instagram" className="grid h-10 w-10 place-items-center border border-ink-foreground/20 hover:border-primary"><Instagram className="h-4 w-4" /></a><a href="#" aria-label="GAGE on Facebook" className="grid h-10 w-10 place-items-center border border-ink-foreground/20 hover:border-primary"><Facebook className="h-4 w-4" /></a></div>
         </div>
-
-        <div className="text-sm">
-          <h2 className="font-display text-xs font-bold uppercase tracking-widest text-primary">
-            Visit
-          </h2>
-          <address className="mt-4 not-italic text-ink-foreground/80">
-            1101 NW Jefferson St
-            <br />
-            Blue Springs, MO 64015
-          </address>
-          <p className="mt-4">
-            <a href="tel:+18162297775" className="hover:text-primary">
-              (816) 229-7775
-            </a>
-            <br />
-            <a href="mailto:info@gagecenter.com" className="hover:text-primary">
-              info@gagecenter.com
-            </a>
-          </p>
-        </div>
-
-        <div className="text-sm">
-          <h2 className="font-display text-xs font-bold uppercase tracking-widest text-primary">
-            Get started
-          </h2>
-          <ul className="mt-4 space-y-2 text-ink-foreground/80">
-            <li>
-              <Link to="/book-a-trial" className="hover:text-primary">
-                Book a trial class
-              </Link>
-            </li>
-            <li>
-              <Link to="/find-a-class" className="hover:text-primary">
-                Find a class
-              </Link>
-            </li>
-            <li>
-              <Link to="/schedule" className="hover:text-primary">
-                Live schedule &amp; enroll
-              </Link>
-            </li>
-            <li>
-              <Link to="/camps-and-events" className="hover:text-primary">
-                Camps &amp; events
-              </Link>
-            </li>
-          </ul>
+        {footerGroups.map((group) => <div key={group.title}><h2 className="font-display text-xs font-black uppercase text-primary">{group.title}</h2><ul className="mt-5 space-y-3">{group.links.map(([label, to]) => <li key={label}><Link to={to} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</Link></li>)}</ul></div>)}
+        <div>
+          <h2 className="font-display text-xs font-black uppercase text-primary">Visit GAGE</h2>
+          <a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer" className="mt-5 flex gap-2 text-sm leading-6 text-ink-foreground/70 hover:text-ink-foreground"><MapPin className="mt-1 h-4 w-4 shrink-0" />{siteConfig.address}</a>
+          <a href={siteConfig.phoneHref} className="mt-3 block text-sm font-bold">{siteConfig.phoneDisplay}</a>
+          <a href={`mailto:${siteConfig.email}`} className="mt-1 block text-sm text-ink-foreground/70">{siteConfig.email}</a>
+          <div className="mt-5 space-y-1 text-xs text-ink-foreground/50">{siteConfig.hours.map((hour) => <p key={hour}>{hour}</p>)}</div>
+          <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" className="mt-6 inline-block font-display text-xs font-black uppercase text-primary">Parent Portal →</a>
         </div>
       </div>
-      <div className="border-t border-ink-foreground/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 text-xs uppercase tracking-widest text-ink-foreground/50 sm:px-6">
-          © {new Date().getFullYear()} GAGE Center · Courage. Clarity. Progress.
-        </div>
-      </div>
+      <div className="border-t border-ink-foreground/10"><div className="mx-auto max-w-[1440px] px-5 py-6 text-xs text-ink-foreground/45 sm:px-8 lg:px-10">© {new Date().getFullYear()} GAGE Center · Blue Springs, Missouri</div></div>
     </footer>
   );
 }

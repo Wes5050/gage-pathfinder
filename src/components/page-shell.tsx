@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/data/config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -44,13 +46,9 @@ export function PageShell({
             <h2 className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-ink">
               Ready for the first brave step?
             </h2>
-            <Link
-              to="/book-a-trial"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
-            >
-              Book a free trial
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            <Button asChild size="lg" className="rounded-none font-display text-sm font-black uppercase">
+              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer">Try a class free<ArrowRight aria-hidden /></a>
+            </Button>
           </div>
         </section>
       </main>
