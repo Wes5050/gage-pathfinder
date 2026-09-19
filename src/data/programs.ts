@@ -3,7 +3,7 @@ import ninja from "@/assets/gage-ninja.jpg.asset.json";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import competitive from "@/assets/gage-competitive.jpg";
-import { siteConfig } from "@/data/config";
+import { resolveProgramUrl, siteConfig } from "@/data/config";
 
 export type ProgramCategory = "Gymnastics" | "Preschool" | "Ninja" | "Tumbling";
 export type ProgramGender = "All" | "Girls" | "Boys";
@@ -56,7 +56,9 @@ const programSeed: Program[] = [
   { ...shared, name: "Girls Gymnastics Level 4", category: "Gymnastics", ageMin: 7, ageMax: 18, gender: "Girls", level: "Level 4", invitationOnly: true, daytime: false, monthlyTuition: 137, shortDescription: "Advanced training for placed athletes.", longDescription: "A longer, evaluation-based class for gymnasts ready for advanced recreational progressions.", benefits: ["Extended training", "Advanced technique", "Coach-guided placement"], heroImage: competitive, trialAvailable: false, duration: 85, featured: false, displayOrder: 23 },
 ];
 
-export const programs = programSeed.sort((a, b) => a.displayOrder - b.displayOrder);
+export const programs = programSeed
+  .map((program) => ({ ...program, iclassProUrl: resolveProgramUrl(program.name) }))
+  .sort((a, b) => a.displayOrder - b.displayOrder);
 
 export function recommendProgram(ageRange: string, interest: string, gender?: string) {
   const ageMap: Record<string, number> = { "1–3": 2, "3–4": 3.5, "5–7": 6, "8–12": 10, "13+": 14 };
