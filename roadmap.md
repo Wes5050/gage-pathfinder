@@ -7,3 +7,10 @@
 - [x] Replace internal trial form with iClassPro handoff
 - [x] Update shared footer and booking CTAs
 - [ ] Verify desktop and mobile experiences
+
+# Privacy-conscious analytics
+
+- [x] Add typed, DNT-aware telemetry dispatcher
+- [ ] Instrument class finder and homepage conversion actions
+- [ ] Instrument shared navigation, footer, and iClassPro handoffs
+- [ ] Verify event payloads and navigation behavior
