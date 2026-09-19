@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import dragon from "@/assets/gage-dragon.png.asset.json";
 import { siteConfig } from "@/data/config";
 
@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-3"><img src={dragon.url} alt="" width={46} height={46} className="h-11 w-11" /><span className="font-display text-xl font-black uppercase">GAGE Center</span></div>
           <p className="mt-5 max-w-xs text-sm leading-6 text-ink-foreground/65">Helping Blue Springs kids find strength, confidence, skills, and a love of movement.</p>
-          <div className="mt-6 flex gap-3"><a href="#" aria-label="GAGE on Instagram" className="grid h-10 w-10 place-items-center border border-ink-foreground/20 hover:border-primary"><Instagram className="h-4 w-4" /></a><a href="#" aria-label="GAGE on Facebook" className="grid h-10 w-10 place-items-center border border-ink-foreground/20 hover:border-primary"><Facebook className="h-4 w-4" /></a></div>
+          <p className="mt-6 font-display text-[10px] font-black uppercase text-primary">Gymnastics · Ninja · Tumbling · Camps</p>
         </div>
         {footerGroups.map((group) => <div key={group.title}><h2 className="font-display text-xs font-black uppercase text-primary">{group.title}</h2><ul className="mt-5 space-y-3">{group.links.map(([label, to]) => <li key={label}><Link to={to} className="text-sm text-ink-foreground/70 hover:text-ink-foreground">{label}</Link></li>)}</ul></div>)}
         <div>

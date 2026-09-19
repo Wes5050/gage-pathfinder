@@ -123,8 +123,8 @@ function SchedulePage() {
             Open it in a new tab
           </a>{" "}
           or call{" "}
-          <a href="tel:+18162297775" className="font-semibold text-primary">
-            (816) 229-7775
+          <a href={siteConfig.phoneHref} className="font-semibold text-primary">
+            {siteConfig.phoneDisplay}
           </a>{" "}
           and we'll walk you through it.
         </p>

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import { SCHEDULE } from "@/lib/programs";
+import { siteConfig } from "@/data/config";
 
 export const Route = createFileRoute("/dragon-ninja")({
   head: () => ({
@@ -32,7 +32,6 @@ const HIGHLIGHTS = [
 ];
 
 function Page() {
-  const times = SCHEDULE.filter((s) => s.program === "Ninja");
   return (
     <PageShell
       eyebrow="Ages 5–14"
@@ -52,19 +51,7 @@ function Page() {
           ))}
         </ul>
 
-        <h2 className="mt-16 font-display text-2xl font-black uppercase tracking-tight text-ink">
-          Current times
-        </h2>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-          {times.map((t) => (
-            <li key={t.name} className="rounded-xl bg-secondary px-5 py-4 text-sm">
-              <p className="font-semibold text-ink">{t.name}</p>
-              <p className="text-muted-foreground">
-                {t.days} · {t.time} · Ages {t.ages}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-16 bg-ink p-7 text-ink-foreground"><h2 className="font-display text-2xl font-black uppercase">See live Ninja openings</h2><p className="mt-2 text-sm text-ink-foreground/65">Current times, openings, and registration are always up to date in our secure class portal.</p><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" className="mt-6 inline-block bg-primary px-6 py-3 font-display text-xs font-black uppercase text-primary-foreground">View live classes →</a></div>
       </section>
     </PageShell>
   );
