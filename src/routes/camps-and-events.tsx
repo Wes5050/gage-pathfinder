@@ -11,12 +11,12 @@ export const Route = createFileRoute("/camps-and-events")({
       {
         name: "description",
         content:
-          "Explore seasonal camps, Dragon Invites and meets, Bump City toddler fun, and Parent Night Out at GAGE Center in Blue Springs, MO.",
+          "Discover GAGE camps, Parent Night Out, Bump City toddler fun, and family events filled with movement, friends, and big smiles.",
       },
       { property: "og:title", content: "Camps, Meets & Family Events | GAGE Center" },
       {
         property: "og:description",
-        content: "Seasonal camps, meets, toddler play, and Parent Night Out in Blue Springs, MO.",
+        content: "Big adventures, new friends, and family events at GAGE Center in Blue Springs, MO.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,8 +29,8 @@ function Page() {
   return (
     <PageShell
       eyebrow="Camps & Events"
-      title="More reasons to be in the gym."
-      intro="Explore GAGE beyond weekly classes. Current dates and registration details are published only when each seasonal event is confirmed."
+      title="Big days. Bigger smiles."
+      intro="Camps, special events, toddler play, and nights made for new friends, happy kids, and stories they'll tell all the way home. Current details appear when each event is confirmed."
       image={hero.url}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
