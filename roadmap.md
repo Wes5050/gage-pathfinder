@@ -13,4 +13,4 @@
 - [x] Add typed, DNT-aware telemetry dispatcher
 - [x] Instrument class finder and homepage conversion actions
 - [x] Instrument shared navigation, footer, and iClassPro handoffs
-- [ ] Verify event payloads and navigation behavior
+- [x] Verify event payloads and navigation behavior
