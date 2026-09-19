@@ -16,6 +16,7 @@ export const siteConfig = {
     parentLogin: `${PORTAL}/login`,
     boysGymnasticsClasses: `${PORTAL}/classes?genders=1&programs=20`,
     girlsGymnasticsClasses: `${PORTAL}/classes?genders=0&programs=20`,
+    ninjaClasses: `${PORTAL}/classes?genders=2&programs=163`,
     // Interim partner destinations until GAGE publishes in-portal party booking.
     birthdayParties: "https://www.bump-city.com/birthday-parties",
     bumpCity: "https://www.bump-city.com/",
