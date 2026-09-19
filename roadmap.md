@@ -6,7 +6,7 @@
 - [x] Rebuild complete homepage sections and class finder
 - [x] Replace internal trial form with iClassPro handoff
 - [x] Update shared footer and booking CTAs
-- [ ] Verify desktop and mobile experiences
+- [x] Verify desktop and mobile experiences
 
 # Privacy-conscious analytics
 
