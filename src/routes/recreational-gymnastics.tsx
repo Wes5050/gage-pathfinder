@@ -34,12 +34,21 @@ const benefits = [
 const girlsEvents = ["Vault", "Uneven bars", "Balance beam", "Floor exercise"];
 const boysEvents = ["Floor exercise", "Pommel horse", "Still rings", "Vault", "Parallel bars", "High bar"];
 
+const fundamentals = [
+  "Body positions and shapes",
+  "Rolls and basic tumbling",
+  "Bar support and swinging",
+  "Low beam balance and walks",
+  "Springboard and jumping drills",
+  "Safe landings and control",
+];
+
 const faqs = [
-  { question: "What should my child wear?", answer: `Contact the GAGE team at ${siteConfig.phoneDisplay} for current class attire guidance before your first visit.` },
-  { question: "How does the free trial work?", answer: siteConfig.registration.trialNote },
-  { question: "How is my child placed?", answer: "New families begin with a Level 1 option. Level 2 and above are progressive, invitation-only classes based on coach evaluation and placement." },
-  { question: "How large are classes?", answer: `Class sizes can vary. Call ${siteConfig.phoneDisplay} for current details about the class you are considering.` },
-  { question: "Can parents watch class?", answer: `Viewing arrangements can change by class and facility activity. Contact GAGE at ${siteConfig.phoneDisplay} for the current viewing policy.` },
+  { question: "What should my child wear?", answer: "Comfortable athletic clothing that moves easily and has no buttons, zippers, or belts — a leotard, or a fitted t-shirt with shorts or leggings, works well. Gymnasts train in bare feet, and long hair should be tied back. Please leave jewelry at home." },
+  { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
+  { question: "How is my child placed?", answer: "New gymnasts age 5 and up begin in a Level 1 class. Level 2 and above are progressive and invitation-only — coaches evaluate readiness and invite athletes forward as skills develop." },
+  { question: "How often does my child attend?", answer: "Recreational gymnastics is one 50-minute class per week. You choose the day and time that fits your family from the live class list." },
+  { question: "Can parents watch class?", answer: "Yes — parents are welcome to stay and watch from the comfortable viewing lobby while class is in session." },
 ];
 
 function ProgramChoice({ name, description, events, url }: { name: string; description: string; events: string[]; url: string }) {
