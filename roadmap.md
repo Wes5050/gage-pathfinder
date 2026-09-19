@@ -42,3 +42,11 @@
 - [x] Replace the homepage placeholder with curated authentic Google reviews
 - [x] Add direct Google Maps review access and outbound CTA tracking
 - [x] Verify desktop and mobile presentation
+
+# Phase 2 — Recreational Gymnastics page
+
+- [x] Build reusable program-page sections
+- [x] Create immersive recreational gymnastics page
+- [x] Wire verified girls and boys class handoffs
+- [x] Reuse authentic Google reviews and add FAQs
+- [x] Verify desktop, mobile, analytics, and UTM behavior
