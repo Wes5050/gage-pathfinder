@@ -15,13 +15,13 @@ export const Route = createFileRoute("/schedule")({
       {
         name: "description",
         content:
-          "See real-time class openings and enroll online at GAGE Center in Blue Springs, MO. Live schedule powered by our secure iClassPro parent portal.",
+          "Find a fun GAGE class that fits your family, then see current openings and request a trial in the secure parent portal.",
       },
       { property: "og:title", content: "Live Class Schedule & Enrollment | GAGE Center" },
       {
         property: "og:description",
         content:
-          "Real-time openings and instant online enrollment through the GAGE Center parent portal.",
+          "An easy way to find current GAGE class times and openings for your child.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -38,8 +38,8 @@ const PERKS = [
   },
   {
     icon: Ticket,
-    t: "Enroll in minutes",
-    d: "Pick a class, add your athlete and pay securely. Your spot is confirmed instantly.",
+    t: "Choose what fits",
+    d: "Pick a class that works for your family, then follow the simple steps in the secure portal.",
   },
   {
     icon: ShieldCheck,
@@ -52,8 +52,8 @@ function SchedulePage() {
   return (
     <PageShell
       eyebrow="Live schedule"
-      title="See real openings. Enroll today."
-      intro="This is our live class list straight from the GAGE parent portal — every time, age range and opening you see here is real right now."
+      title="Find a class they'll love."
+      intro="Browse the live GAGE class list, find a time that works for your family, and request a trial when you're ready."
       image={hero.url}
     >
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -65,7 +65,7 @@ function SchedulePage() {
             onClick={(event) => { trackCta("ENROLL NOW", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_primary", destination_url: FEATURED_URL }); }}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
           >
-            Open the enrollment portal
+            Find a class & try free
             <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
           <a

@@ -73,7 +73,7 @@ export function SiteHeader() {
       </header>
 
       <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Quick actions">
-        <Link to="/find-a-class" onClick={() => trackCta("FIND A CLASS", "mobile_dock")} className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find a class</Link>
+        <Link to="/find-a-class" onClick={() => trackCta("FIND THEIR FUN", "mobile_dock")} className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find their fun</Link>
         <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "mobile_dock"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.booking }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try a class free</a>
         <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL (816) 229-7775", "mobile_dock")} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
       </nav>
