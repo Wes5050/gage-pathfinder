@@ -43,8 +43,8 @@ export function SiteHeader() {
               ))}
             </nav>
             <a href={siteConfig.external.parentPortal} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("PARENT PORTAL", "header_desktop"); forwardIclassProHandoff(event, { program_name: "Parent Portal", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.parentPortal }); }} className="hidden font-display text-[11px] font-bold uppercase text-muted-foreground hover:text-ink xl:block">Parent Portal</a>
-            <Button asChild size="lg" className="hidden rounded-none font-display text-xs font-black uppercase sm:inline-flex">
-              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "header_desktop"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.trial }); }}>Try a class free</a>
+            <Button asChild size="lg" className="hidden rounded-none px-6 font-display text-xs font-black uppercase shadow-lg sm:inline-flex">
+              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "header_desktop"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "header_desktop", destination_url: siteConfig.external.trial }); }}>Try a class free</a>
             </Button>
             <Button variant="outline" size="icon" className="rounded-none lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
               {open ? <X aria-hidden /> : <Menu aria-hidden />}
@@ -69,7 +69,7 @@ export function SiteHeader() {
 
       <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Quick actions">
         <Link to="/find-a-class" onClick={() => trackCta("FIND A CLASS", "mobile_dock")} className="flex min-h-14 items-center justify-center px-2 font-display text-[10px] font-black uppercase text-ink">Find a class</Link>
-        <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY FREE", "mobile_dock"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.trial }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try free</a>
+        <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "mobile_dock"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "mobile_dock", destination_url: siteConfig.external.trial }); }} className="flex min-h-14 items-center justify-center bg-primary px-2 font-display text-[10px] font-black uppercase text-primary-foreground">Try a class free</a>
         <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL", "mobile_dock")} className="flex min-h-14 items-center justify-center gap-1.5 px-2 font-display text-[10px] font-black uppercase text-ink"><Phone className="h-3.5 w-3.5" aria-hidden />Call</a>
       </nav>
     </>

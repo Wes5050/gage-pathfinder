@@ -21,3 +21,11 @@
 - [x] Enrich analytics events without cookies or PII
 - [x] Forward active campaign values into every iClassPro handoff
 - [x] Verify telemetry and outbound URLs with and without Do Not Track
+
+# Phase 1 corrections
+
+- [x] Correct finder recommendations and unsupported fallbacks
+- [x] Clarify iClassPro trial-link configuration
+- [x] Replace unverified testimonials and event timing
+- [x] Update verified hours and pricing language
+- [x] Verify responsive homepage, analytics, and UTM handoffs
