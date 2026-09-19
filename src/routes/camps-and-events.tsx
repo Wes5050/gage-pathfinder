@@ -7,16 +7,16 @@ import { events } from "@/data/events";
 export const Route = createFileRoute("/camps-and-events")({
   head: () => ({
     meta: [
-      { title: "Camps, Open Gym & Birthday Parties | GAGE Center" },
+      { title: "Camps, Meets & Family Events | GAGE Center" },
       {
         name: "description",
         content:
-          "School-out camps, weekly open gym and birthday parties at GAGE Center in Blue Springs, MO. Reserve a spot for your child today.",
+          "Explore seasonal camps, Dragon Invites and meets, Bump City toddler fun, and Parent Night Out at GAGE Center in Blue Springs, MO.",
       },
-      { property: "og:title", content: "Camps, Open Gym & Parties | GAGE Center" },
+      { property: "og:title", content: "Camps, Meets & Family Events | GAGE Center" },
       {
         property: "og:description",
-        content: "School-out camps, open gyms and birthday parties in Blue Springs, MO.",
+        content: "Seasonal camps, meets, toddler play, and Parent Night Out in Blue Springs, MO.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -30,7 +30,7 @@ function Page() {
     <PageShell
       eyebrow="Camps & Events"
       title="More reasons to be in the gym."
-      intro="When school's out or a birthday is coming, GAGE is the easy yes. Same coaches, same safety standards, a lot more games."
+      intro="Explore GAGE beyond weekly classes. Current dates and registration details are published only when each seasonal event is confirmed."
       image={hero.url}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
@@ -48,7 +48,7 @@ function Page() {
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          To reserve a camp day or party, call{" "}
+          For current registration details, call{" "}
           <a href={siteConfig.phoneHref} className="font-semibold text-primary">
             {siteConfig.phoneDisplay}
           </a>
