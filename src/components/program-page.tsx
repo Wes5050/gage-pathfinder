@@ -64,7 +64,7 @@ export function ProgramHero({ eyebrow, title, message, image, imageAlt, programN
           <h1 className="mt-5 max-w-4xl font-display text-[2.85rem] font-black uppercase leading-[.84] text-ink-foreground sm:text-[clamp(3.4rem,8.5vw,7.8rem)]">{title}</h1>
           <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">{message}</p>
           <Button asChild size="lg" className="mt-8 h-16 rounded-none px-9 font-display text-sm font-black uppercase shadow-xl">
-            <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "hero"); forwardIclassProHandoff(event, { program_name: programName, monthly_tuition: 95, source_section: "program_hero", destination_url: siteConfig.external.booking }); }}>Try a class free<ArrowRight /></a>
+            {heroCta}
           </Button>
           <p className="mt-4 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p>
         </div>
