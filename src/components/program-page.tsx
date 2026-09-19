@@ -34,7 +34,7 @@ export function ProgramPage({ children }: { children: ReactNode }) {
   return <div className="min-h-screen bg-background font-sans text-foreground"><SiteHeader /><main>{children}</main><SiteFooter /></div>;
 }
 
-export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free" }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string }) {
+export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free", details }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string; details?: string }) {
   const heroCta = ctaAnchor ? (
     <a
       href={ctaAnchor}
@@ -63,6 +63,7 @@ export function ProgramHero({ eyebrow, title, message, image, imageAlt, programN
           <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
           <h1 className="mt-5 max-w-4xl font-display text-[2.85rem] font-black uppercase leading-[.84] text-ink-foreground sm:text-[clamp(3.4rem,8.5vw,7.8rem)]">{title}</h1>
           <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">{message}</p>
+          {details ? <p className="mt-6 font-display text-xs font-black uppercase tracking-widest text-ink-foreground/70">{details}</p> : null}
           <Button asChild size="lg" className="mt-8 h-16 rounded-none px-9 font-display text-sm font-black uppercase shadow-xl">
             {heroCta}
           </Button>
@@ -103,11 +104,30 @@ export function ProgramFaq({ items }: { items: ProgramFaqItem[] }) {
   );
 }
 
-export function ProgramFinalCta({ image, imageAlt, programName }: { image: string; imageAlt: string; programName: string }) {
+export function ProgramFinalCta({ image, imageAlt, programName, eyebrow = "The first step is theirs", headline = <>They're ready.<br />Are you?</>, body = "Find a great place for your child to start.", ctaLabel = "Try a class free", ctaAnchor }: { image: string; imageAlt: string; programName: string; eyebrow?: string; headline?: ReactNode; body?: ReactNode; ctaLabel?: string; ctaAnchor?: string }) {
+  const finalCta = ctaAnchor ? (
+    <a
+      href={ctaAnchor}
+      onClick={(event) => {
+        trackCta(ctaLabel.toUpperCase(), "final_conversion");
+        const target = document.querySelector(ctaAnchor);
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.replaceState(null, "", ctaAnchor);
+        }
+      }}
+    >
+      {ctaLabel}
+      <ArrowRight />
+    </a>
+  ) : (
+    <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: programName, monthly_tuition: 95, source_section: "program_final_conversion", destination_url: siteConfig.external.booking }); }}>{ctaLabel}<ExternalLink /></a>
+  );
   return (
     <section className="relative min-h-[620px] bg-ink text-ink-foreground">
       <img src={image} alt={imageAlt} width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-55" /><div className="absolute inset-0 bg-ink/45" />
-      <div className="relative mx-auto flex min-h-[620px] max-w-5xl flex-col items-center justify-center px-5 text-center"><p className="eyebrow">The first step is theirs</p><h2 className="mt-5 font-display text-[clamp(3rem,8vw,7rem)] font-black uppercase leading-[.88]">They're ready.<br />Are you?</h2><p className="mt-6 text-lg text-ink-foreground/75">Find a great place for your child to start.</p><Button asChild size="lg" className="mt-9 h-16 rounded-none px-10 font-display text-sm font-black uppercase shadow-xl"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: programName, monthly_tuition: 95, source_section: "program_final_conversion", destination_url: siteConfig.external.booking }); }}>Try a class free<ExternalLink /></a></Button><p className="mt-4 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p></div>
+      <div className="relative mx-auto flex min-h-[620px] max-w-5xl flex-col items-center justify-center px-5 text-center"><p className="eyebrow">{eyebrow}</p><h2 className="mt-5 font-display text-[clamp(3rem,8vw,7rem)] font-black uppercase leading-[.88]">{headline}</h2><p className="mt-6 text-lg text-ink-foreground/75">{body}</p><Button asChild size="lg" className="mt-9 h-16 rounded-none px-10 font-display text-sm font-black uppercase shadow-xl">{finalCta}</Button><p className="mt-4 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p></div>
     </section>
   );
 }
