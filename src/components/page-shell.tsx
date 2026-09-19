@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { trackCta, trackIclassProHandoff } from "@/lib/analytics";
+import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 export function PageShell({
   eyebrow,
@@ -47,7 +47,7 @@ export function PageShell({
               Ready for the first brave step?
             </h2>
             <Button asChild size="lg" className="rounded-none font-display text-sm font-black uppercase">
-              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={() => { trackCta("TRY A CLASS FREE", "final_conversion"); trackIclassProHandoff({ program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.trial }); }}>Try a class free<ArrowRight aria-hidden /></a>
+              <a href={siteConfig.external.trial} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.trial }); }}>Try a class free<ArrowRight aria-hidden /></a>
             </Button>
           </div>
         </section>

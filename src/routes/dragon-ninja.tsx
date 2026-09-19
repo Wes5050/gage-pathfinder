@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
 import { siteConfig } from "@/data/config";
-import { trackCta, trackIclassProHandoff } from "@/lib/analytics";
+import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 export const Route = createFileRoute("/dragon-ninja")({
   head: () => ({
@@ -52,7 +52,7 @@ function Page() {
           ))}
         </ul>
 
-        <div className="mt-16 bg-ink p-7 text-ink-foreground"><h2 className="font-display text-2xl font-black uppercase">See live Ninja openings</h2><p className="mt-2 text-sm text-ink-foreground/65">Current times, openings, and registration are always up to date in our secure class portal.</p><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" onClick={() => { trackCta("ENROLL NOW", "programs_grid"); trackIclassProHandoff({ program_name: "Ninja Warrior Training", monthly_tuition: 95, source_section: "ninja_program_page", destination_url: siteConfig.external.classes }); }} className="mt-6 inline-block bg-primary px-6 py-3 font-display text-xs font-black uppercase text-primary-foreground">View live classes →</a></div>
+        <div className="mt-16 bg-ink p-7 text-ink-foreground"><h2 className="font-display text-2xl font-black uppercase">See live Ninja openings</h2><p className="mt-2 text-sm text-ink-foreground/65">Current times, openings, and registration are always up to date in our secure class portal.</p><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("ENROLL NOW", "programs_grid"); forwardIclassProHandoff(event, { program_name: "Ninja Warrior Training", monthly_tuition: 95, source_section: "ninja_program_page", destination_url: siteConfig.external.classes }); }} className="mt-6 inline-block bg-primary px-6 py-3 font-display text-xs font-black uppercase text-primary-foreground">View live classes →</a></div>
       </section>
     </PageShell>
   );
