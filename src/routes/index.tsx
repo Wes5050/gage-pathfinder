@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/data/config";
 import { events } from "@/data/events";
 import { recommendProgram } from "@/data/programs";
-import { trackCta, trackEvent, trackIclassProHandoff } from "@/lib/analytics";
+import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import hero from "@/assets/gage-hero.jpg.asset.json";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";

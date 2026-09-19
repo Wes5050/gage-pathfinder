@@ -3,6 +3,7 @@ import { ExternalLink, RefreshCw, ShieldCheck, Ticket } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
 import { siteConfig } from "@/data/config";
+import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const CLASSES_URL = siteConfig.external.classes;
 const FEATURED_URL = siteConfig.external.classes;
@@ -61,6 +62,7 @@ function SchedulePage() {
             href={FEATURED_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={(event) => { trackCta("ENROLL NOW", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_primary", destination_url: FEATURED_URL }); }}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
           >
             Open the enrollment portal
@@ -70,6 +72,7 @@ function SchedulePage() {
             href={CLASSES_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={(event) => { trackCta("FIND A CLASS", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_browse", destination_url: CLASSES_URL }); }}
             className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-ink"
           >
             Browse all programs
@@ -98,6 +101,7 @@ function SchedulePage() {
               href={FEATURED_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={(event) => forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_new_tab", destination_url: FEATURED_URL })}
               className="inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wide text-primary"
             >
               Open in a new tab
@@ -118,6 +122,7 @@ function SchedulePage() {
             href={FEATURED_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={(event) => forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_fallback", destination_url: FEATURED_URL })}
             className="font-semibold text-primary"
           >
             Open it in a new tab

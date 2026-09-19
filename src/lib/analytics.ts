@@ -56,7 +56,11 @@ function readStoredAttribution(): CampaignAttribution {
 }
 
 export function getCampaignAttribution(): CampaignAttribution {
-  if (!trackingAllowed()) return {};
+  if (!trackingAllowed()) {
+    memoryAttribution = {};
+    try { window.sessionStorage.removeItem(attributionStorageKey); } catch { /* Storage may be unavailable. */ }
+    return {};
+  }
   const incoming = new URLSearchParams(window.location.search);
   const captured = Object.fromEntries(attributionKeys.flatMap((key) => {
     const value = sanitizeCampaignValue(incoming.get(key));
