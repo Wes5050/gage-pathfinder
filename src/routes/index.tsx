@@ -9,7 +9,7 @@ import { events } from "@/data/events";
 import { recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
-import hero from "@/assets/gage-hero.jpg.asset.json";
+import heroFun from "@/assets/gage-hero-fun.jpg";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
@@ -143,7 +143,7 @@ function Home() {
       <SiteHeader />
       <main>
         <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-ink text-ink-foreground lg:min-h-[calc(100svh-5rem)]">
-          <img src={hero.url} alt="Young gymnast training with a GAGE coach" width={1600} height={1104} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[68%_center] opacity-80" />
+          <img src={heroFun} alt="Happy kids jumping and laughing during a fun GAGE gymnastics class" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-80" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
           <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
             <div className="max-w-4xl">
