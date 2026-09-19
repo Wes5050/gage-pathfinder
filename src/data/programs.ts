@@ -36,7 +36,7 @@ const shared = {
   iclassProUrl: classesUrl,
 };
 
-export const programs: Program[] = [
+const programSeed: Program[] = [
   { ...shared, name: "Parent Tot Ages 1–3 Daytime", category: "Preschool", ageMin: 1, ageMax: 3, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Move, play, and build confidence together.", longDescription: "A coach-led first movement class with a parent or caregiver alongside every little athlete.", benefits: ["Balance and coordination", "Parent-child connection", "Comfort in the gym"], heroImage: preschool.url, featured: true, displayOrder: 1 },
   { ...shared, name: "Parent Tot Ages 1–3", category: "Preschool", ageMin: 1, ageMax: 3, gender: "All", level: "Beginner", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "A playful first step into movement.", longDescription: "An active parent-and-child class designed around safe exploration, listening, and joyful movement.", benefits: ["Strength through play", "Early social skills", "Guided exploration"], heroImage: preschool.url, featured: false, displayOrder: 2 },
   { ...shared, name: "Gymnastics Ages 3–4 Daytime", category: "Preschool", ageMin: 3, ageMax: 4, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Independent movement for growing confidence.", longDescription: "A welcoming daytime class that introduces foundational shapes, rolls, balance, and safe landings.", benefits: ["Independent learning", "Body awareness", "Foundational skills"], heroImage: preschool.url, featured: true, displayOrder: 3 },
@@ -54,7 +54,9 @@ export const programs: Program[] = [
   { ...shared, name: "Girls Gymnastics Level 2", category: "Gymnastics", ageMin: 6, ageMax: 18, gender: "Girls", level: "Level 2", invitationOnly: true, daytime: false, monthlyTuition: 95, shortDescription: "Progress with purposeful placement.", longDescription: "An evaluation-based next level across all four events for athletes who have mastered Level 1 foundations.", benefits: ["Skill connections", "Strength and form", "Coach-guided placement"], heroImage: competitive, trialAvailable: false, featured: false, displayOrder: 21 },
   { ...shared, name: "Girls Gymnastics Level 3", category: "Gymnastics", ageMin: 6, ageMax: 18, gender: "Girls", level: "Level 3", invitationOnly: true, daytime: false, monthlyTuition: 95, shortDescription: "Stronger skills. Sharper technique.", longDescription: "An evaluation-based level for gymnasts ready to deepen technique and connect harder skills.", benefits: ["Technical development", "Event confidence", "Coach-guided placement"], heroImage: competitive, trialAvailable: false, featured: false, displayOrder: 22 },
   { ...shared, name: "Girls Gymnastics Level 4", category: "Gymnastics", ageMin: 7, ageMax: 18, gender: "Girls", level: "Level 4", invitationOnly: true, daytime: false, monthlyTuition: 137, shortDescription: "Advanced training for placed athletes.", longDescription: "A longer, evaluation-based class for gymnasts ready for advanced recreational progressions.", benefits: ["Extended training", "Advanced technique", "Coach-guided placement"], heroImage: competitive, trialAvailable: false, duration: 85, featured: false, displayOrder: 23 },
-].sort((a, b) => a.displayOrder - b.displayOrder);
+];
+
+export const programs = programSeed.sort((a, b) => a.displayOrder - b.displayOrder);
 
 export function recommendProgram(ageRange: string, interest: string, gender?: string) {
   const ageMap: Record<string, number> = { "1–3": 2, "3–4": 3.5, "5–7": 6, "8–12": 10, "13+": 14 };
