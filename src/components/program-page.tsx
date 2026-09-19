@@ -34,7 +34,26 @@ export function ProgramPage({ children }: { children: ReactNode }) {
   return <div className="min-h-screen bg-background font-sans text-foreground"><SiteHeader /><main>{children}</main><SiteFooter /></div>;
 }
 
-export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string }) {
+export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free" }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string }) {
+  const heroCta = ctaAnchor ? (
+    <a
+      href={ctaAnchor}
+      onClick={(event) => {
+        trackCta("TRY A CLASS FREE", "hero");
+        const target = document.querySelector(ctaAnchor);
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.replaceState(null, "", ctaAnchor);
+        }
+      }}
+    >
+      {ctaLabel}
+      <ArrowRight />
+    </a>
+  ) : (
+    <a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "hero"); forwardIclassProHandoff(event, { program_name: programName, monthly_tuition: 95, source_section: "program_hero", destination_url: siteConfig.external.booking }); }}>{ctaLabel}<ArrowRight /></a>
+  );
   return (
     <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-ink text-ink-foreground lg:min-h-[calc(100svh-5rem)]">
       <img src={image} alt={imageAlt} width={1600} height={1100} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-center opacity-85" />
