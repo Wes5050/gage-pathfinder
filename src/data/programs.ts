@@ -60,13 +60,14 @@ export const programs = programSeed.sort((a, b) => a.displayOrder - b.displayOrd
 
 export function recommendProgram(ageRange: string, interest: string, gender?: string) {
   const ageMap: Record<string, number> = { "1–3": 2, "3–4": 3.5, "5–7": 6, "8–12": 10, "13+": 14 };
-  const age = ageMap[ageRange] ?? 6;
-  const category = interest === "Not Sure" ? undefined : interest;
+  const age = ageMap[ageRange];
+  if (age === undefined) return null;
+  const category = interest === "Not Sure" ? (age < 5 ? "Preschool" : "Ninja") : interest;
   const candidates = programs.filter((program) => {
     const ageMatches = age >= program.ageMin && age <= program.ageMax;
-    const categoryMatches = !category || program.category === category || (category === "Gymnastics" && program.category === "Preschool");
+    const categoryMatches = program.category === category || (category === "Gymnastics" && age < 5 && program.category === "Preschool");
     const genderMatches = !gender || program.gender === "All" || program.gender === gender;
-    return ageMatches && categoryMatches && genderMatches && !program.invitationOnly;
+    return ageMatches && categoryMatches && genderMatches && !program.invitationOnly && program.trialAvailable;
   });
-  return candidates[0] ?? programs.find((program) => program.name === "Girls Gymnastics Level 1") ?? programs[0];
+  return candidates[0] ?? null;
 }

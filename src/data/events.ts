@@ -5,15 +5,15 @@ import competitive from "@/assets/gage-competitive.jpg";
 
 export type GageEvent = {
   title: string;
-  type: "Camps" | "Parent Night Out" | "Special Events" | "Meets";
-  timing: string;
+  type: "Camps" | "Parent Night Out" | "Toddler Play" | "Meets";
+  availability: string;
   description: string;
   image: string;
 };
 
 export const events: GageEvent[] = [
-  { title: "School-Out Camps", type: "Camps", timing: "On district no-school days", description: "A full day of movement, games, and new friendships.", image: hero.url },
-  { title: "Kids' Night at GAGE", type: "Parent Night Out", timing: "Select Friday nights", description: "Big gym energy for them. A free evening for you.", image: birthday },
-  { title: "Skill Clinics", type: "Special Events", timing: "Seasonal weekends", description: "Focused coaching to unlock the next skill safely.", image: ninja.url },
-  { title: "Home Meets", type: "Meets", timing: "Competition season", description: "Come feel the energy and cheer on Team GAGE.", image: competitive },
+  { title: "Dragon Invites & Meets", type: "Meets", availability: "Seasonal registration", description: "Competition events and opportunities to cheer on Team GAGE. Current details are posted when confirmed.", image: competitive },
+  { title: "Bump City Toddler Fun", type: "Toddler Play", availability: "Check current availability", description: "Active play for little movers. Confirm the current session in the GAGE parent portal.", image: hero.url },
+  { title: "GAGE Camps", type: "Camps", availability: "Seasonal registration", description: "Movement, games, and new friendships when camp registration is open.", image: ninja.url },
+  { title: "Parent Night Out", type: "Parent Night Out", availability: "Dates announced seasonally", description: "Big gym energy for them and an evening out for you. Registration opens for announced events.", image: birthday },
 ];
