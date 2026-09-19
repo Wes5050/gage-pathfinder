@@ -31,7 +31,7 @@ export const googleReviews = [
 ] as const;
 
 export function ProgramPage({ children }: { children: ReactNode }) {
-  return <div className="min-h-screen bg-background font-sans text-foreground"><SiteHeader /><main>{children}</main><SiteFooter /></div>;
+  return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><SiteHeader /><main>{children}</main><SiteFooter /></div>;
 }
 
 export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free", details }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string; details?: string }) {
