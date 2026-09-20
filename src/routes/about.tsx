@@ -50,6 +50,39 @@ function Page() {
           ))}
         </div>
 
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          <Link
+            to="/contact"
+            onClick={() => trackCta("GET IN TOUCH", "programs_grid")}
+            className="group rounded-3xl bg-secondary px-6 py-8 transition-colors hover:bg-secondary/70 sm:px-8"
+          >
+            <h2 className="font-display text-2xl font-black uppercase tracking-tight text-ink">
+              Get in touch
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Questions about classes, trials, or Bump City? Call, email, or stop by — we're happy to help.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-2 font-display text-xs font-black uppercase text-primary">
+              Contact us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+            </span>
+          </Link>
+          <Link
+            to="/careers"
+            onClick={() => trackCta("JOIN OUR TEAM", "programs_grid")}
+            className="group rounded-3xl border border-border px-6 py-8 transition-colors hover:bg-secondary sm:px-8"
+          >
+            <h2 className="font-display text-2xl font-black uppercase tracking-tight text-ink">
+              Join our team
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Inspire kids and do work you love. Explore coaching and event roles at GAGE.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-2 font-display text-xs font-black uppercase text-primary">
+              See open roles <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+            </span>
+          </Link>
+        </div>
+
         <div className="mt-16 grid gap-10 md:grid-cols-2">
           <div>
             <h2 className="font-display text-2xl font-black uppercase tracking-tight text-ink">
