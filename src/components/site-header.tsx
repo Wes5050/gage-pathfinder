@@ -11,11 +11,11 @@ const GROUPS = [
   { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/tumbling"], ["Pre-Team", "/find-a-class"]] },
   { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events"]] },
   { label: "Camps & Events", items: [["Camps", "/camps-and-events"], ["Clinics", "/camps-and-events"], ["Parent Night Out", "/camps-and-events"], ["Events", "/camps-and-events"], ["Meets", "/camps-and-events"]] },
-  { label: "Birthdays & Play", items: [["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity]] },
+  { label: "Birthdays & Play", items: [["Birthday Parties", "/birthday-parties"], ["Bump City", siteConfig.external.bumpCity]] },
   { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/about"], ["Careers", "/about"]] },
 ] as const;
 
-type NavPath = "/about";
+type NavPath = "/about" | "/birthday-parties";
 const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteHeader() {
