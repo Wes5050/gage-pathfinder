@@ -5,7 +5,7 @@ import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const footerGroups = [
-  { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics & Tumbling", "/recreational-gymnastics"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
+  { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Tumbling & Trampoline", "/tumbling"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
   { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity], ["Competitive Teams", "/about"], ["About GAGE", "/about"]] },
 ] as const;
 
