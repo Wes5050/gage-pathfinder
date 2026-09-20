@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
 import { siteConfig } from "@/data/config";
+import { trackCta } from "@/lib/analytics";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
