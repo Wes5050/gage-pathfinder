@@ -81,4 +81,4 @@
 - [x] Build /birthday-parties with hero, parent benefits, three-step flow, party options, review, FAQs, and final booking CTA
 - [x] Preserve Bump City booking, click tracking, campaign attribution, and phone actions
 - [x] Route birthday discovery links in the header, footer, and homepage to the internal page
-- [ ] Verify type safety, live routes, booking destinations, and desktop/mobile presentation
+- [x] Verify type safety, live routes, booking destinations, and desktop/mobile presentation
