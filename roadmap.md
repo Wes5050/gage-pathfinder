@@ -60,3 +60,12 @@
 ## Dragon Ninja program page
 - [x] Rebuilt /dragon-ninja on shared ProgramPage architecture (hero, benefits, obstacle experience, Standard/Daytime class options with verified Ninja filtered links, Ninja Google review, FAQ, final CTA)
 - [x] ProgramHero subheadline prop added; Recreational Gymnastics page unchanged; typecheck clean; desktop + mobile verified, no overflow
+
+## Preschool Gymnastics page rebuild (program-page architecture)
+- [x] Hero: "Little movers. Big smiles." / "Big movement for little humans." with details line + CTA scroll to #choose-program
+- [x] Four benefits (motor milestones, social skills, bravery/confidence, active habits)
+- [x] "What little ones experience" equipment grid (foam pits, toddler bars, low beams, trampolines, wedges, circuits)
+- [x] #choose-program: Parent & Tot / Little Dragons / Preschool Prep cards, both price points, links to siteConfig.external.classes with tracking + UTM handoff
+- [x] Google Reviews showcase (Parent + Tot review) + 4 FAQs (participation, attire, trial, length)
+- [x] Final CTA "Their first favorite class." / "Try a preschool class free"
+- [x] Verified: tsgo clean, route 200, desktop/mobile layout, tracking intact
