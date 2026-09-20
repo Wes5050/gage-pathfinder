@@ -21,11 +21,6 @@ export const Route = createFileRoute("/tumbling")({
   component: TumblingPage,
 });
 
-const benefits = [
-  { icon: Footprints, title: "Pure floor & trampoline.", text: "Dedicated training on spring floors, rod tracks, in-ground trampolines, and soft foam pits — no bars or beam, just flips." },
-  { icon: Zapless as unknown as typeof Dumbbell, title: "", text: "" },
-] as const;
-
 const benefitsFull = [
   { icon: Footprints, title: "Pure floor & trampoline", text: "Dedicated training on spring floors, rod tracks, in-ground trampolines, and soft foam pits — without bars or beam." },
   { icon: Dumbbell, title: "Explosive power & agility", text: "Fast-twitch muscle power, strong core stability, and confident spatial awareness in the air." },

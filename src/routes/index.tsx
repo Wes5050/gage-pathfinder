@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
 const signaturePrograms = [
   { name: "Recreational Gymnastics", line: "Cartwheels, confidence, new friends, and a whole lot of fun.", image: hero.url, to: "/recreational-gymnastics", tone: "bg-primary", external: false },
   { name: "Ninja", line: "Climb, jump, conquer obstacles, and let that energy loose.", image: ninja.url, to: "/dragon-ninja", tone: "bg-accent", external: false },
-  { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: tumbling.url, to: "/find-a-class", tone: "bg-primary", external: false },
+  { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: tumbling.url, to: "/tumbling", tone: "bg-primary", external: false },
   { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: preschool.url, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
   { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: ninja.url, to: "/camps-and-events", tone: "bg-primary", external: false },
   { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: birthday, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },

@@ -19,6 +19,8 @@ import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymn
 import { Route as RecreationGymnatsticsRouteImport } from './routes/recreation-gymnatstics'
 import { Route as RecreationalGymnasticsRouteImport } from './routes/recreational-gymnastics'
 import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as TumblingRouteImport } from './routes/tumbling'
+import { Route as TumblingAndTrampolineRouteImport } from './routes/tumbling-and-trampoline'
 import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +73,16 @@ const ScheduleRoute = ScheduleRouteImport.update({
   path: '/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TumblingRoute = TumblingRouteImport.update({
+  id: '/tumbling',
+  path: '/tumbling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TumblingAndTrampolineRoute = TumblingAndTrampolineRouteImport.update({
+  id: '/tumbling-and-trampoline',
+  path: '/tumbling-and-trampoline',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
   id: '/book-a-trial_/confirmation',
   path: '/book-a-trial/confirmation',
@@ -88,6 +100,8 @@ export interface FileRoutesByFullPath {
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
+  '/tumbling': typeof TumblingRoute
+  '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +115,8 @@ export interface FileRoutesByTo {
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
+  '/tumbling': typeof TumblingRoute
+  '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesById {
@@ -115,6 +131,8 @@ export interface FileRoutesById {
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
+  '/tumbling': typeof TumblingRoute
+  '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
   '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +148,8 @@ export interface FileRouteTypes {
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
+    | '/tumbling'
+    | '/tumbling-and-trampoline'
     | '/book-a-trial/confirmation'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +163,8 @@ export interface FileRouteTypes {
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
+    | '/tumbling'
+    | '/tumbling-and-trampoline'
     | '/book-a-trial/confirmation'
   id:
     | '__root__'
@@ -156,6 +178,8 @@ export interface FileRouteTypes {
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
+    | '/tumbling'
+    | '/tumbling-and-trampoline'
     | '/book-a-trial_/confirmation'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +194,8 @@ export interface RootRouteChildren {
   RecreationGymnatsticsRoute: typeof RecreationGymnatsticsRoute
   RecreationalGymnasticsRoute: typeof RecreationalGymnasticsRoute
   ScheduleRoute: typeof ScheduleRoute
+  TumblingRoute: typeof TumblingRoute
+  TumblingAndTrampolineRoute: typeof TumblingAndTrampolineRoute
   BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
 }
 
@@ -245,6 +271,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tumbling': {
+      id: '/tumbling'
+      path: '/tumbling'
+      fullPath: '/tumbling'
+      preLoaderRoute: typeof TumblingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tumbling-and-trampoline': {
+      id: '/tumbling-and-trampoline'
+      path: '/tumbling-and-trampoline'
+      fullPath: '/tumbling-and-trampoline'
+      preLoaderRoute: typeof TumblingAndTrampolineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-a-trial_/confirmation': {
       id: '/book-a-trial_/confirmation'
       path: '/book-a-trial/confirmation'
@@ -266,6 +306,8 @@ const rootRouteChildren: RootRouteChildren = {
   RecreationGymnatsticsRoute: RecreationGymnatsticsRoute,
   RecreationalGymnasticsRoute: RecreationalGymnasticsRoute,
   ScheduleRoute: ScheduleRoute,
+  TumblingRoute: TumblingRoute,
+  TumblingAndTrampolineRoute: TumblingAndTrampolineRoute,
   BookATrialConfirmationRoute: BookATrialConfirmationRoute,
 }
 export const routeTree = rootRouteImport
