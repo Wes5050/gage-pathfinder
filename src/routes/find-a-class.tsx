@@ -86,7 +86,7 @@ function FindAClass() {
           <div className="mt-8 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
             {visible.map((program) => (
               <article key={program.name} className="flex min-h-[390px] flex-col bg-background">
-                <img src={programImages[program.category]} alt={`${program.category} class at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-44 w-full object-cover" />
+                <img src={programImages[program.category]} alt={`${program.category} class at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-44 w-full object-cover object-[center_25%]" />
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="bg-ink px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink-foreground">{program.category} · Ages {program.ageMin}–{program.ageMax}</span>
@@ -97,7 +97,7 @@ function FindAClass() {
                 <div className="mt-6 border-t border-border pt-5"><span className="font-display text-[10px] font-black uppercase text-muted-foreground">Monthly tuition</span><p className="mt-1 font-display text-3xl font-black text-ink">${program.monthlyTuition}<span className="text-sm text-muted-foreground">/mo</span></p></div>
                 <div className="mt-6 grid gap-2 sm:grid-cols-2">
                   <Button asChild variant="outline" className="h-12 rounded-none font-display text-[10px] font-black uppercase"><Link to={programRoutes[program.category]} onClick={() => trackCta("LEARN MORE", "programs_grid")}>Learn more<ArrowRight aria-hidden /></Link></Button>
-                  <Button asChild className="h-12 rounded-none font-display text-[10px] font-black uppercase"><a href={program.iclassProUrl} target="_blank" rel="noreferrer" title="Choose a class that works for your family, then select Request a Trial." onClick={(event) => { trackCta("TRY FREE / VIEW OPENINGS", "programs_grid"); forwardIclassProHandoff(event, { program_name: program.name, monthly_tuition: program.monthlyTuition, source_section: "global_class_finder", destination_url: program.iclassProUrl }); }}>Try free / View openings<ExternalLink aria-hidden /></a></Button>
+                  <Button asChild className="h-12 rounded-none font-display text-[10px] font-black uppercase"><a href={program.iclassProUrl} target="_blank" rel="noreferrer" title="Choose a class that works for your family, then select Request a Trial." onClick={(event) => { trackCta("TRY FREE / VIEW OPENINGS", "programs_grid"); forwardIclassProHandoff(event, { program_name: program.name, monthly_tuition: program.monthlyTuition, source_section: "global_class_finder", destination_url: program.iclassProUrl }); }}>Try free<ExternalLink aria-hidden /></a></Button>
                 </div>
                 <p className="mt-4 text-xs leading-5 text-muted-foreground">Choose a class that works for your family, then select Request a Trial.</p>
                 </div>
