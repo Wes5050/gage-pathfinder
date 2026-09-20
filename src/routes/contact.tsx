@@ -163,7 +163,7 @@ function Page() {
 
             <p className="text-sm text-muted-foreground">
               Not sure which class fits?{" "}
-              <Link to="/find-a-class" className="font-semibold text-primary hover:underline" onClick={() => trackCta("FIND A CLASS", "contact_footer_link")}>
+              <Link to="/find-a-class" className="font-semibold text-primary hover:underline" onClick={() => trackCta("FIND A CLASS", "contact_quick_message")}>
                 Find their fun →
               </Link>
             </p>
