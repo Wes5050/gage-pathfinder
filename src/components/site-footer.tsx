@@ -6,10 +6,10 @@ import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const footerGroups = [
   { title: "Classes", links: [["Preschool Gymnastics", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Tumbling & Trampoline", "/tumbling"], ["Dragon Ninja", "/dragon-ninja"], ["Find a Class", "/find-a-class"]] },
-  { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", "/birthday-parties"], ["Bump City", siteConfig.external.bumpCity], ["Competitive Teams", "/about"], ["About GAGE", "/about"]] },
+  { title: "More at GAGE", links: [["Camps & Events", "/camps-and-events"], ["Birthday Parties", "/birthday-parties"], ["Bump City", siteConfig.external.bumpCity], ["Competitive Teams", "/about"], ["About GAGE", "/about"], ["Contact", "/contact"], ["Careers", "/careers"]] },
 ] as const;
 
-type FooterPath = "/about" | "/birthday-parties";
+type FooterPath = "/about" | "/birthday-parties" | "/contact" | "/careers";
 const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteFooter() {

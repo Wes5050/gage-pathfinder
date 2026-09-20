@@ -12,10 +12,10 @@ const GROUPS = [
   { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events"]] },
   { label: "Camps & Events", items: [["Camps", "/camps-and-events"], ["Clinics", "/camps-and-events"], ["Parent Night Out", "/camps-and-events"], ["Events", "/camps-and-events"], ["Meets", "/camps-and-events"]] },
   { label: "Birthdays & Play", items: [["Birthday Parties", "/birthday-parties"], ["Bump City", siteConfig.external.bumpCity]] },
-  { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/about"], ["Careers", "/about"]] },
+  { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/contact"], ["Careers", "/careers"]] },
 ] as const;
 
-type NavPath = "/about" | "/birthday-parties";
+type NavPath = "/about" | "/birthday-parties" | "/contact" | "/careers";
 const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteHeader() {

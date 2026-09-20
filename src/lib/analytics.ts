@@ -3,7 +3,7 @@ export type AnalyticsEventMap = {
   class_finder_step: { step_number: 1 | 2 | 3; step_name: "age" | "interest" | "details"; selected_value: string };
   class_finder_recommendation: { program_name: string; monthly_tuition: number; criteria_matched: string };
   class_finder_reset: { last_completed_step: "age" | "interest" | "details" };
-  cta_click: { label: string; placement: "hero" | "header_desktop" | "mobile_dock" | "finder_result" | "programs_grid" | "tuition_section" | "final_conversion" | "footer" };
+  cta_click: { label: string; placement: "hero" | "header_desktop" | "mobile_dock" | "finder_result" | "programs_grid" | "tuition_section" | "final_conversion" | "footer" | "contact_cards" | "contact_hours" | "contact_families" | "contact_quick_message" | "careers_apply" | "careers_call" };
   tuition_viewed: { tier: "daytime" | "standard" | "advanced" | "all"; action: "viewed" | "find_class_clicked" };
   iclasspro_handoff: { program_name: string; monthly_tuition: number; source_section: string; destination_url: string; utm_source?: string; utm_medium?: string };
 };

@@ -14,6 +14,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BirthdayPartiesRouteImport } from './routes/birthday-parties'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
 import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
 import { Route as FindAClassRouteImport } from './routes/find-a-class'
 import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymnastics'
@@ -47,6 +49,16 @@ const BookATrialRoute = BookATrialRouteImport.update({
 const CampsAndEventsRoute = CampsAndEventsRouteImport.update({
   id: '/camps-and-events',
   path: '/camps-and-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DragonNinjaRoute = DragonNinjaRouteImport.update({
@@ -101,6 +113,8 @@ export interface FileRoutesByFullPath {
   '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
@@ -117,6 +131,8 @@ export interface FileRoutesByTo {
   '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
@@ -134,6 +150,8 @@ export interface FileRoutesById {
   '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
@@ -152,6 +170,8 @@ export interface FileRouteTypes {
     | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
+    | '/careers'
+    | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
@@ -168,6 +188,8 @@ export interface FileRouteTypes {
     | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
+    | '/careers'
+    | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
@@ -184,6 +206,8 @@ export interface FileRouteTypes {
     | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
+    | '/careers'
+    | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
     | '/preschool-gymnastics'
@@ -201,6 +225,8 @@ export interface RootRouteChildren {
   BirthdayPartiesRoute: typeof BirthdayPartiesRoute
   BookATrialRoute: typeof BookATrialRoute
   CampsAndEventsRoute: typeof CampsAndEventsRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
   DragonNinjaRoute: typeof DragonNinjaRoute
   FindAClassRoute: typeof FindAClassRoute
   PreschoolGymnasticsRoute: typeof PreschoolGymnasticsRoute
@@ -247,6 +273,20 @@ declare module '@tanstack/react-router' {
       path: '/camps-and-events'
       fullPath: '/camps-and-events'
       preLoaderRoute: typeof CampsAndEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dragon-ninja': {
@@ -321,6 +361,8 @@ const rootRouteChildren: RootRouteChildren = {
   BirthdayPartiesRoute: BirthdayPartiesRoute,
   BookATrialRoute: BookATrialRoute,
   CampsAndEventsRoute: CampsAndEventsRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
   DragonNinjaRoute: DragonNinjaRoute,
   FindAClassRoute: FindAClassRoute,
   PreschoolGymnasticsRoute: PreschoolGymnasticsRoute,
