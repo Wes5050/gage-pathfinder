@@ -34,7 +34,7 @@ export function ProgramPage({ children }: { children: ReactNode }) {
   return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><SiteHeader /><main>{children}</main><SiteFooter /></div>;
 }
 
-export function ProgramHero({ eyebrow, title, message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free", details }: { eyebrow: string; title: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string; details?: string }) {
+export function ProgramHero({ eyebrow, title, subheadline = "One class. A whole lot of fun.", message, image, imageAlt, programName, ctaAnchor, ctaLabel = "Try a class free", details }: { eyebrow: string; title: string; subheadline?: string; message: string; image: string; imageAlt: string; programName: string; ctaAnchor?: string; ctaLabel?: string; details?: string }) {
   const heroCta = ctaAnchor ? (
     <a
       href={ctaAnchor}
@@ -61,7 +61,7 @@ export function ProgramHero({ eyebrow, title, message, image, imageAlt, programN
       <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
         <div className="max-w-4xl">
           <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
-          <p className="mt-4 font-display text-sm font-black uppercase text-ink-foreground">One class. A whole lot of fun.</p>
+          <p className="mt-4 font-display text-sm font-black uppercase text-ink-foreground">{subheadline}</p>
           <h1 className="mt-5 max-w-4xl font-display text-[2.85rem] font-black uppercase leading-[.84] text-ink-foreground sm:text-[clamp(3.4rem,8.5vw,7.8rem)]">{title}</h1>
           <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">{message}</p>
           {details ? <p className="mt-6 font-display text-xs font-black uppercase tracking-widest text-ink-foreground/70">{details}</p> : null}
