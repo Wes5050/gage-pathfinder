@@ -3,6 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero.jpg.asset.json";
+import coaches from "@/assets/gage-coaches.jpg";
+import birthday from "@/assets/gage-birthday.jpg";
+import facility from "@/assets/gage-facility.jpg";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
 
@@ -51,6 +54,12 @@ function Page() {
               <p className="mt-2 text-sm text-muted-foreground">{v.d}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <img src={coaches} alt="A coach high-fiving a smiling child at GAGE" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
+          <img src={birthday} alt="Kids celebrating together at GAGE" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
+          <img src={facility} alt="Families watching class from the GAGE viewing area" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover sm:col-span-2 lg:col-span-1 lg:h-64" />
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">

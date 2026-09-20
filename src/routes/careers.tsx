@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
 import hero from "@/assets/gage-ninja.jpg.asset.json";
+import coaches from "@/assets/gage-coaches.jpg";
+import facility from "@/assets/gage-facility.jpg";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -79,8 +81,19 @@ function Page() {
       eyebrow="Join Our Team · Blue Springs, MO"
       title="Inspire kids. Do work you love."
       intro="Be part of a positive, high-energy team that helps children build confidence and discover what they can do."
+      image={hero.url}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <figure className="mb-12 overflow-hidden rounded-3xl">
+          <img
+            src={coaches}
+            alt="A GAGE coach celebrating with kids in class"
+            loading="lazy"
+            width={1600}
+            height={1000}
+            className="h-64 w-full object-cover sm:h-96"
+          />
+        </figure>
         <h2 className="font-display text-2xl font-black uppercase tracking-tight text-ink">
           Why work at GAGE
         </h2>
@@ -112,6 +125,20 @@ function Page() {
             </div>
           ))}
         </div>
+
+        <figure className="mt-16 overflow-hidden rounded-3xl">
+          <img
+            src={facility}
+            alt="The GAGE Center gym floor seen from the family viewing area"
+            loading="lazy"
+            width={1600}
+            height={1000}
+            className="h-56 w-full object-cover sm:h-80"
+          />
+          <figcaption className="mt-3 text-xs uppercase tracking-wide text-muted-foreground">
+            Where you would spend your shifts.
+          </figcaption>
+        </figure>
 
         <div className="mt-16 grid gap-6 rounded-3xl bg-secondary px-6 py-12 sm:px-12">
           <h2 className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-ink">
