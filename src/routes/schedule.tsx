@@ -1,138 +1,68 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ExternalLink, RefreshCw, ShieldCheck, Ticket } from "lucide-react";
+import { ArrowRight, CalendarCheck, ExternalLink, RefreshCw, ShieldCheck, TicketCheck, UserRoundCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
-import hero from "@/assets/gage-hero.jpg.asset.json";
+import hero from "@/assets/gage-hero-fun.jpg";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
-const CLASSES_URL = siteConfig.external.classes;
-const FEATURED_URL = siteConfig.external.classes;
-
 export const Route = createFileRoute("/schedule")({
-  head: () => ({
-    meta: [
-      { title: "Live Class Schedule & Enrollment | GAGE Center Blue Springs" },
-      {
-        name: "description",
-        content:
-          "Find a fun GAGE class that fits your family, then see current openings and request a trial in the secure parent portal.",
-      },
-      { property: "og:title", content: "Live Class Schedule & Enrollment | GAGE Center" },
-      {
-        property: "og:description",
-        content:
-          "An easy way to find current GAGE class times and openings for your child.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => ({ meta: [
+    { title: "Live Class Schedule & Enrollment | GAGE Center Blue Springs" },
+    { name: "description", content: "Browse live GAGE class times for gymnastics, Ninja, tumbling, preschool, and Parent-Tot programs, then request a trial online." },
+    { property: "og:title", content: "Live Class Schedule & Enrollment | GAGE Center" },
+    { property: "og:description", content: "Find a class time that fits your family's weekly routine." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: SchedulePage,
 });
 
-const PERKS = [
-  {
-    icon: RefreshCw,
-    t: "Always current",
-    d: "Openings, waitlists and times come straight from our registration system — never a stale printout.",
-  },
-  {
-    icon: Ticket,
-    t: "Choose what fits",
-    d: "Pick a class that works for your family, then follow the simple steps in the secure portal.",
-  },
-  {
-    icon: ShieldCheck,
-    t: "One family account",
-    d: "Waivers, billing, absences and make-ups all live in the same portal you already use.",
-  },
-];
+const schedules = [
+  { name: "Girls Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.girlsGymnasticsClasses },
+  { name: "Boys Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.boysGymnasticsClasses },
+  { name: "Dragon Ninja", detail: "Ages 5–14", destination: siteConfig.external.ninjaClasses },
+  { name: "Tumbling & Trampoline", detail: "Ages 5–18", destination: siteConfig.external.classes },
+  { name: "Preschool & Parent-Tot", detail: "Ages 1–5", destination: siteConfig.external.classes },
+  { name: "Browse All Classes", detail: "Every GAGE program", destination: siteConfig.external.classes },
+] as const;
+
+const steps = [
+  { number: "01", title: "Browse days & times", text: "See available days, times, and current openings in the live portal." },
+  { number: "02", title: "Request a Trial", text: "Choose an eligible class, open its details, and select “Request a Trial.”" },
+  { number: "03", title: "Get ready to move", text: "Complete your family profile, then arrive ready for their first fun class." },
+] as const;
+
+const parentPerks = [
+  { icon: UserRoundCheck, title: "One family account", text: "Keep your children, classes, waivers, and account details together." },
+  { icon: RefreshCw, title: "Live openings", text: "See current class times and availability directly in the registration portal." },
+  { icon: CalendarCheck, title: "Easy attendance management", text: "Manage enrollment and attendance details from the account your family already uses." },
+] as const;
+
+function ScheduleLink({ name, detail, destination }: (typeof schedules)[number]) {
+  return (
+    <a href={destination} target="_blank" rel="noreferrer" onClick={(event) => { trackCta(`VIEW ${name.toUpperCase()} SCHEDULE`, "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: 0, source_section: "schedule_quick_jump", destination_url: destination }); }} className="group flex min-h-[190px] flex-col justify-between bg-background p-6 transition-colors hover:bg-secondary sm:p-7">
+      <div><TicketCheck className="h-6 w-6 text-primary" aria-hidden /><p className="mt-6 font-display text-[10px] font-black uppercase text-primary">{detail}</p><h2 className="mt-2 font-display text-xl font-black uppercase text-ink">{name}</h2></div>
+      <span className="mt-7 inline-flex items-center gap-2 font-display text-xs font-black uppercase text-ink">View live schedule<ExternalLink className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden /></span>
+    </a>
+  );
+}
 
 function SchedulePage() {
   return (
-    <PageShell
-      eyebrow="Live schedule"
-      title="Find a class they'll love."
-      intro="Browse the live GAGE class list, find a time that works for your family, and request a trial when you're ready."
-      image={hero.url}
-    >
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={FEATURED_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => { trackCta("ENROLL NOW", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_primary", destination_url: FEATURED_URL }); }}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
-          >
-            Find a class & try free
-            <ExternalLink className="h-4 w-4" aria-hidden />
-          </a>
-          <a
-            href={CLASSES_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => { trackCta("FIND A CLASS", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_browse", destination_url: CLASSES_URL }); }}
-            className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-ink"
-          >
-            Browse all programs
-            <ExternalLink className="h-4 w-4" aria-hidden />
-          </a>
-        </div>
+    <PageShell eyebrow="Live schedule" title="Live class schedule & enrollment." intro="Find a class time that fits your family's weekly routine." image={hero}>
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="max-w-3xl"><p className="eyebrow">Quick jump by category</p><h2 className="section-title mt-4">Go straight to their class.</h2><p className="mt-5 text-lg leading-8 text-muted-foreground">Choose a program below to see its current days, times, and openings in GAGE’s live registration portal.</p></div>
+        <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">{schedules.map((schedule) => <ScheduleLink key={schedule.name} {...schedule} />)}</div>
+      </section>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {PERKS.map(({ icon: Icon, t, d }) => (
-            <div key={t} className="rounded-2xl border border-border bg-card p-6">
-              <Icon className="h-5 w-5 text-primary" aria-hidden />
-              <h2 className="mt-3 font-display text-base font-extrabold uppercase tracking-tight text-ink">
-                {t}
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-            </div>
-          ))}
-        </div>
+      <section className="bg-ink py-20 text-ink-foreground sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8"><p className="eyebrow">How to enroll</p><h2 className="section-title mt-4 text-ink-foreground">Three simple steps.</h2><div className="mt-12 grid gap-px bg-ink-foreground/15 md:grid-cols-3">{steps.map((step) => <article key={step.number} className="bg-ink p-7 sm:p-9"><span className="font-display text-4xl font-black text-primary">{step.number}</span><h3 className="mt-8 font-display text-xl font-black uppercase">{step.title}</h3><p className="mt-4 leading-7 text-ink-foreground/65">{step.text}</p></article>)}</div><Button asChild size="lg" className="mt-10 h-14 rounded-none px-8 font-display text-xs font-black uppercase"><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("BROWSE ALL LIVE CLASSES", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_enrollment_steps", destination_url: siteConfig.external.classes }); }}>Browse all live classes<ArrowRight aria-hidden /></a></Button></div>
+      </section>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-secondary px-5 py-4">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-ink">
-              Live class list
-            </p>
-            <a
-              href={FEATURED_URL}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(event) => forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_new_tab", destination_url: FEATURED_URL })}
-              className="inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wide text-primary"
-            >
-              Open in a new tab
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            </a>
-          </div>
-          <iframe
-            src={FEATURED_URL}
-            title="GAGE Center live class schedule and enrollment"
-            loading="lazy"
-            className="h-[1100px] w-full border-0 bg-background sm:h-[1000px]"
-          />
-        </div>
-
-        <p className="mt-4 text-sm text-muted-foreground">
-          Trouble loading the schedule above?{" "}
-          <a
-            href={FEATURED_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "schedule_fallback", destination_url: FEATURED_URL })}
-            className="font-semibold text-primary"
-          >
-            Open it in a new tab
-          </a>{" "}
-          or call{" "}
-          <a href={siteConfig.phoneHref} className="font-semibold text-primary">
-            {siteConfig.phoneDisplay}
-          </a>{" "}
-          and we'll walk you through it.
-        </p>
+      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end"><div><p className="eyebrow">Easy for busy families</p><h2 className="section-title mt-4">What parents love about the portal.</h2></div><p className="max-w-2xl text-lg leading-8 text-muted-foreground">Current information and simple account tools make finding and managing a class easier.</p></div>
+        <div className="mt-12 grid gap-px bg-border md:grid-cols-3">{parentPerks.map(({ icon: Icon, title, text }) => <article key={title} className="bg-background p-7 sm:p-9"><Icon className="h-7 w-7 text-primary" aria-hidden /><h3 className="mt-8 font-display text-xl font-black uppercase text-ink">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{text}</p></article>)}</div>
       </section>
     </PageShell>
   );

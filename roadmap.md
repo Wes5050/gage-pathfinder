@@ -87,3 +87,9 @@
 - [x] Build the full Camps & Events experience with hero, four event categories, parent expectations, review, FAQs, and final CTA
 - [x] Preserve verified portal and Bump City destinations with tracking and campaign attribution
 - [x] Verify type safety, live route, interactive actions, and desktop/mobile presentation
+
+## Global Class Finder & Schedule Hub
+- [x] Add category and age filtering with beginner-friendly program cards and dual actions
+- [x] Add six verified live-schedule shortcuts and a three-step enrollment guide
+- [x] Preserve iClassPro tracking, campaign attribution, and verified destinations
+- [x] Verify type safety, filters, links, and desktop/mobile presentation
