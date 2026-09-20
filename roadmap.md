@@ -82,3 +82,8 @@
 - [x] Preserve Bump City booking, click tracking, campaign attribution, and phone actions
 - [x] Route birthday discovery links in the header, footer, and homepage to the internal page
 - [x] Verify type safety, live routes, booking destinations, and desktop/mobile presentation
+
+## Camps & Events page
+- [x] Build the full Camps & Events experience with hero, four event categories, parent expectations, review, FAQs, and final CTA
+- [x] Preserve verified portal and Bump City destinations with tracking and campaign attribution
+- [x] Verify type safety, live route, interactive actions, and desktop/mobile presentation
