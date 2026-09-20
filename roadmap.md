@@ -86,4 +86,4 @@
 ## Camps & Events page
 - [x] Build the full Camps & Events experience with hero, four event categories, parent expectations, review, FAQs, and final CTA
 - [x] Preserve verified portal and Bump City destinations with tracking and campaign attribution
-- [ ] Verify type safety, live route, interactive actions, and desktop/mobile presentation
+- [x] Verify type safety, live route, interactive actions, and desktop/mobile presentation
