@@ -1,28 +1,100 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ExternalLink, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import { programs, type ProgramCategory } from "@/data/programs";
-import { siteConfig } from "@/data/config";
-import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
+import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 
 export const Route = createFileRoute("/find-a-class")({
-  head: () => ({ meta: [{ title: "Find Fun Kids Classes | GAGE Center Blue Springs" }, { name: "description", content: "Explore welcoming GAGE gymnastics, Ninja, tumbling, preschool, and homeschool programs with clear monthly tuition." }, { property: "og:title", content: "Find Their Fun | GAGE Center" }, { property: "og:description", content: "Find a beginner-friendly class your child will be excited to try." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
+  head: () => ({ meta: [
+    { title: "Find Fun Kids Classes | GAGE Center Blue Springs" },
+    { name: "description", content: "Filter welcoming GAGE preschool, gymnastics, Ninja, and tumbling classes by age, compare monthly tuition, and request a free trial." },
+    { property: "og:title", content: "Find Their Fun | GAGE Center" },
+    { property: "og:description", content: "Explore classes built around movement, smiles, and confidence." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: FindAClass,
 });
 
-const filters: Array<"All" | ProgramCategory> = ["All", "Preschool", "Gymnastics", "Ninja", "Tumbling"];
+const categoryFilters: Array<{ value: "All" | ProgramCategory; label: string }> = [
+  { value: "All", label: "All" },
+  { value: "Preschool", label: "Preschool · Ages 1–5" },
+  { value: "Gymnastics", label: "Gymnastics · Ages 5+" },
+  { value: "Ninja", label: "Ninja · Ages 5–14" },
+  { value: "Tumbling", label: "Tumbling · Ages 5–18" },
+];
+
+const ageFilters = ["All Ages", "1–3", "3–4", "5–7", "8–12", "13+"] as const;
+type AgeFilter = (typeof ageFilters)[number];
+
+const ageBounds: Record<Exclude<AgeFilter, "All Ages">, [number, number]> = {
+  "1–3": [1, 3],
+  "3–4": [3, 4],
+  "5–7": [5, 7],
+  "8–12": [8, 12],
+  "13+": [13, 18],
+};
+
+const programRoutes: Record<ProgramCategory, "/preschool-gymnastics" | "/recreational-gymnastics" | "/dragon-ninja" | "/tumbling"> = {
+  Preschool: "/preschool-gymnastics",
+  Gymnastics: "/recreational-gymnastics",
+  Ninja: "/dragon-ninja",
+  Tumbling: "/tumbling",
+};
 
 function FindAClass() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
-  const visible = programs.filter((program) => (filter === "All" || program.category === filter) && (!program.invitationOnly || filter === "Gymnastics"));
-  return <PageShell eyebrow="Something for every kid" title="Find their fun." intro="Explore classes built around movement, smiles, friendship, and confidence. Compare clear monthly tuition, then choose a live class that fits your family." image={tumbling.url}>
-    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-      <div className="flex gap-2 overflow-x-auto pb-2">{filters.map((item) => <Button key={item} type="button" variant={filter === item ? "default" : "outline"} onClick={() => setFilter(item)} className="shrink-0 rounded-none font-display text-xs font-black uppercase">{item}</Button>)}</div>
-      <div className="mt-10 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">{visible.map((program) => <article key={program.name} className="flex flex-col bg-background p-6"><div className="flex items-start justify-between gap-4"><p className="font-display text-[10px] font-black uppercase text-primary">{program.category} · Ages {program.ageMin}–{program.ageMax}</p>{program.invitationOnly ? <span className="bg-accent px-2 py-1 font-display text-[9px] font-black uppercase text-accent-foreground">By coach invitation</span> : null}</div><h2 className="mt-4 font-display text-xl font-black uppercase text-ink">{program.name}</h2><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{program.shortDescription}</p><div className="mt-6 flex items-end justify-between border-t border-border pt-5"><div><span className="text-[10px] uppercase text-muted-foreground">Monthly</span><p className="font-display text-2xl font-black text-ink">${program.monthlyTuition}</p></div>{program.invitationOnly ? <a href={siteConfig.phoneHref} className="font-display text-xs font-black uppercase text-primary">Ask about next steps</a> : <a href={program.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("ENROLL NOW", "programs_grid"); forwardIclassProHandoff(event, { program_name: program.name, monthly_tuition: program.monthlyTuition, source_section: "programs_grid", destination_url: program.iclassProUrl }); }} className="inline-flex items-center gap-2 font-display text-xs font-black uppercase text-primary">See openings<ExternalLink className="h-3.5 w-3.5" /></a>}</div></article>)}</div>
-      <div className="mt-12 flex flex-col items-start justify-between gap-6 bg-ink p-7 text-ink-foreground sm:flex-row sm:items-center"><div><p className="font-display text-xs font-black uppercase text-primary">It starts with one try</p><h2 className="mt-3 font-display text-2xl font-black uppercase">See what fits your family</h2><p className="mt-2 text-sm text-ink-foreground/60">Live times and openings stay current in the parent portal.</p></div><Button asChild className="rounded-none font-display text-xs font-black uppercase"><a href={siteConfig.external.classes} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("FIND A CLASS", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "find_a_class", destination_url: siteConfig.external.classes }); }}>Find a live class<ArrowRight /></a></Button></div>
-    </section>
-  </PageShell>;
+  const [category, setCategory] = useState<(typeof categoryFilters)[number]["value"]>("All");
+  const [age, setAge] = useState<AgeFilter>("All Ages");
+  const visible = programs.filter((program) => {
+    if (program.invitationOnly || !program.trialAvailable) return false;
+    const categoryMatches = category === "All" || program.category === category;
+    if (!categoryMatches || age === "All Ages") return categoryMatches;
+    const [minimum, maximum] = ageBounds[age];
+    return program.ageMin <= maximum && program.ageMax >= minimum;
+  });
+
+  return (
+    <PageShell eyebrow="Something for every kid" title="Find their fun." intro="Explore classes built around movement, smiles, and confidence." image={tumbling.url}>
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="border-b border-border pb-8">
+          <p className="font-display text-xs font-black uppercase text-ink">Category</p>
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+            {categoryFilters.map((item) => <Button key={item.value} type="button" variant={category === item.value ? "default" : "outline"} onClick={() => { setCategory(item.value); trackEvent("class_finder_step", { step_number: 2, step_name: "interest", selected_value: item.value }); }} className="h-11 shrink-0 rounded-none px-5 font-display text-[11px] font-black uppercase">{item.label}</Button>)}
+          </div>
+          <p className="mt-7 font-display text-xs font-black uppercase text-ink">Age</p>
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+            {ageFilters.map((item) => <Button key={item} type="button" variant={age === item ? "default" : "outline"} onClick={() => { setAge(item); trackEvent("class_finder_step", { step_number: 1, step_name: "age", selected_value: item }); }} className="h-11 shrink-0 rounded-none px-5 font-display text-[11px] font-black uppercase">{item}</Button>)}
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center justify-between gap-4"><p className="text-sm text-muted-foreground"><strong className="font-display text-ink">{visible.length}</strong> {visible.length === 1 ? "class" : "classes"} to explore</p><p className="hidden text-sm text-muted-foreground sm:block">Beginner-friendly options shown first.</p></div>
+
+        {visible.length ? (
+          <div className="mt-8 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+            {visible.map((program) => (
+              <article key={program.name} className="flex min-h-[390px] flex-col bg-background p-6 sm:p-7">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="bg-ink px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink-foreground">{program.category} · Ages {program.ageMin}–{program.ageMax}</span>
+                  {program.daytime ? <span className="inline-flex items-center gap-1.5 bg-secondary px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink"><Sun className="h-3 w-3 text-primary" aria-hidden />$85/mo daytime</span> : <span className="bg-secondary px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink">$95/mo standard</span>}
+                </div>
+                <h2 className="mt-6 font-display text-2xl font-black uppercase leading-tight text-ink">{program.name}</h2>
+                <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{program.shortDescription}</p>
+                <div className="mt-6 border-t border-border pt-5"><span className="font-display text-[10px] font-black uppercase text-muted-foreground">Monthly tuition</span><p className="mt-1 font-display text-3xl font-black text-ink">${program.monthlyTuition}<span className="text-sm text-muted-foreground">/mo</span></p></div>
+                <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                  <Button asChild variant="outline" className="h-12 rounded-none font-display text-[10px] font-black uppercase"><Link to={programRoutes[program.category]} onClick={() => trackCta("LEARN MORE", "programs_grid")}>Learn more<ArrowRight aria-hidden /></Link></Button>
+                  <Button asChild className="h-12 rounded-none font-display text-[10px] font-black uppercase"><a href={program.iclassProUrl} target="_blank" rel="noreferrer" title="Choose a class that works for your family, then select Request a Trial." onClick={(event) => { trackCta("TRY FREE / VIEW OPENINGS", "programs_grid"); forwardIclassProHandoff(event, { program_name: program.name, monthly_tuition: program.monthlyTuition, source_section: "global_class_finder", destination_url: program.iclassProUrl }); }}>Try free / View openings<ExternalLink aria-hidden /></a></Button>
+                </div>
+                <p className="mt-4 text-xs leading-5 text-muted-foreground">Choose a class that works for your family, then select Request a Trial.</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-8 border border-border bg-secondary px-6 py-12 text-center"><h2 className="font-display text-2xl font-black uppercase text-ink">Let’s find the right fit.</h2><p className="mx-auto mt-3 max-w-xl text-muted-foreground">No current programs match both filters. Try another age or category to see more options.</p><Button type="button" className="mt-6 rounded-none font-display text-xs font-black uppercase" onClick={() => { setCategory("All"); setAge("All Ages"); }}>Show all classes</Button></div>
+        )}
+      </section>
+    </PageShell>
+  );
 }
