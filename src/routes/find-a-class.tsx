@@ -6,6 +6,9 @@ import { PageShell } from "@/components/page-shell";
 import { programs, type ProgramCategory } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
+import preschoolImg from "@/assets/gage-preschool.jpg.asset.json";
+import ninjaImg from "@/assets/gage-ninja.jpg.asset.json";
+import gymImg from "@/assets/gage-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/find-a-class")({
   head: () => ({ meta: [
@@ -45,6 +48,13 @@ const programRoutes: Record<ProgramCategory, "/preschool-gymnastics" | "/recreat
   Tumbling: "/tumbling",
 };
 
+const programImages: Record<ProgramCategory, string> = {
+  Preschool: preschoolImg.url,
+  Gymnastics: gymImg.url,
+  Ninja: ninjaImg.url,
+  Tumbling: tumbling.url,
+};
+
 function FindAClass() {
   const [category, setCategory] = useState<(typeof categoryFilters)[number]["value"]>("All");
   const [age, setAge] = useState<AgeFilter>("All Ages");
@@ -75,7 +85,9 @@ function FindAClass() {
         {visible.length ? (
           <div className="mt-8 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
             {visible.map((program) => (
-              <article key={program.name} className="flex min-h-[390px] flex-col bg-background p-6 sm:p-7">
+              <article key={program.name} className="flex min-h-[390px] flex-col bg-background">
+                <img src={programImages[program.category]} alt={`${program.category} class at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-44 w-full object-cover" />
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="bg-ink px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink-foreground">{program.category} · Ages {program.ageMin}–{program.ageMax}</span>
                   {program.daytime ? <span className="inline-flex items-center gap-1.5 bg-secondary px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink"><Sun className="h-3 w-3 text-primary" aria-hidden />$85/mo daytime</span> : <span className="bg-secondary px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink">$95/mo standard</span>}
@@ -88,6 +100,7 @@ function FindAClass() {
                   <Button asChild className="h-12 rounded-none font-display text-[10px] font-black uppercase"><a href={program.iclassProUrl} target="_blank" rel="noreferrer" title="Choose a class that works for your family, then select Request a Trial." onClick={(event) => { trackCta("TRY FREE / VIEW OPENINGS", "programs_grid"); forwardIclassProHandoff(event, { program_name: program.name, monthly_tuition: program.monthlyTuition, source_section: "global_class_finder", destination_url: program.iclassProUrl }); }}>Try free / View openings<ExternalLink aria-hidden /></a></Button>
                 </div>
                 <p className="mt-4 text-xs leading-5 text-muted-foreground">Choose a class that works for your family, then select Request a Trial.</p>
+                </div>
               </article>
             ))}
           </div>

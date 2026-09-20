@@ -3,6 +3,10 @@ import { ArrowRight, CalendarCheck, ExternalLink, RefreshCw, ShieldCheck, Ticket
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import hero from "@/assets/gage-hero-fun.jpg";
+import gymImg from "@/assets/gage-hero.jpg.asset.json";
+import ninjaImg from "@/assets/gage-ninja.jpg.asset.json";
+import tumblingImg from "@/assets/gage-tumbling.jpg.asset.json";
+import preschoolImg from "@/assets/gage-preschool.jpg.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
@@ -19,12 +23,12 @@ export const Route = createFileRoute("/schedule")({
 });
 
 const schedules = [
-  { name: "Girls Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.girlsGymnasticsClasses },
-  { name: "Boys Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.boysGymnasticsClasses },
-  { name: "Dragon Ninja", detail: "Ages 5–14", destination: siteConfig.external.ninjaClasses },
-  { name: "Tumbling & Trampoline", detail: "Ages 5–18", destination: siteConfig.external.classes },
-  { name: "Preschool & Parent-Tot", detail: "Ages 1–5", destination: siteConfig.external.classes },
-  { name: "Browse All Classes", detail: "Every GAGE program", destination: siteConfig.external.classes },
+  { name: "Girls Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.girlsGymnasticsClasses, image: gymImg.url },
+  { name: "Boys Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.boysGymnasticsClasses, image: gymImg.url },
+  { name: "Dragon Ninja", detail: "Ages 5–14", destination: siteConfig.external.ninjaClasses, image: ninjaImg.url },
+  { name: "Tumbling & Trampoline", detail: "Ages 5–18", destination: siteConfig.external.classes, image: tumblingImg.url },
+  { name: "Preschool & Parent-Tot", detail: "Ages 1–5", destination: siteConfig.external.classes, image: preschoolImg.url },
+  { name: "Browse All Classes", detail: "Every GAGE program", destination: siteConfig.external.classes, image: hero },
 ] as const;
 
 const steps = [
@@ -39,11 +43,12 @@ const parentPerks = [
   { icon: CalendarCheck, title: "Easy attendance management", text: "Manage enrollment and attendance details from the account your family already uses." },
 ] as const;
 
-function ScheduleLink({ name, detail, destination }: (typeof schedules)[number]) {
+function ScheduleLink({ name, detail, destination, image }: (typeof schedules)[number]) {
   return (
-    <a href={destination} target="_blank" rel="noreferrer" onClick={(event) => { trackCta(`VIEW ${name.toUpperCase()} SCHEDULE`, "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: 0, source_section: "schedule_quick_jump", destination_url: destination }); }} className="group flex min-h-[190px] flex-col justify-between bg-background p-6 transition-colors hover:bg-secondary sm:p-7">
-      <div><TicketCheck className="h-6 w-6 text-primary" aria-hidden /><p className="mt-6 font-display text-[10px] font-black uppercase text-primary">{detail}</p><h2 className="mt-2 font-display text-xl font-black uppercase text-ink">{name}</h2></div>
-      <span className="mt-7 inline-flex items-center gap-2 font-display text-xs font-black uppercase text-ink">View live schedule<ExternalLink className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden /></span>
+    <a href={destination} target="_blank" rel="noreferrer" onClick={(event) => { trackCta(`VIEW ${name.toUpperCase()} SCHEDULE`, "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: 0, source_section: "schedule_quick_jump", destination_url: destination }); }} className="group flex min-h-[190px] flex-col justify-between bg-background transition-colors hover:bg-secondary">
+      <img src={image} alt={`${name} at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-40 w-full object-cover" />
+      <div className="p-6 pb-0 sm:p-7 sm:pb-0"><TicketCheck className="h-6 w-6 text-primary" aria-hidden /><p className="mt-6 font-display text-[10px] font-black uppercase text-primary">{detail}</p><h2 className="mt-2 font-display text-xl font-black uppercase text-ink">{name}</h2></div>
+      <span className="mt-7 inline-flex items-center gap-2 p-6 pt-0 font-display text-xs font-black uppercase text-ink sm:p-7 sm:pt-0">View live schedule<ExternalLink className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden /></span>
     </a>
   );
 }
