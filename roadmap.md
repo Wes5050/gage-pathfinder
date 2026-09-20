@@ -56,3 +56,7 @@
 - [x] Wire verified girls and boys class handoffs
 - [x] Reuse authentic Google reviews and add FAQs
 - [x] Verify desktop, mobile, analytics, and UTM behavior
+
+## Dragon Ninja program page
+- [x] Rebuilt /dragon-ninja on shared ProgramPage architecture (hero, benefits, obstacle experience, Standard/Daytime class options with verified Ninja filtered links, Ninja Google review, FAQ, final CTA)
+- [x] ProgramHero subheadline prop added; Recreational Gymnastics page unchanged; typecheck clean; desktop + mobile verified, no overflow
