@@ -76,3 +76,9 @@
 - [x] Navigation: header Classes dropdown "Tumbling" → /tumbling; footer "Tumbling & Trampoline" link; homepage Tumbling card → /tumbling
 - [x] Alias redirect /tumbling-and-trampoline → /tumbling (307)
 - [x] Verified: tsgo clean, route 200, desktop + mobile no overflow, no prohibited terms
+
+## Birthday Parties & Bump City page
+- [x] Build /birthday-parties with hero, parent benefits, three-step flow, party options, review, FAQs, and final booking CTA
+- [x] Preserve Bump City booking, click tracking, campaign attribution, and phone actions
+- [x] Route birthday discovery links in the header, footer, and homepage to the internal page
+- [x] Verify type safety, live routes, booking destinations, and desktop/mobile presentation

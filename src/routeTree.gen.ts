@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BirthdayPartiesRouteImport } from './routes/birthday-parties'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
 import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
 import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
@@ -31,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BirthdayPartiesRoute = BirthdayPartiesRouteImport.update({
+  id: '/birthday-parties',
+  path: '/birthday-parties',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookATrialRoute = BookATrialRouteImport.update({
@@ -92,6 +98,7 @@ const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/birthday-parties': typeof BirthdayPartiesRoute
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
     | '/dragon-ninja'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
     | '/dragon-ninja'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/birthday-parties'
     | '/book-a-trial'
     | '/camps-and-events'
     | '/dragon-ninja'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BirthdayPartiesRoute: typeof BirthdayPartiesRoute
   BookATrialRoute: typeof BookATrialRoute
   CampsAndEventsRoute: typeof CampsAndEventsRoute
   DragonNinjaRoute: typeof DragonNinjaRoute
@@ -213,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/birthday-parties': {
+      id: '/birthday-parties'
+      path: '/birthday-parties'
+      fullPath: '/birthday-parties'
+      preLoaderRoute: typeof BirthdayPartiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/book-a-trial': {
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BirthdayPartiesRoute: BirthdayPartiesRoute,
   BookATrialRoute: BookATrialRoute,
   CampsAndEventsRoute: CampsAndEventsRoute,
   DragonNinjaRoute: DragonNinjaRoute,
