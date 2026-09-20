@@ -69,3 +69,10 @@
 - [x] Google Reviews showcase (Parent + Tot review) + 4 FAQs (participation, attire, trial, length)
 - [x] Final CTA "Their first favorite class." / "Try a preschool class free"
 - [x] Verified: tsgo clean, route 200, desktop/mobile layout, tracking intact
+
+## Tumbling & Trampoline page
+- [x] Built /tumbling on shared ProgramPage architecture (hero "Build the skills. Land the moment.", four benefits, equipment grid, Level 1–3 pathway cards, Google review, 4 FAQs, final CTA "Ready to flip?")
+- [x] All three level cards link to siteConfig.external.classes with trackCta + forwardIclassProHandoff + UTM
+- [x] Navigation: header Classes dropdown "Tumbling" → /tumbling; footer "Tumbling & Trampoline" link; homepage Tumbling card → /tumbling
+- [x] Alias redirect /tumbling-and-trampoline → /tumbling (307)
+- [x] Verified: tsgo clean, route 200, desktop + mobile no overflow, no prohibited terms
