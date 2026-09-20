@@ -5,7 +5,8 @@ import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
-import hero from "@/assets/gage-hero.jpg.asset.json";
+import facility from "@/assets/gage-facility.jpg";
+import coaches from "@/assets/gage-coaches.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -64,6 +65,7 @@ function Page() {
       eyebrow="GAGE Center · Blue Springs, MO"
       title="We're here to help."
       intro="Have a question about classes, trials, or Bump City? Reach out anytime — a real person who knows the gym will get back to you."
+      image={facility}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
@@ -116,6 +118,19 @@ function Page() {
                 <Navigation aria-hidden /> Open in Google Maps
               </a>
             </Button>
+            <figure className="mt-8 overflow-hidden rounded-3xl">
+              <img
+                src={coaches}
+                alt="A GAGE coach high-fiving a smiling child during class"
+                loading="lazy"
+                width={1600}
+                height={1000}
+                className="h-64 w-full object-cover sm:h-80"
+              />
+              <figcaption className="mt-3 text-xs uppercase tracking-wide text-muted-foreground">
+                Stop by and watch a class from our viewing area.
+              </figcaption>
+            </figure>
           </div>
 
           <div className="flex flex-col gap-6">
