@@ -83,7 +83,7 @@ export function beginnerProgramsForAge(ageGroup: string) {
     if (seen.has(program.category)) return false;
     seen.add(program.category);
     return true;
-  });
+  }).map((program) => program.gender === "All" ? program : { ...program, iclassProUrl: siteConfig.external.classes });
 }
 
 /** Single recommendation for a specific interest. "Not Sure" never auto-picks a program. */
