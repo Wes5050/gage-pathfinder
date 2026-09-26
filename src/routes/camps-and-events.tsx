@@ -2,11 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
-import heroFun from "@/assets/gage-hero-fun.jpg";
-import birthday from "@/assets/gage-birthday.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import competitive from "@/assets/gage-competitive.jpg";
+import competitivePhoto from "@/assets/gage-hero.jpg.asset.json";
+const competitive = competitivePhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta, withCampaignAttribution } from "@/lib/analytics";
 
@@ -26,7 +29,7 @@ export const Route = createFileRoute("/camps-and-events")({
 
 const expectations = [
   { icon: ShieldCheck, title: "Safety-certified coaching", text: "Attentive, positive coaches supervise every activity and keep the energy high and encouraging." },
-  { icon: ThermometerSun, title: "Massive indoor playground", text: "A climate-controlled facility with in-ground trampolines, foam pits, ninja courses, and inflatables." },
+  { icon: ThermometerSun, title: "Big indoor gym", text: "A climate-controlled gym with trampolines, air pits, and ninja obstacles." },
   { icon: Users, title: "Open to everyone", text: "Your child does not need to be enrolled in weekly classes to join GAGE camps or Parent Night Out." },
   { icon: TicketCheck, title: "Convenient registration", text: "Fast online enrollment and payment through the GAGE parent portal." },
 ] as const;
@@ -35,7 +38,7 @@ const faqs = [
   { question: "What should campers bring?", answer: "Pack a peanut-free sack lunch or snack, a refillable water bottle, and comfortable athletic clothes made for active play." },
   { question: "Does my child need gymnastics experience?", answer: "None at all. GAGE camps and events are designed for kids of every experience level to have fun, make friends, and move." },
   { question: "How do we sign up?", answer: `Camps and events are booked directly through the GAGE customer portal or over the phone at ${siteConfig.phoneDisplay}. Open the portal to see current availability and registration details.` },
-  { question: "What ages can attend?", answer: "Camps and Parent Night Out are typically for ages 4–12. Bump City toddler play is designed for ages 1–5. Check each current listing for its confirmed age range before registering." },
+  { question: "What ages can attend?", answer: "Ages vary by camp and event. Each listing in the portal shows its confirmed age range — or call us and we will help." },
 ] as const;
 
 type EventCardProps = {
@@ -72,7 +75,7 @@ function EventCard({ icon: Icon, eyebrow, title, description, details, image, im
     </Button>
   ) : (
     <Button asChild size="lg" variant="outline" className="h-14 w-full rounded-none border-ink-foreground/30 bg-transparent px-6 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink">
-      <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL FOR SPECTATOR DETAILS", "programs_grid")}>{cta}<Phone aria-hidden /></a>
+      <a href={siteConfig.phoneHref} onClick={() => trackCta(cta.toUpperCase(), "programs_grid")}>{cta}<Phone aria-hidden /></a>
     </Button>
   );
 
@@ -99,10 +102,10 @@ function CampsEventsPage() {
         <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
           <div className="max-w-4xl">
             <p className="font-display text-xs font-black uppercase text-primary">GAGE Center · Blue Springs, MO</p>
-            <p className="mt-4 font-display text-sm font-black uppercase">Camps, Parent Night Out & Seasonal Fun</p>
+            <p className="mt-4 font-display text-sm font-black uppercase">Camps, Clinics & Events</p>
             <h1 className="mt-5 font-display text-[2.9rem] font-black uppercase leading-[.84] sm:text-[clamp(3.5rem,8.5vw,7.8rem)]">Big days. Bigger smiles.</h1>
-            <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">Active school break camps, weekend Parent Night Out, and seasonal events packed with gymnastics, ninja courses, inflatables, games, and new friendships. A high-energy experience kids look forward to all year.</p>
-            <p className="mt-6 font-display text-xs font-black uppercase text-ink-foreground/70">Ages 4–14 · Full & half-day options · Open to everyone (no membership required)</p>
+            <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">Active school break camps, weekend Parent Night Out, and seasonal events packed with gymnastics, ninja obstacles, games, and new friendships. A high-energy experience kids look forward to all year.</p>
+            <p className="mt-6 font-display text-xs font-black uppercase text-ink-foreground/70">Open to everyone · No weekly class membership required</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="h-16 rounded-none px-9 font-display text-sm font-black uppercase shadow-xl"><a href="#event-listings" onClick={(event) => { trackCta("EXPLORE EVENTS", "hero"); const target = document.querySelector("#event-listings"); if (target) { event.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); window.history.replaceState(null, "", "#event-listings"); } }}>Explore events<ArrowRight aria-hidden /></a></Button>
               <Button asChild size="lg" variant="outline" className="h-16 rounded-none border-ink-foreground/40 bg-transparent px-8 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("CHECK AVAILABILITY IN PORTAL", "hero"); forwardIclassProHandoff(event, { program_name: "Camps & Events", monthly_tuition: 0, source_section: "events_hero", destination_url: siteConfig.external.booking }); }}>Check availability in portal<ExternalLink aria-hidden /></a></Button>
@@ -111,14 +114,23 @@ function CampsEventsPage() {
         </div>
       </section>
 
-      <section id="event-listings" className="scroll-mt-24 py-20 sm:py-28">
+      <section id="camps" className="scroll-mt-24 py-20 sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-          <div className="max-w-3xl"><p className="eyebrow">Choose their next big day</p><h2 className="section-title mt-4">Something fun is always happening.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Explore seasonal adventures, weekend fun, little-kid play, and community events. Current dates and availability live in the registration destination linked on each card.</p></div>
+          <div className="max-w-3xl"><p className="eyebrow">Camps & clinics</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed in the GAGE registration portal.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
-            <EventCard icon={TentTree} eyebrow="School breaks & summer" title="GAGE Summer & School Break Camps" description="Full-day and half-day options during summer, winter break, and spring break." details="Gymnastics fundamentals, ninja obstacle relays, trampoline bounce, games, crafts, and coach-led teamwork." image={ninja.url} imageAlt="Kids taking on a fun ninja course during a GAGE camp" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
-            <EventCard icon={MoonStar} eyebrow="Select weekend evenings" title="Parent Night Out" description="Three to four hours of supervised active fun while parents enjoy a date night or an evening off." details="Inflatables, foam pits, games, and high-energy, coach-supervised play." image={birthday} imageAlt="Kids enjoying active group play at GAGE Parent Night Out" cta="View upcoming PNO dates" destination={siteConfig.external.booking} portal />
-            <EventCard icon={Sparkles} eyebrow="Ages 1–5" title="Bump City Open Play & Toddler Time" description="Daytime open play in the Bump City inflatable arena and soft gym for little explorers." details="A playful place for little movers to bounce, climb, explore, and make discoveries." image={preschool.url} imageAlt="Little kids exploring colorful play equipment at GAGE" cta="View Bump City schedule" destination={siteConfig.external.bumpCity} />
-            <EventCard icon={CalendarDays} eyebrow="Seasonal community events" title="Team Meets & Showcases" description="Dragon Invites and community showcase meets give families plenty of reasons to cheer on young athletes." details="Attendance and spectator information is shared as each event is confirmed." image={competitive} imageAlt="GAGE families cheering during a community gymnastics showcase" cta="Call for spectator details" />
+            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={ninja.url} imageAlt="Kids on the ninja course at GAGE" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
+            <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={competitive} imageAlt="A gymnast at GAGE" cta="Call for current clinics" />
+          </div>
+        </div>
+      </section>
+
+      <section id="event-listings" className="scroll-mt-24 bg-secondary py-20 sm:py-28">
+        <div id="events" className="mx-auto max-w-[1440px] scroll-mt-24 px-5 sm:px-8 lg:px-10">
+          <div className="max-w-3xl"><p className="eyebrow">Events</p><h2 className="section-title mt-4">Special nights and family events.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Each card tells you what it is, who it's for, and where to check current dates.</p></div>
+          <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
+            <EventCard icon={MoonStar} eyebrow="For kids · Select evenings" title="Parent Night Out" description="A fun night for them. A night off for you." details="Games and coach-supervised active play. See upcoming dates and ages in the portal." image={birthday} imageAlt="Kids playing at GAGE" cta="See upcoming dates" destination={siteConfig.external.booking} portal />
+            <EventCard icon={Sparkles} eyebrow="For families with little ones" title="Bump City Open Play" description="Climb, jump, swing and play." details="Open play schedule and details live on the Bump City site." image={preschool.url} imageAlt="Little kids playing at GAGE" cta="Explore Bump City" destination={siteConfig.external.bumpCity} />
+            <EventCard icon={CalendarDays} eyebrow="For families & spectators" title="Meets & Showcases" description="Dragon Invites and showcase meets — come cheer on GAGE gymnasts." details="Attendance and spectator information is shared as each event is confirmed." image={competitive} imageAlt="A gymnast at GAGE" cta="Call for spectator details" />
           </div>
         </div>
       </section>

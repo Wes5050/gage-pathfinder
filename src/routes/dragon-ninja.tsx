@@ -3,7 +3,8 @@ import { ArrowRight, HeartHandshake, Sparkles, Activity, Zap } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import heroFun from "@/assets/gage-hero-fun.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/dragon-ninja")({
   head: () => ({
     meta: [
       { title: "Dragon Ninja Obstacle Classes Ages 5–14 | GAGE Center" },
-      { name: "description", content: "Fun Ninja obstacle classes for ages 5–14 in Blue Springs, MO. Kids climb, jump, swing, and build confidence while letting their energy loose. From $85/month, free trial available." },
+      { name: "description", content: "Fun Ninja obstacle classes for ages 5–14 in Blue Springs, MO. Kids climb, jump, swing, and build confidence while letting their energy loose. $85/month, free trial available." },
       { property: "og:title", content: "Adventure Starts Here | GAGE Center" },
       { property: "og:description", content: "Climb. Jump. Conquer. Repeat. Dragon Ninja obstacle classes for ages 5–14 at GAGE Center." },
       { property: "og:type", content: "website" },
@@ -39,7 +40,7 @@ const obstacles = [
 ] as const;
 
 const faqs = [
-  { question: "What should my child wear?", answer: "Comfortable athletic clothes they can move, climb, and jump in. Depending on the class setup, kids train in clean sneakers or bare feet, and long hair should be tied back. Please leave jewelry at home." },
+  { question: "What should my child wear?", answer: "Comfortable athletic clothes they can move, climb, and jump in. No shoes in any class — kids train in bare feet, and long hair should be tied back. Please leave jewelry at home." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a Ninja class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
   { question: "Does my child need ninja or gymnastics experience?", answer: "No experience needed at all. Beginners start right away, and every class welcomes first-timers — kids build skills one obstacle at a time with coaches cheering them on." },
   { question: "Can parents watch class?", answer: "Yes — parents are welcome to stay and watch from the comfortable viewing lobby while class is in session." },
@@ -78,7 +79,7 @@ function DragonNinjaPage() {
         title="Adventure starts here."
         subheadline="Climb. Jump. Conquer. Repeat."
         message="Dragon Ninja turns active energy into agility, strength, and confidence through exciting obstacle courses, supportive coaching, and a whole lot of fun."
-        details="Ages 5–14 · From $85/mo daytime · $95/mo standard · Free trial available"
+        details="Ages 5–14 · $85/mo daytime · $95/mo standard · $44 one-time registration fee · Free trial available"
         image={ninja.url}
         imageAlt="Kids conquering the Dragon Ninja obstacle course at GAGE"
         programName="Ninja Warrior Training"
@@ -127,7 +128,7 @@ function DragonNinjaPage() {
               name="Standard Dragon Ninja"
               description="The full obstacle-course experience — climbing, swinging, vaulting, and conquering new challenges with friends."
               price="$95"
-              priceNote="One 50-minute class per week"
+              priceNote="One 50-minute class per week · $44 one-time registration fee"
               tuition={95}
               note={siteConfig.registration.trialNote}
             />
@@ -135,8 +136,8 @@ function DragonNinjaPage() {
               eyebrow="Homeschool & flexible schedules"
               name="Daytime Dragon Ninja"
               description="The same high-energy obstacle fun, scheduled earlier in the day for homeschool and flexible routines."
-              price="From $85"
-              priceNote="One 50-minute class per week"
+              price="$85"
+              priceNote="One 50-minute class per week · $44 one-time registration fee"
               tuition={85}
               note={siteConfig.registration.trialNote}
             />

@@ -9,13 +9,13 @@ import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const GROUPS = [
   { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/tumbling"], ["Pre-Team", "/find-a-class"]] },
-  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events"]] },
-  { label: "Camps & Events", items: [["Camps", "/camps-and-events"], ["Clinics", "/camps-and-events"], ["Parent Night Out", "/camps-and-events"], ["Events", "/camps-and-events"], ["Meets", "/camps-and-events"]] },
-  { label: "Birthdays & Play", items: [["Birthday Parties", "/birthday-parties"], ["Bump City", siteConfig.external.bumpCity]] },
+  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events#camps"]] },
+  { label: "Camps & Events", items: [["Camps & Clinics", "/camps-and-events#camps"], ["Parent Night Out", "/camps-and-events#events"], ["Events & Meets", "/camps-and-events#events"]] },
+  { label: "Birthdays & Play", items: [["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity]] },
   { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/contact"], ["Careers", "/careers"]] },
 ] as const;
 
-type NavPath = "/about" | "/birthday-parties" | "/contact" | "/careers";
+type NavPath = "/about" | "/camps-and-events" | "/contact" | "/careers";
 const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteHeader() {
@@ -41,7 +41,7 @@ export function SiteHeader() {
                     {group.items.map(([label, to]) => isExternal(to) ? (
                       <a key={label} href={to} target="_blank" rel="noreferrer" onClick={() => trackCta(label.toUpperCase(), "header_desktop")} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</a>
                     ) : (
-                      <Link key={label} to={to as NavPath} onClick={() => trackCta(label.toUpperCase(), "header_desktop")} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</Link>
+                      <Link key={label} to={to.split("#")[0] as NavPath} hash={to.split("#")[1]} onClick={() => trackCta(label.toUpperCase(), "header_desktop")} className="block px-4 py-3 font-display text-xs font-bold uppercase text-ink-foreground/75 transition-colors hover:bg-ink-foreground/10 hover:text-ink-foreground">{label}</Link>
                     ))}
                   </div>
                 </div>
@@ -63,7 +63,7 @@ export function SiteHeader() {
               <div key={group.label} className="border-b border-border py-3">
                 <p className="font-display text-xs font-black uppercase text-primary">{group.label}</p>
                 <div className="mt-1 grid grid-cols-2 gap-x-3">
-                  {group.items.map(([label, to]) => isExternal(to) ? <a key={label} href={to} target="_blank" rel="noreferrer" onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</a> : <Link key={label} to={to as NavPath} onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</Link>)}
+                  {group.items.map(([label, to]) => isExternal(to) ? <a key={label} href={to} target="_blank" rel="noreferrer" onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</a> : <Link key={label} to={to.split("#")[0] as NavPath} hash={to.split("#")[1]} onClick={() => { trackCta(label.toUpperCase(), "mobile_dock"); setOpen(false); }} className="py-2 text-sm font-semibold text-ink">{label}</Link>)}
                 </div>
               </div>
             ))}

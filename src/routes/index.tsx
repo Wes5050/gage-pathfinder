@@ -5,16 +5,17 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/data/config";
-import { events } from "@/data/events";
-import { recommendProgram } from "@/data/programs";
+import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
 import hero from "@/assets/gage-hero.jpg.asset.json";
-import heroFun from "@/assets/gage-hero-fun.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,16 +37,17 @@ const signaturePrograms = [
   { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: tumbling.url, to: "/tumbling", tone: "bg-primary", external: false },
   { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: preschool.url, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
   { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: ninja.url, to: "/camps-and-events", tone: "bg-primary", external: false },
-  { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: birthday, to: "/birthday-parties", tone: "bg-accent", external: false },
+  { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: birthday, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },
 ] as const;
 
 function ClassFinder() {
   const [age, setAge] = useState("");
   const [interest, setInterest] = useState("");
   const [gender, setGender] = useState("");
-  const asksGender = interest === "Gymnastics" && ["5–7", "8–12", "13+"].includes(age);
+  const asksGender = interest === "Gymnastics" && ["5–6 years", "7–9 years", "10 & up"].includes(age);
   const selectionComplete = Boolean(age && interest && (!asksGender || gender));
   const result = useMemo(() => selectionComplete ? recommendProgram(age, interest, gender) : undefined, [age, interest, gender, selectionComplete]);
+  const notSureOptions = useMemo(() => selectionComplete && interest === "Not Sure" ? beginnerProgramsForAge(age) : [], [age, interest, selectionComplete]);
   const started = useRef(false);
   const lastRecommendation = useRef("");
 
@@ -92,7 +94,7 @@ function ClassFinder() {
             <fieldset>
               <legend className="font-display text-sm font-black uppercase text-ink"><span className="mr-3 text-primary">01</span>How old are they?</legend>
               <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5">
-                {["1–3", "3–4", "5–7", "8–12", "13+"].map((value) => <Button key={value} type="button" variant={age === value ? "default" : "outline"} onClick={() => chooseAge(value)} className="h-14 rounded-none text-base font-bold">{value}</Button>)}
+                {finderAgeGroups.map((value) => <Button key={value} type="button" variant={age === value ? "default" : "outline"} onClick={() => chooseAge(value)} className="h-14 rounded-none px-2 text-sm font-bold">{value}</Button>)}
               </div>
             </fieldset>
             <fieldset>
@@ -112,7 +114,13 @@ function ClassFinder() {
               <span className="mt-4 inline-flex bg-ink-foreground/10 px-3 py-1.5 font-display text-[10px] font-black uppercase text-ink-foreground">{result.daytime ? "Daytime availability" : "Standard class availability"}</span>
               <p className="mt-4 text-sm leading-6 text-ink-foreground/65">{result.shortDescription}</p>
               <ul className="mt-6 space-y-3">{result.benefits.map((benefit) => <li key={benefit} className="flex items-center gap-3 text-sm"><span className="grid h-5 w-5 place-items-center bg-primary"><Check className="h-3 w-3" /></span>{benefit}</li>)}</ul>
-              <div className="mt-8 border-t border-ink-foreground/15 pt-6"><div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><span className="text-xs uppercase text-ink-foreground/50">Monthly tuition</span><p className="font-display text-3xl font-black">${result.monthlyTuition}<span className="text-sm text-ink-foreground/50">/mo</span></p></div><Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={result.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "finder_result"); forwardIclassProHandoff(event, { program_name: result.name, monthly_tuition: result.monthlyTuition, source_section: "finder_result", destination_url: result.iclassProUrl }); }}>Try a class free<ArrowRight /></a></Button></div><p className="mt-4 text-xs leading-5 text-ink-foreground/50">{siteConfig.registration.trialNote}</p></div>
+              <div className="mt-8 border-t border-ink-foreground/15 pt-6"><div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><span className="text-xs uppercase text-ink-foreground/50">Monthly tuition</span><p className="font-display text-3xl font-black">${result.monthlyTuition}<span className="text-sm text-ink-foreground/50">/mo</span></p></div><Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={result.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "finder_result"); forwardIclassProHandoff(event, { program_name: result.name, monthly_tuition: result.monthlyTuition, source_section: "finder_result", destination_url: result.iclassProUrl }); }}>Try a class free<ArrowRight /></a></Button></div><p className="mt-4 text-xs leading-5 text-ink-foreground/50">One-time ${siteConfig.registrationFee} registration fee. {siteConfig.registration.trialNote}</p></div>
+            </div> : notSureOptions.length ? <div className="animate-reveal">
+              <p className="font-display text-xs font-black uppercase text-primary">Not sure yet? That's okay.</p>
+              <p className="mt-4 text-sm leading-6 text-ink-foreground/70">Every kid is different. Explore a few of GAGE's most popular beginner programs for this age, or let us help you find the right fit.</p>
+              <ul className="mt-6 divide-y divide-ink-foreground/15 border-y border-ink-foreground/15">{notSureOptions.map((option) => <li key={option.name}><a href={option.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "finder_result"); forwardIclassProHandoff(event, { program_name: option.name, monthly_tuition: option.monthlyTuition, source_section: "finder_result", destination_url: option.iclassProUrl }); }} className="flex items-center justify-between gap-4 py-4 hover:text-primary"><span><span className="block font-display text-base font-black uppercase">{option.category === "Preschool" && option.ageMax <= 2 ? "Parent / Tot" : option.category}</span><span className="text-xs text-ink-foreground/55">{option.shortDescription}</span></span><span className="shrink-0 font-display text-[10px] font-black uppercase">View & try free<ArrowRight className="ml-1 inline h-3 w-3" /></span></a></li>)}</ul>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row"><Button asChild size="lg" className="h-12 rounded-none font-display text-xs font-black uppercase"><a href={siteConfig.phoneHref} onClick={() => trackCta("HELP ME CHOOSE", "finder_result")}>Help me choose · {siteConfig.phoneDisplay}</a></Button></div>
+              <p className="mt-4 text-xs leading-5 text-ink-foreground/50">Daytime $85/mo · Standard $95/mo · One-time ${siteConfig.registrationFee} registration fee. {siteConfig.registration.trialNote}</p>
             </div> : selectionComplete ? <div className="flex h-full min-h-[270px] flex-col justify-between animate-reveal"><p className="font-display text-xs font-black uppercase text-primary">A little help from GAGE</p><div><p className="font-display text-3xl font-black uppercase leading-tight">Let's find their happy place.</p><p className="mt-4 text-sm leading-6 text-ink-foreground/60">We don't have a confirmed beginner class for that combination. Call us and a friendly team member will help.</p></div><Button asChild size="lg" className="mt-8 h-14 rounded-none font-display text-xs font-black uppercase"><a href={siteConfig.phoneHref}>Call {siteConfig.phoneDisplay}</a></Button></div> : <div className="flex h-full min-h-[270px] flex-col justify-between"><p className="font-display text-xs font-black uppercase text-primary">Class finder</p><div><p className="font-display text-3xl font-black uppercase leading-tight">Their next favorite activity is two taps away.</p><p className="mt-4 text-sm text-ink-foreground/55">Choose an age and interest to see a friendly recommendation with clear pricing.</p></div><ArrowDown className="h-6 w-6 text-primary lg:hidden" /></div>}
           </div>
         </div>
@@ -135,6 +143,29 @@ function TuitionTier({ tier, title, price, description }: { tier: "daytime" | "s
     return () => observer.disconnect();
   }, [tier]);
   return <div ref={ref} className="bg-background p-7 sm:p-9"><p className="font-display text-xs font-black uppercase text-muted-foreground">{title}</p><p className="mt-6 font-display text-4xl font-black text-ink">{price}<span className="text-sm text-muted-foreground">/mo</span></p><p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p></div>;
+}
+
+const moreFun = [
+  { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.booking, internal: false, image: preschool.url },
+  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: ninja.url },
+  { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: tumbling.url },
+] as const;
+
+function MoreFunAtGage() {
+  return (
+    <section className="py-20 sm:py-28"><div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+      <div className="max-w-3xl"><p className="eyebrow">Beyond weekly classes</p><h2 className="section-title mt-4">More fun at GAGE</h2><p className="mt-5 text-lg text-muted-foreground">Classes are just the beginning. Explore camps, special events, Parent Night Out, and more ways for kids to have fun at GAGE.</p></div>
+      <div className="mt-12 grid gap-5 md:grid-cols-3">{moreFun.map((card) => {
+        const label = <>{card.cta}<ArrowRight /></>;
+        return <article key={card.title} className="flex flex-col border border-border">
+          <div className="aspect-[4/3] overflow-hidden bg-muted"><img src={card.image} alt="" width={800} height={600} loading="lazy" className="h-full w-full object-cover" /></div>
+          <div className="flex flex-1 flex-col p-6"><p className="font-display text-[10px] font-black uppercase text-primary">{card.who}</p><h3 className="mt-2 font-display text-2xl font-black uppercase text-ink">{card.title}</h3><p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{card.line}</p>
+            <Button asChild className="mt-6 h-12 rounded-none font-display text-xs font-black uppercase">{card.internal ? <Link to="/camps-and-events" hash="camps" onClick={() => trackCta(card.cta.toUpperCase(), "programs_grid")}>{label}</Link> : <a href={card.href} target="_blank" rel="noreferrer" onClick={() => trackCta(card.cta.toUpperCase(), "programs_grid")}>{label}</a>}</Button>
+          </div>
+        </article>;
+      })}</div>
+    </div></section>
+  );
 }
 
 function Home() {
@@ -173,11 +204,11 @@ function Home() {
           <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16"><div className="max-w-xl"><p className="eyebrow">Fun first. Growth follows.</p><h2 className="section-title mt-4">A place to move, belong, and smile.</h2><p className="mt-7 text-xl leading-8 text-ink">Kids come for the jumping, climbing, cartwheels, and high-fives. They stay for the friends, caring coaches, and proud feeling of doing something new.</p><p className="mt-5 leading-7 text-muted-foreground">Rooted in Blue Springs, GAGE welcomes every starting point. Whether your child is trying a class for the first time or chooses a more focused path later, they'll be supported by coaches who care.</p><div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-7"><div><strong className="block font-display text-2xl font-black text-primary">Fun</strong><span className="text-xs text-muted-foreground">They want to return</span></div><div><strong className="block font-display text-2xl font-black text-primary">Friends</strong><span className="text-xs text-muted-foreground">They feel they belong</span></div><div><strong className="block font-display text-2xl font-black text-primary">Growth</strong><span className="text-xs text-muted-foreground">They feel proud</span></div></div></div></div>
         </section>
 
-        <section className="bg-secondary py-20 sm:py-28"><div className="mx-auto max-w-6xl px-5 sm:px-8"><div className="max-w-3xl"><p className="eyebrow">No mystery fees</p><h2 className="section-title mt-4">Simple classes. Clear pricing.</h2><p className="mt-5 text-lg text-muted-foreground">One simple monthly rate for beginner classes — no registration surprises, no hidden fees. Just pick a class and come have fun.</p></div><div className="mt-12 grid gap-px bg-border md:grid-cols-2"><TuitionTier tier="daytime" title="Daytime programs" price="From $85" description="Confirmed starting price for preschool, homeschool, and daytime Ninja programs." /><TuitionTier tier="standard" title="Standard classes" price="$95" description="Confirmed monthly tuition for standard gymnastics, Ninja, and tumbling classes." /></div><Button type="button" onClick={() => { trackCta("FIND MY CHILD'S CLASS", "tuition_section"); trackEvent("tuition_viewed", { tier: "all", action: "find_class_clicked" }); focusFinder(); }} className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase">Find my child's class<ArrowRight /></Button></div></section>
+        <section className="bg-secondary py-20 sm:py-28"><div className="mx-auto max-w-6xl px-5 sm:px-8"><div className="max-w-3xl"><p className="eyebrow">No hidden fees</p><h2 className="section-title mt-4">Simple classes. Clear pricing.</h2><p className="mt-5 text-lg text-muted-foreground">Two simple monthly rates for recreational classes, plus one clearly listed registration fee. No surprises — just pick a class and come have fun.</p></div><div className="mt-12 grid gap-px bg-border md:grid-cols-2"><TuitionTier tier="daytime" title="Daytime programs" price="$85" description="Monthly tuition for recreational daytime classes." /><TuitionTier tier="standard" title="Standard classes" price="$95" description="Monthly tuition for recreational standard classes." /></div><p className="mt-px bg-background px-7 py-5 font-display text-sm font-black uppercase text-ink sm:px-9">One-time registration fee: ${siteConfig.registrationFee}</p><Button type="button" onClick={() => { trackCta("FIND MY CHILD'S CLASS", "tuition_section"); trackEvent("tuition_viewed", { tier: "all", action: "find_class_clicked" }); focusFinder(); }} className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase">Find my child's class<ArrowRight /></Button></div></section>
 
-        <section className="relative min-h-[640px] overflow-hidden bg-ink text-ink-foreground"><img src={birthday} alt="Children enjoying a birthday obstacle course at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/65 to-transparent" /><div className="relative mx-auto flex min-h-[640px] max-w-[1440px] items-center px-5 sm:px-8 lg:px-10"><div className="max-w-xl"><p className="eyebrow">Birthdays & Bump City</p><h2 className="section-title mt-4 text-ink-foreground">Their best birthday yet.</h2><p className="mt-5 text-xl text-ink-foreground/75">You bring the kid. We'll bring the fun.</p><Button asChild size="lg" className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase"><Link to="/birthday-parties" onClick={() => trackCta("EXPLORE BIRTHDAY PARTIES", "programs_grid")}>Explore birthday parties<ArrowRight /></Link></Button></div></div></section>
+        <section className="relative min-h-[640px] overflow-hidden bg-ink text-ink-foreground"><img src={birthday} alt="Kids having fun at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/65 to-transparent" /><div className="relative mx-auto flex min-h-[640px] max-w-[1440px] items-center px-5 sm:px-8 lg:px-10"><div className="max-w-xl"><p className="eyebrow">Birthdays</p><h2 className="section-title mt-4 text-ink-foreground">Birthday parties at Bump City</h2><p className="mt-5 text-xl text-ink-foreground/75">Big energy. Big smiles. One seriously fun birthday.</p><Button asChild size="lg" className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={siteConfig.external.birthdayParties} target="_blank" rel="noreferrer" onClick={() => trackCta("EXPLORE BIRTHDAY PARTIES", "programs_grid")}>Explore birthday parties<ExternalLink /></a></Button></div></div></section>
 
-        <section className="py-20 sm:py-28"><div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10"><div className="flex items-end justify-between gap-6"><div><p className="eyebrow">Beyond weekly classes</p><h2 className="section-title mt-4">Happening at GAGE</h2></div><Button asChild variant="outline" className="hidden rounded-none font-display text-xs font-black uppercase sm:inline-flex"><Link to="/camps-and-events">See all events</Link></Button></div><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{events.map((event) => <article key={event.title} className="group"><div className="aspect-[4/3] overflow-hidden bg-muted"><img src={event.image} alt="" width={800} height={600} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div><p className="mt-5 font-display text-[10px] font-black uppercase text-primary">{event.type} · {event.availability}</p><h3 className="mt-2 font-display text-xl font-black uppercase text-ink">{event.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{event.description}</p></article>)}</div><Button asChild variant="outline" className="mt-8 w-full rounded-none font-display text-xs font-black uppercase sm:hidden"><Link to="/camps-and-events">See all events</Link></Button></div></section>
+        <MoreFunAtGage />
 
         <GoogleReviewsShowcase />
 

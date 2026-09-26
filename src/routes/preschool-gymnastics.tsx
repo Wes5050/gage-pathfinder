@@ -3,17 +3,18 @@ import { ArrowRight, Blocks, Heart, Smile, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 export const Route = createFileRoute("/preschool-gymnastics")({
   head: () => ({
     meta: [
-      { title: "Preschool Gymnastics Ages 1–5 | GAGE Center" },
-      { name: "description", content: "Playful parent-and-me and preschool gymnastics for ages 1–5 in Blue Springs, MO. Big movement for little humans — from $85/month, free trial available." },
+      { title: "Preschool Gymnastics Ages 2 & Under to 5 | GAGE Center" },
+      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from age 3 in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
       { property: "og:title", content: "Little Movers. Big Smiles. | GAGE Center" },
-      { property: "og:description", content: "Big movement for little humans. Playful preschool gymnastics for ages 1–5 at GAGE Center in Blue Springs, MO." },
+      { property: "og:description", content: "Big movement for little humans. Playful preschool gymnastics for little ones at GAGE Center in Blue Springs, MO." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -24,12 +25,11 @@ export const Route = createFileRoute("/preschool-gymnastics")({
 const benefits = [
   { icon: Blocks, title: "Early motor milestones.", text: "Jumping, balancing, rolling, and climbing — coordination and spatial awareness develop naturally through guided play." },
   { icon: Smile, title: "Social skills & listening.", text: "Taking turns, sharing space, following coaches' cues, and making their very first gym friends." },
-  { icon: Sparkles, title: "Bravery & big confidence.", text: "Watching their eyes light up when they cross the low beam or conquer a foam wedge all on their own." },
+  { icon: Sparkles, title: "Bravery & big confidence.", text: "Watching their eyes light up when they cross the low beam or try something new all on their own." },
   { icon: Heart, title: "Positive active habits.", text: "A lifelong love of movement, built in a warm, welcoming, and safe facility from the very first class." },
 ] as const;
 
 const experiences = [
-  "Soft foam pits",
   "Toddler-scaled bars",
   "Colorful low balance beams",
   "Bouncy trampolines",
@@ -38,10 +38,10 @@ const experiences = [
 ] as const;
 
 const faqs = [
-  { question: "Do parents participate in class?", answer: "Yes for Parent & Tot (ages 1–3) — grown-ups join their little one on the floor for the whole class. From ages 3 and up, children participate independently while parents watch comfortably from the viewing lobby." },
-  { question: "What should little ones wear?", answer: "Comfortable play clothes they can move, jump, and climb in. Kids go bare feet in the gym, and please skip zippers and jewelry — long hair tied back helps too." },
+  { question: "Do parents participate in class?", answer: "Only in Parent / Tot, which is for children age 2 and under — grown-ups join their little one on the floor. At age 3, children can join an independent class, and parents can watch from the viewing lobby." },
+  { question: "What should little ones wear?", answer: "Comfortable play clothes they can move, jump, and climb in. No shoes in any class — kids go bare feet on the floor. Please skip zippers and jewelry, and tie long hair back." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
-  { question: "How long are classes?", answer: "One 50-minute class per week, month to month — a perfect length for little attention spans and big energy." },
+  { question: "How long are classes?", answer: "Preschool classes are 45 minutes, once a week — a perfect length for little attention spans and big energy." },
 ] as const;
 
 function PreschoolClassOption({ eyebrow, name, description, tuition, note }: { eyebrow: string; name: string; description: string; tuition: number; note: string }) {
@@ -50,8 +50,8 @@ function PreschoolClassOption({ eyebrow, name, description, tuition, note }: { e
       <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
       <h3 className="mt-4 font-display text-2xl font-black uppercase sm:text-3xl">{name}</h3>
       <p className="mt-4 leading-7 text-ink-foreground/65">{description}</p>
-      <p className="mt-8 font-display text-3xl font-black">Daytime from $85<span className="text-sm text-ink-foreground/50">/mo</span><span className="mx-3 text-ink-foreground/30">·</span>Standard $95<span className="text-sm text-ink-foreground/50">/mo</span></p>
-      <p className="mt-2 font-display text-xs font-black uppercase text-ink-foreground/60">One 50-minute class per week</p>
+      <p className="mt-8 font-display text-3xl font-black">Daytime $85<span className="text-sm text-ink-foreground/50">/mo</span><span className="mx-3 text-ink-foreground/30">·</span>Standard $95<span className="text-sm text-ink-foreground/50">/mo</span></p>
+      <p className="mt-2 font-display text-xs font-black uppercase text-ink-foreground/60">One 45-minute class per week · ${siteConfig.registrationFee} one-time registration fee</p>
       <div className="mt-auto pt-8">
         <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
           <a
@@ -73,11 +73,11 @@ function PreschoolPage() {
   return (
     <ProgramPage>
       <ProgramHero
-        eyebrow="Ages 1–5 · Blue Springs, MO"
+        eyebrow="Parent / Tot 2 & under · Preschool 3+ · Blue Springs, MO"
         title="Little movers. Big smiles."
         subheadline="Big movement for little humans."
-        message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From parent-and-me exploration to confident independent classes, every session is filled with movement, milestones, and high-fives."
-        details="Ages 1–5 · Daytime from $85/mo · Standard classes $95/mo · Free trial available"
+        message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From Parent / Tot for age 2 and under to independent classes starting at age 3, every session is filled with movement, milestones, and high-fives."
+        details="45-minute classes · Daytime $85/mo · Standard $95/mo · $44 one-time registration fee · Free trial available"
         image={preschool.url}
         imageAlt="Happy toddlers playing and moving during a GAGE preschool gymnastics class"
         programName="Preschool Gymnastics"
@@ -118,27 +118,27 @@ function PreschoolPage() {
           <div className="max-w-3xl">
             <p className="eyebrow">Class pathways</p>
             <h2 className="section-title mt-4">Let's find their first class.</h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">Three stages that grow with your child — from first wobbly steps beside you to a confident independent class of their own.</p>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">Start side by side in Parent / Tot, then move into an independent class at age 3. Ask our team which independent class fits your child best.</p>
           </div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-3">
             <PreschoolClassOption
-              eyebrow="Ages 1–3 · With a grown-up"
-              name="Parent & Tot"
+              eyebrow="Age 2 & under · With a grown-up"
+              name="Parent / Tot"
               description="A fun parent-and-child class exploring movement, balance, and bonding side-by-side."
               tuition={85}
               note={siteConfig.registration.trialNote}
             />
             <PreschoolClassOption
-              eyebrow="Ages 3–4 · First independent class"
+              eyebrow="Independent class · Details coming soon"
               name="Little Dragons"
-              description="Introducing listening, body control, rolls, and new friendships — all on their own for the very first time."
+              description="An independent preschool class at GAGE. Call us or check the live class list for current ages and times."
               tuition={95}
               note={siteConfig.registration.trialNote}
             />
             <PreschoolClassOption
-              eyebrow="Ages 4–5 · School-ready"
+              eyebrow="Independent class · Details coming soon"
               name="Preschool Prep"
-              description="Active circuits, bouncy jumps, beam balance, and school-ready confidence."
+              description="An independent preschool class at GAGE. Call us or check the live class list for current ages and times."
               tuition={95}
               note={siteConfig.registration.trialNote}
             />

@@ -5,8 +5,10 @@ import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
-import facility from "@/assets/gage-facility.jpg";
-import coaches from "@/assets/gage-coaches.jpg";
+import facilityPhoto from "@/assets/gage-tumbling.jpg.asset.json";
+const facility = facilityPhoto.url;
+import coachesPhoto from "@/assets/gage-hero.jpg.asset.json";
+const coaches = coachesPhoto.url;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({

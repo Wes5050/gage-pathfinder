@@ -5,7 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage } from "@/components/program-page";
 import hero from "@/assets/gage-hero.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
@@ -40,7 +41,7 @@ const firstMoments = [
 ];
 
 const faqs = [
-  { question: "What should my child wear?", answer: "Comfortable athletic clothing that moves easily and has no buttons, zippers, or belts — a leotard, or a fitted t-shirt with shorts or leggings, works well. Gymnasts train in bare feet, and long hair should be tied back. Please leave jewelry at home." },
+  { question: "What should my child wear?", answer: "Comfortable athletic clothing that moves easily and has no buttons, zippers, or belts — a leotard, or a fitted t-shirt with shorts or leggings, works well. No shoes in any class — gymnasts train in bare feet, and long hair should be tied back. Please leave jewelry at home." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
   { question: "How is my child placed?", answer: "New gymnasts age 5 and up begin in a Level 1 class. Level 2 and above are progressive and invitation-only — coaches evaluate readiness and invite gymnasts forward as skills develop." },
   { question: "How often does my child attend?", answer: "Recreational gymnastics is one 50-minute class per week. You choose the day and time that fits your family from the live class list." },
@@ -59,7 +60,7 @@ function ProgramChoice({ name, description, ctaLabel, url }: { name: string; des
 function RecreationalGymnasticsPage() {
   return (
     <ProgramPage>
-      <ProgramHero eyebrow="Recreational gymnastics · Blue Springs" title="It starts with one try." message="From first cartwheels to new friendships, GAGE is a place for kids to move, learn, laugh, and discover something they love." details="Ages 5+ · $95/month · Free trial available" image={birthday} imageAlt="Happy kids jumping and playing at GAGE" programName="Recreational Gymnastics" ctaAnchor="#choose-program" />
+      <ProgramHero eyebrow="Recreational gymnastics · Blue Springs" title="It starts with one try." message="From first cartwheels to new friendships, GAGE is a place for kids to move, learn, laugh, and discover something they love." details="Ages 5+ · $95/month · $44 one-time registration fee · Free trial available" image={birthday} imageAlt="Happy kids jumping and playing at GAGE" programName="Recreational Gymnastics" ctaAnchor="#choose-program" />
 
       <section id="choose-program" className="scroll-mt-24 py-20 sm:py-28"><div className="mx-auto max-w-6xl px-5 sm:px-8"><div className="max-w-3xl"><p className="eyebrow">Girls or boys</p><h2 className="section-title mt-4">Let's find their class.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Two great ways to get started. Choose the program that fits your child.</p></div><Tabs defaultValue="girls" className="mt-12"><TabsList className="grid h-14 w-full grid-cols-2 rounded-none bg-secondary p-1 sm:max-w-md"><TabsTrigger value="girls" className="h-12 rounded-none font-display text-xs font-black uppercase">Girls gymnastics</TabsTrigger><TabsTrigger value="boys" className="h-12 rounded-none font-display text-xs font-black uppercase">Boys gymnastics</TabsTrigger></TabsList><TabsContent value="girls" className="mt-4"><ProgramChoice name="Girls Recreational Gymnastics" description="Cartwheels, balance, movement and new skills in a fun, encouraging class." ctaLabel="View girls classes & try free" url={siteConfig.external.girlsGymnasticsClasses} /></TabsContent><TabsContent value="boys" className="mt-4"><ProgramChoice name="Boys Recreational Gymnastics" description="Jump, swing, roll and explore gymnastics while building new skills and having fun." ctaLabel="View boys classes & try free" url={siteConfig.external.boysGymnasticsClasses} /></TabsContent></Tabs></div></section>
 

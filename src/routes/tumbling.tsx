@@ -3,7 +3,8 @@ import { ArrowRight, Dumbbell, Footprints, HeartHandshake, TrendingUp } from "lu
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/tumbling")({
   head: () => ({
     meta: [
       { title: "Tumbling & Trampoline Classes Ages 5–18 | GAGE Center" },
-      { name: "description", content: "Tumbling and trampoline classes for ages 5–18 in Blue Springs, MO. Spring floors, rod tracks, and in-ground trampolines for kids, dancers, and cheerleaders. $95/month, free trial available." },
+      { name: "description", content: "Tumbling and trampoline classes for ages 5–18 in Blue Springs, MO. Trampolines and air pits for kids, dancers, and cheerleaders. $95/month, free trial available." },
       { property: "og:title", content: "Build the Skills. Land the Moment. | GAGE Center" },
       { property: "og:description", content: "Floor, flips, trampolines, and power. Tumbling & trampoline classes for ages 5–18 at GAGE Center." },
       { property: "og:type", content: "website" },
@@ -22,25 +23,22 @@ export const Route = createFileRoute("/tumbling")({
 });
 
 const benefitsFull = [
-  { icon: Footprints, title: "Pure floor & trampoline", text: "Dedicated training on spring floors, rod tracks, in-ground trampolines, and soft foam pits — without bars or beam." },
+  { icon: Footprints, title: "Pure floor & trampoline", text: "Floor tumbling, trampolines, and air pits for safe, soft landings — all about flips and airtime, without bars or beam." },
   { icon: Dumbbell, title: "Explosive power & agility", text: "Fast-twitch muscle power, strong core stability, and confident spatial awareness in the air." },
   { icon: HeartHandshake, title: "Great for cheer, dance & sports", text: "The training destination for athletes wanting to level up jumps, handsprings, tucks, and aerials." },
   { icon: TrendingUp, title: "Step-by-step progression", text: "Safe spotting techniques and incremental progressions so athletes try new skills without fear." },
 ] as const;
 
 const equipment = [
-  "Spring floors",
-  "Rod tumbling tracks",
-  "In-ground trampolines",
-  "Tumble tracks",
-  "Resi-pits",
-  "Foam landing blocks",
+  "Air pits",
+  "Trampolines",
+  "Tumbling mats",
 ] as const;
 
 const faqs = [
   { question: "Is this good for cheerleaders and dancers?", answer: "Yes — tumbling is designed for athletes who want floor power and aerial agility. It's a favorite training ground for cheerleaders, dancers, and athletes in other sports." },
-  { question: "Do tumbling classes use bars or balance beams?", answer: "No. Tumbling is a pure focus on the spring floor, rod track, and trampolines — everything is about power, flips, and airtime." },
-  { question: "What should athletes wear?", answer: "Fitted athletic clothing they can move freely in, with clean cheer shoes or bare feet. Long hair should be secured, and jewelry is best left at home." },
+  { question: "Do tumbling classes use bars or balance beams?", answer: "No. Tumbling is a pure focus on floor tumbling, trampolines, and air pits — everything is about power, flips, and airtime." },
+  { question: "What should athletes wear?", answer: "Fitted athletic clothing they can move freely in, with bare feet — no shoes in any class. Long hair should be secured, and jewelry is best left at home." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, select a tumbling class that works for your family, then select Request a Trial and follow the steps. Questions? Call GAGE at ${siteConfig.phoneDisplay}.` },
 ] as const;
 
@@ -72,7 +70,7 @@ function TumblingLevelCard({ eyebrow, name, description, price }: { eyebrow: str
       <h3 className="mt-4 font-display text-2xl font-black uppercase sm:text-3xl">{name}</h3>
       <p className="mt-4 leading-7 text-ink-foreground/65">{description}</p>
       <p className="mt-8 font-display text-4xl font-black">{price}<span className="text-sm text-ink-foreground/50">/month</span></p>
-      <p className="mt-2 font-display text-xs font-black uppercase text-ink-foreground/60">One 50-minute class per week</p>
+      <p className="mt-2 font-display text-xs font-black uppercase text-ink-foreground/60">One 50-minute class per week · ${siteConfig.registrationFee} one-time registration fee</p>
       <div className="mt-auto pt-8">
         <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
           <a
@@ -98,9 +96,9 @@ function TumblingPage() {
         title="Build the skills. Land the moment."
         subheadline="Floor, flips, trampolines, and power."
         message="Focused tumbling and trampoline instruction designed for kids, dancers, cheerleaders, and athletes. From learning their first cartwheel to mastering back handsprings and aerials, kids develop explosive power and fearless confidence."
-        details="Ages 5–18 · $95/mo · Free trial available"
+        details="Ages 5–18 · $95/mo · $44 one-time registration fee · Free trial available"
         image={tumbling.url}
-        imageAlt="Kids tumbling and flipping on the spring floor at GAGE"
+        imageAlt="Kids tumbling and flipping at GAGE"
         programName="Tumbling"
         ctaAnchor="#choose-program"
       />
@@ -119,7 +117,7 @@ function TumblingPage() {
 
       <section className="grid bg-ink text-ink-foreground lg:grid-cols-2">
         <div className="relative min-h-[480px] lg:min-h-[680px]">
-          <img src={tumbling.url} alt="A gymnast training on the rod tumbling track at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={tumbling.url} alt="A gymnast tumbling at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16">
           <div className="max-w-xl">
