@@ -13,7 +13,7 @@ export const Route = createFileRoute("/dragon-ninja")({
   head: () => ({
     meta: [
       { title: "Dragon Ninja Obstacle Classes Ages 5–14 | GAGE Center" },
-      { name: "description", content: "Fun Ninja obstacle classes for ages 5–14 in Blue Springs, MO. Kids climb, jump, swing, and build confidence while letting their energy loose. From $85/month, free trial available." },
+      { name: "description", content: "Fun Ninja obstacle classes for ages 5–14 in Blue Springs, MO. Kids climb, jump, swing, and build confidence while letting their energy loose. $85/month, free trial available." },
       { property: "og:title", content: "Adventure Starts Here | GAGE Center" },
       { property: "og:description", content: "Climb. Jump. Conquer. Repeat. Dragon Ninja obstacle classes for ages 5–14 at GAGE Center." },
       { property: "og:type", content: "website" },
@@ -79,7 +79,7 @@ function DragonNinjaPage() {
         title="Adventure starts here."
         subheadline="Climb. Jump. Conquer. Repeat."
         message="Dragon Ninja turns active energy into agility, strength, and confidence through exciting obstacle courses, supportive coaching, and a whole lot of fun."
-        details="Ages 5–14 · From $85/mo daytime · $95/mo standard · Free trial available"
+        details="Ages 5–14 · $85/mo daytime · $95/mo standard · $44 one-time registration fee · Free trial available"
         image={ninja.url}
         imageAlt="Kids conquering the Dragon Ninja obstacle course at GAGE"
         programName="Ninja Warrior Training"
@@ -128,7 +128,7 @@ function DragonNinjaPage() {
               name="Standard Dragon Ninja"
               description="The full obstacle-course experience — climbing, swinging, vaulting, and conquering new challenges with friends."
               price="$95"
-              priceNote="One 50-minute class per week"
+              priceNote="One 50-minute class per week · $44 one-time registration fee"
               tuition={95}
               note={siteConfig.registration.trialNote}
             />
@@ -137,7 +137,7 @@ function DragonNinjaPage() {
               name="Daytime Dragon Ninja"
               description="The same high-energy obstacle fun, scheduled earlier in the day for homeschool and flexible routines."
               price="From $85"
-              priceNote="One 50-minute class per week"
+              priceNote="One 50-minute class per week · $44 one-time registration fee"
               tuition={85}
               note={siteConfig.registration.trialNote}
             />
