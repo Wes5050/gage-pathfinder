@@ -2,7 +2,8 @@ import hero from "@/assets/gage-hero.jpg.asset.json";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
-import competitive from "@/assets/gage-competitive.jpg";
+import competitivePhoto from "@/assets/gage-hero.jpg.asset.json";
+const competitive = competitivePhoto.url;
 import { resolveProgramUrl, siteConfig } from "@/data/config";
 
 export type ProgramCategory = "Gymnastics" | "Preschool" | "Ninja" | "Tumbling";

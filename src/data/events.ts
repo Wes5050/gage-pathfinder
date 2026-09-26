@@ -1,7 +1,9 @@
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import hero from "@/assets/gage-hero.jpg.asset.json";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import competitive from "@/assets/gage-competitive.jpg";
+import competitivePhoto from "@/assets/gage-hero.jpg.asset.json";
+const competitive = competitivePhoto.url;
 
 export type GageEvent = {
   title: string;

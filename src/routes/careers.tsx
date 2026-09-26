@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
 import hero from "@/assets/gage-ninja.jpg.asset.json";
-import coaches from "@/assets/gage-coaches.jpg";
-import facility from "@/assets/gage-facility.jpg";
+import coachesPhoto from "@/assets/gage-hero.jpg.asset.json";
+const coaches = coachesPhoto.url;
+import facilityPhoto from "@/assets/gage-tumbling.jpg.asset.json";
+const facility = facilityPhoto.url;
 
 export const Route = createFileRoute("/careers")({
   head: () => ({

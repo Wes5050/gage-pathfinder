@@ -3,7 +3,8 @@ import { ArrowRight, HeartHandshake, Sparkles, Activity, Zap } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import heroFun from "@/assets/gage-hero-fun.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";

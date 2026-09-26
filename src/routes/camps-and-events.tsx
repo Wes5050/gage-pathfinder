@@ -2,11 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
-import heroFun from "@/assets/gage-hero-fun.jpg";
-import birthday from "@/assets/gage-birthday.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import competitive from "@/assets/gage-competitive.jpg";
+import competitivePhoto from "@/assets/gage-hero.jpg.asset.json";
+const competitive = competitivePhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta, withCampaignAttribution } from "@/lib/analytics";
 

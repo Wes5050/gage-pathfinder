@@ -10,11 +10,13 @@ import { recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
 import hero from "@/assets/gage-hero.jpg.asset.json";
-import heroFun from "@/assets/gage-hero-fun.jpg";
+import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+const heroFun = heroFunPhoto.url;
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
 import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
 import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

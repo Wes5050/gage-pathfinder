@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Camera, Check, ExternalLink, PartyPopper, Phone, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
-import birthday from "@/assets/gage-birthday.jpg";
+import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { trackCta, withCampaignAttribution } from "@/lib/analytics";
 
