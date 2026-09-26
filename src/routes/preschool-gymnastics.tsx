@@ -12,7 +12,7 @@ export const Route = createFileRoute("/preschool-gymnastics")({
   head: () => ({
     meta: [
       { title: "Preschool Gymnastics Ages 2 & Under to 5 | GAGE Center" },
-      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from age 3 in Blue Springs, MO. Big movement for little humans — from $85/month, free trial available." },
+      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from age 3 in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
       { property: "og:title", content: "Little Movers. Big Smiles. | GAGE Center" },
       { property: "og:description", content: "Big movement for little humans. Playful preschool gymnastics for little ones at GAGE Center in Blue Springs, MO." },
       { property: "og:type", content: "website" },

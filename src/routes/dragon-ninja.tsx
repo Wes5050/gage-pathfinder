@@ -136,7 +136,7 @@ function DragonNinjaPage() {
               eyebrow="Homeschool & flexible schedules"
               name="Daytime Dragon Ninja"
               description="The same high-energy obstacle fun, scheduled earlier in the day for homeschool and flexible routines."
-              price="From $85"
+              price="$85"
               priceNote="One 50-minute class per week · $44 one-time registration fee"
               tuition={85}
               note={siteConfig.registration.trialNote}
