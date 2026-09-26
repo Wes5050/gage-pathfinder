@@ -28,7 +28,7 @@ const schedules = [
   { name: "Boys Gymnastics", detail: "Level 1 · Ages 5+", destination: siteConfig.external.boysGymnasticsClasses, image: gymImg.url },
   { name: "Dragon Ninja", detail: "Ages 5–14", destination: siteConfig.external.ninjaClasses, image: ninjaImg.url },
   { name: "Tumbling & Trampoline", detail: "Ages 5–18", destination: siteConfig.external.classes, image: tumblingImg.url },
-  { name: "Preschool & Parent-Tot", detail: "Ages 1–5", destination: siteConfig.external.classes, image: preschoolImg.url },
+  { name: "Preschool & Parent / Tot", detail: "Parent / Tot 2 & under · Preschool 3+", destination: siteConfig.external.classes, image: preschoolImg.url },
   { name: "Browse All Classes", detail: "Every GAGE program", destination: siteConfig.external.classes, image: hero },
 ] as const;
 
