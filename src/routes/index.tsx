@@ -8,7 +8,7 @@ import { siteConfig } from "@/data/config";
 import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
-import hero from "@/assets/gage-hero.jpg.asset.json";
+import hero from "@/assets/gage-hero-new.png.asset.json";
 import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
 const heroFun = heroFunPhoto.url;
 import preschool from "@/assets/gage-preschool.jpg.asset.json";
