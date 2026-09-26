@@ -40,7 +40,7 @@ const obstacles = [
 ] as const;
 
 const faqs = [
-  { question: "What should my child wear?", answer: "Comfortable athletic clothes they can move, climb, and jump in. Depending on the class setup, kids train in clean sneakers or bare feet, and long hair should be tied back. Please leave jewelry at home." },
+  { question: "What should my child wear?", answer: "Comfortable athletic clothes they can move, climb, and jump in. No shoes in any class — kids train in bare feet, and long hair should be tied back. Please leave jewelry at home." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a Ninja class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
   { question: "Does my child need ninja or gymnastics experience?", answer: "No experience needed at all. Beginners start right away, and every class welcomes first-timers — kids build skills one obstacle at a time with coaches cheering them on." },
   { question: "Can parents watch class?", answer: "Yes — parents are welcome to stay and watch from the comfortable viewing lobby while class is in session." },
