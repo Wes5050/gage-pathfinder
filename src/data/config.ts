@@ -4,7 +4,8 @@ export const siteConfig = {
   name: "GAGE Center",
   phoneDisplay: "(816) 229-7775",
   phoneHref: "tel:+18162297775",
-  email: "info@gagecenter.com",
+  email: "office@gagecenter.com",
+  registrationFee: 44,
   address: "1101 NW Jefferson St, Blue Springs, MO 64015",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=GAGE+Center+1101+NW+Jefferson+St+Blue+Springs+MO+64015",
   external: {

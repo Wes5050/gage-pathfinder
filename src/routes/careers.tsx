@@ -158,7 +158,7 @@ function Page() {
               </p>
               <Button asChild size="lg" className="mt-6 rounded-none font-display text-sm font-black uppercase">
                 <a
-                  href="mailto:info@gagecenter.com?subject=GAGE%20Career%20Application"
+                  href="mailto:office@gagecenter.com?subject=GAGE%20Career%20Application"
                   onClick={() => trackCta("APPLY NOW", "careers_apply")}
                 >
                   <Mail aria-hidden /> Apply now
