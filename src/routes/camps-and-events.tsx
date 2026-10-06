@@ -75,7 +75,7 @@ function EventCard({ icon: Icon, eyebrow, title, description, details, image, im
 
   return (
     <article className="grid overflow-hidden bg-ink text-ink-foreground sm:grid-cols-[.42fr_.58fr] lg:grid-cols-1">
-      <div className="relative min-h-[260px] lg:min-h-[300px]"><img src={image} alt={imageAlt} width={900} height={700} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" /></div>
+      <div className="relative min-h-[260px] lg:min-h-[300px]"><img src={image} alt={imageAlt} width={900} height={700} loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${imagePosition ?? "object-center"}`} /><div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" /></div>
       <div className="flex flex-col p-7 sm:p-9">
         <div className="flex items-center gap-3"><Icon className="h-6 w-6 text-primary" aria-hidden /><p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p></div>
         <h3 className="mt-6 font-display text-2xl font-black uppercase leading-tight sm:text-3xl">{title}</h3>
