@@ -1,6 +1,6 @@
 # Site-wide One Kreative correction
-- [ ] Hide Xcel and remove USAG / USA Gymnastics mentions
-- [ ] Review all public pages for unintended blank spaces and verify navigation
+- [x] Hide Xcel and confirm no USAG / USA Gymnastics mentions remain
+- [x] Review all 12 public pages; close single-review and final-event empty slots; verify photos and desktop/mobile navigation
 - [x] Standardize the brand spelling to GAGE across all website copy, including reviews
 - [x] Apply “Fun first. Growth follows.” across the homepage and every public page
 - [x] Align shared navigation, footer, page shells, and reusable program CTAs
