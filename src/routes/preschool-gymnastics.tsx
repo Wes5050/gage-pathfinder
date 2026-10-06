@@ -2,11 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Blocks, Heart, Smile, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
-import preschool from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
-import birthdayPhoto from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
-const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
+import { photos } from "@/data/photos";
+const preschool = { url: photos.prehero.src };
 
 export const Route = createFileRoute("/preschool-gymnastics")({
   head: () => ({
@@ -98,7 +97,7 @@ function PreschoolPage() {
 
       <section className="grid bg-ink text-ink-foreground lg:grid-cols-2">
         <div className="relative min-h-[480px] lg:min-h-[680px]">
-          <img src={birthday} alt="A young child balancing on a low beam during preschool gymnastics at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={photos.preroom.src} alt={photos.preroom.alt} width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16">
           <div className="max-w-xl">
@@ -149,8 +148,8 @@ function PreschoolPage() {
       <GoogleReviewsShowcase reviews={[googleReviews[1]]} />
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
-        image={preschool.url}
-        imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
+        image={photos.social.src}
+        imageAlt={photos.social.alt}
         programName="Preschool Gymnastics"
         eyebrow="It starts with one try"
         headline={<>Their first<br />favorite class.</>}

@@ -2,15 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
-import hero from "@/assets/gage-hero.jpg.asset.json";
-import coachesPhoto from "@/assets/gage-hero.jpg.asset.json";
-const coaches = coachesPhoto.url;
-import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
-const birthday = birthdayPhoto.url;
-import facilityPhoto from "@/assets/gage-tumbling.jpg.asset.json";
-const facility = facilityPhoto.url;
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
+import { photos } from "@/data/photos";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -45,7 +39,7 @@ function Page() {
       eyebrow="About"
       title="A great place to be a kid."
       intro="At GAGE, fun comes first. Caring coaches help kids move, make friends, celebrate little victories, and discover confidence along the way."
-      image={hero.url}
+      image={photos.cahero.src}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
@@ -60,9 +54,9 @@ function Page() {
         </div>
 
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <img src={coaches} alt="A coach high-fiving a smiling child at GAGE" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
-          <img src={birthday} alt="Kids celebrating together at GAGE" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
-          <img src={facility} alt="Families watching class from the GAGE viewing area" loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover sm:col-span-2 lg:col-span-1 lg:h-64" />
+          <img src={photos.coaching.src} alt={photos.coaching.alt} loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
+          <img src={photos.friends.src} alt={photos.friends.alt} loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover lg:h-64" />
+          <img src={photos.viewing.src} alt={photos.viewing.alt} loading="lazy" width={1600} height={1000} className="h-56 w-full rounded-2xl object-cover sm:col-span-2 lg:col-span-1 lg:h-64" />
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">

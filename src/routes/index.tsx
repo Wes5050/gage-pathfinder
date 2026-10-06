@@ -9,16 +9,7 @@ import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/dat
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
 import hero from "@/assets/gage-hero-new.png.asset.json";
-import heroFunPhoto from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
-const heroFun = heroFunPhoto.url;
-import preschool from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
-import tumbling from "@/assets/GAGE-Tumbling.png.asset.json";
-import ninja from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
-import birthdayPhoto from "@/assets/GAGE-Birthday-Parties.png.asset.json";
-import recreation from "@/assets/GAGE-Recreational-Gymnastics.png.asset.json";
-import camps from "@/assets/GAGE-Camps.png.asset.json";
-import openPlay from "@/assets/GAGE-Bump-City-Open-Play.png.asset.json";
-const birthday = birthdayPhoto.url;
+import { photos } from "@/data/photos";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,12 +26,12 @@ export const Route = createFileRoute("/")({
 });
 
 const signaturePrograms = [
-  { name: "Recreational Gymnastics", line: "Cartwheels, confidence, new friends, and a whole lot of fun.", image: recreation.url, to: "/recreational-gymnastics", tone: "bg-primary", external: false },
-  { name: "Ninja", line: "Climb, jump, conquer obstacles, and let that energy loose.", image: ninja.url, to: "/dragon-ninja", tone: "bg-accent", external: false },
-  { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: tumbling.url, to: "/tumbling", tone: "bg-primary", external: false },
-  { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: preschool.url, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
-  { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: camps.url, to: "/camps-and-events", tone: "bg-primary", external: false },
-  { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: birthday, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },
+  { name: "Recreational Gymnastics", line: "Cartwheels, confidence, new friends, and a whole lot of fun.", image: photos.rec.src, to: "/recreational-gymnastics", tone: "bg-primary", external: false },
+  { name: "Ninja", line: "Climb, jump, conquer obstacles, and let that energy loose.", image: photos.ninja.src, to: "/dragon-ninja", tone: "bg-accent", external: false },
+  { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: photos.tumble.src, to: "/tumbling", tone: "bg-primary", external: false },
+  { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: photos.preschool.src, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
+  { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: photos.camp.src, to: "/camps-and-events", tone: "bg-primary", external: false },
+  { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: photos.party.src, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },
 ] as const;
 
 function ClassFinder() {
@@ -149,9 +140,9 @@ function TuitionTier({ tier, title, price, description }: { tier: "daytime" | "s
 }
 
 const moreFun = [
-  { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.booking, internal: false, image: preschool.url },
-  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: camps.url },
-  { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: openPlay.url },
+  { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.booking, internal: false, image: photos.social.src },
+  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: photos.beginner.src },
+  { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: photos.play.src },
 ] as const;
 
 function MoreFunAtGage() {
@@ -203,19 +194,19 @@ function Home() {
         </section>
 
         <section className="grid bg-background lg:grid-cols-2">
-          <div className="relative min-h-[500px]"><img src={camps.url} alt="Children playing a ball game at GAGE camp" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /></div>
+          <div className="relative min-h-[500px]"><img src={photos.friends.src} alt={photos.friends.alt} width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /></div>
           <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16"><div className="max-w-xl"><p className="eyebrow">Fun first. Growth follows.</p><h2 className="section-title mt-4">A place to move, belong, and smile.</h2><p className="mt-7 text-xl leading-8 text-ink">Kids come for the jumping, climbing, cartwheels, and high-fives. They stay for the friends, caring coaches, and proud feeling of doing something new.</p><p className="mt-5 leading-7 text-muted-foreground">Rooted in Blue Springs, GAGE welcomes every starting point. Whether your child is trying a class for the first time or chooses a more focused path later, they'll be supported by coaches who care.</p><div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-7"><div><strong className="block font-display text-2xl font-black text-primary">Fun</strong><span className="text-xs text-muted-foreground">They want to return</span></div><div><strong className="block font-display text-2xl font-black text-primary">Friends</strong><span className="text-xs text-muted-foreground">They feel they belong</span></div><div><strong className="block font-display text-2xl font-black text-primary">Growth</strong><span className="text-xs text-muted-foreground">They feel proud</span></div></div></div></div>
         </section>
 
         <section className="bg-secondary py-20 sm:py-28"><div className="mx-auto max-w-6xl px-5 sm:px-8"><div className="max-w-3xl"><p className="eyebrow">No hidden fees</p><h2 className="section-title mt-4">Simple classes. Clear pricing.</h2><p className="mt-5 text-lg text-muted-foreground">Two simple monthly rates for recreational classes, plus one clearly listed registration fee. No surprises — just pick a class and come have fun.</p></div><div className="mt-12 grid gap-px bg-border md:grid-cols-2"><TuitionTier tier="daytime" title="Daytime programs" price="$85" description="Monthly tuition for recreational daytime classes." /><TuitionTier tier="standard" title="Standard classes" price="$95" description="Monthly tuition for recreational standard classes." /></div><p className="mt-px bg-background px-7 py-5 font-display text-sm font-black uppercase text-ink sm:px-9">One-time registration fee: ${siteConfig.registrationFee}</p><Button type="button" onClick={() => { trackCta("FIND MY CHILD'S CLASS", "tuition_section"); trackEvent("tuition_viewed", { tier: "all", action: "find_class_clicked" }); focusFinder(); }} className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase">Find my child's class<ArrowRight /></Button></div></section>
 
-        <section className="relative min-h-[640px] overflow-hidden bg-ink text-ink-foreground"><img src={birthday} alt="Kids having fun at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/65 to-transparent" /><div className="relative mx-auto flex min-h-[640px] max-w-[1440px] items-center px-5 sm:px-8 lg:px-10"><div className="max-w-xl"><p className="eyebrow">Birthdays</p><h2 className="section-title mt-4 text-ink-foreground">Birthday parties at Bump City</h2><p className="mt-5 text-xl text-ink-foreground/75">Big energy. Big smiles. One seriously fun birthday.</p><Button asChild size="lg" className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={siteConfig.external.birthdayParties} target="_blank" rel="noreferrer" onClick={() => trackCta("EXPLORE BIRTHDAY PARTIES", "programs_grid")}>Explore birthday parties<ExternalLink /></a></Button></div></div></section>
+        <section className="relative min-h-[640px] overflow-hidden bg-ink text-ink-foreground"><img src={photos.partyextra.src} alt={photos.partyextra.alt} width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/65 to-transparent" /><div className="relative mx-auto flex min-h-[640px] max-w-[1440px] items-center px-5 sm:px-8 lg:px-10"><div className="max-w-xl"><p className="eyebrow">Birthdays</p><h2 className="section-title mt-4 text-ink-foreground">Birthday parties at Bump City</h2><p className="mt-5 text-xl text-ink-foreground/75">Big energy. Big smiles. One seriously fun birthday.</p><Button asChild size="lg" className="mt-8 h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={siteConfig.external.birthdayParties} target="_blank" rel="noreferrer" onClick={() => trackCta("EXPLORE BIRTHDAY PARTIES", "programs_grid")}>Explore birthday parties<ExternalLink /></a></Button></div></div></section>
 
         <MoreFunAtGage />
 
         <GoogleReviewsShowcase />
 
-        <section className="relative min-h-[620px] bg-ink text-ink-foreground"><img src={tumbling.url} alt="A child enjoying movement at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-55" /><div className="absolute inset-0 bg-ink/45" /><div className="relative mx-auto flex min-h-[620px] max-w-5xl flex-col items-center justify-center px-5 text-center"><p className="eyebrow">It starts with one try</p><h2 className="mt-5 font-display text-[clamp(3rem,8vw,7rem)] font-black uppercase leading-[.88]">One class.<br />A whole lot of fun.</h2><p className="mt-6 text-lg text-ink-foreground/75">Their next favorite activity could be one class away.</p><Button asChild size="lg" className="mt-9 h-16 rounded-none px-10 font-display text-sm font-black uppercase shadow-xl"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.booking }); }}>Try a class free<ExternalLink /></a></Button><p className="mt-4 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p></div></section>
+        <section className="relative min-h-[620px] bg-ink text-ink-foreground"><img src={photos.tucoach.src} alt={photos.tucoach.alt} width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-55" /><div className="absolute inset-0 bg-ink/45" /><div className="relative mx-auto flex min-h-[620px] max-w-5xl flex-col items-center justify-center px-5 text-center"><p className="eyebrow">It starts with one try</p><h2 className="mt-5 font-display text-[clamp(3rem,8vw,7rem)] font-black uppercase leading-[.88]">One class.<br />A whole lot of fun.</h2><p className="mt-6 text-lg text-ink-foreground/75">Their next favorite activity could be one class away.</p><Button asChild size="lg" className="mt-9 h-16 rounded-none px-10 font-display text-sm font-black uppercase shadow-xl"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "final_conversion"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "final_conversion", destination_url: siteConfig.external.booking }); }}>Try a class free<ExternalLink /></a></Button><p className="mt-4 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p></div></section>
       </main>
       <SiteFooter />
     </div>

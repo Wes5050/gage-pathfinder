@@ -6,10 +6,7 @@ import { PageShell } from "@/components/page-shell";
 import { finderAgeBounds, finderAgeGroups, programs, type ProgramCategory } from "@/data/programs";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
-import tumbling from "@/assets/GAGE-Tumbling.png.asset.json";
-import preschoolImg from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
-import ninjaImg from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
-import gymImg from "@/assets/GAGE-Recreational-Gymnastics.png.asset.json";
+import { photos, type PhotoKey } from "@/data/photos";
 
 export const Route = createFileRoute("/find-a-class")({
   head: () => ({ meta: [
@@ -42,11 +39,17 @@ const programRoutes: Record<ProgramCategory, "/preschool-gymnastics" | "/recreat
   Tumbling: "/tumbling",
 };
 
+const programPhotoByName: Record<string, PhotoKey> = {
+  "Parent / Tot Daytime": "totday", "Parent / Tot": "tot", "Gymnastics Ages 3–4 Daytime": "social", "Gymnastics Ages 3–4": "preschool",
+  "Gymnastics Ages 3–5 Daytime": "teaching", "Girls Gymnastics Level 1": "rec", "Boys Gymnastics Level 1": "boys", "Homeschool Gymnastics": "beginner",
+  "Ninja Warrior Training Daytime": "ninja", "Ninja Warrior Training": "obstacles", "Tumbling Level 1": "tumble", "Tumbling Level 2": "tucoach", "Tumbling Level 3": "tuhero",
+};
+
 const programImages: Record<ProgramCategory, string> = {
-  Preschool: preschoolImg.url,
-  Gymnastics: gymImg.url,
-  Ninja: ninjaImg.url,
-  Tumbling: tumbling.url,
+  Preschool: photos.preschool.src,
+  Gymnastics: photos.rec.src,
+  Ninja: photos.obstacles.src,
+  Tumbling: photos.tumble.src,
 };
 
 function FindAClass() {
@@ -61,7 +64,7 @@ function FindAClass() {
   });
 
   return (
-    <PageShell eyebrow="Something for every kid" title="Find their fun." intro="Explore classes built around movement, smiles, and confidence." image={tumbling.url}>
+    <PageShell eyebrow="Something for every kid" title="Find their fun." intro="Explore classes built around movement, smiles, and confidence." image={photos.careerhero.src}>
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="border-b border-border pb-8">
           <p className="font-display text-xs font-black uppercase text-ink">Category</p>
@@ -80,7 +83,7 @@ function FindAClass() {
           <div className="mt-8 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
             {visible.map((program) => (
               <article key={program.name} className="flex min-h-[390px] flex-col bg-background">
-                <img src={programImages[program.category]} alt={`${program.category} class at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-44 w-full object-cover object-[center_25%]" />
+                <img src={programPhotoByName[program.name] ? photos[programPhotoByName[program.name]].src : programImages[program.category]} alt={programPhotoByName[program.name] ? photos[programPhotoByName[program.name]].alt : `${program.category} class at GAGE Center`} loading="lazy" width={1600} height={1000} className="h-44 w-full object-cover object-[center_25%]" />
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="bg-ink px-2.5 py-1.5 font-display text-[9px] font-black uppercase text-ink-foreground">{program.category} · {program.ageMax <= 2 ? "Ages 2 & under" : `Ages ${program.ageMin}–${program.ageMax}`}</span>

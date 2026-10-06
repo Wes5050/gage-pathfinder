@@ -4,11 +4,7 @@ import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
-import hero from "@/assets/gage-ninja.jpg.asset.json";
-import coachesPhoto from "@/assets/gage-hero.jpg.asset.json";
-const coaches = coachesPhoto.url;
-import facilityPhoto from "@/assets/gage-tumbling.jpg.asset.json";
-const facility = facilityPhoto.url;
+import { photos } from "@/data/photos";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -83,13 +79,13 @@ function Page() {
       eyebrow="Join Our Team · Blue Springs, MO"
       title="Inspire kids. Do work you love."
       intro="Be part of a positive, high-energy team that helps children build confidence and discover what they can do."
-      image={hero.url}
+      image={photos.careerhero.src}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <figure className="mb-12 overflow-hidden rounded-3xl">
           <img
-            src={coaches}
-            alt="A GAGE coach celebrating with kids in class"
+            src={photos.teaching.src}
+            alt={photos.teaching.alt}
             loading="lazy"
             width={1600}
             height={1000}
@@ -130,8 +126,8 @@ function Page() {
 
         <figure className="mt-16 overflow-hidden rounded-3xl">
           <img
-            src={facility}
-            alt="The GAGE Center gym floor seen from the family viewing area"
+            src={photos.facility.src}
+            alt={photos.facility.alt}
             loading="lazy"
             width={1600}
             height={1000}
