@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CalendarCheck, ExternalLink, RefreshCw, ShieldCheck, TicketCheck, UserRoundCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
-import heroPhoto from "@/assets/gage-ninja.jpg.asset.json";
+import heroPhoto from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
 const hero = heroPhoto.url;
-import gymImg from "@/assets/gage-hero.jpg.asset.json";
-import ninjaImg from "@/assets/gage-ninja.jpg.asset.json";
-import tumblingImg from "@/assets/gage-tumbling.jpg.asset.json";
-import preschoolImg from "@/assets/gage-preschool.jpg.asset.json";
+import gymImg from "@/assets/GAGE-Recreational-Gymnastics.png.asset.json";
+import ninjaImg from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
+import tumblingImg from "@/assets/GAGE-Tumbling.png.asset.json";
+import preschoolImg from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 

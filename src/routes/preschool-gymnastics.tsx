@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Blocks, Heart, Smile, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
-import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+import preschool from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
+import birthdayPhoto from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
 const birthday = birthdayPhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
@@ -79,7 +79,7 @@ function PreschoolPage() {
         message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From Parent / Tot for age 2 and under to independent classes starting at age 3, every session is filled with movement, milestones, and high-fives."
         details="45-minute classes · Daytime $85/mo · Standard $95/mo · $44 one-time registration fee · Free trial available"
         image={preschool.url}
-        imageAlt="Happy toddlers playing and moving during a GAGE preschool gymnastics class"
+        imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
         programName="Preschool Gymnastics"
         ctaAnchor="#choose-program"
       />
@@ -98,7 +98,7 @@ function PreschoolPage() {
 
       <section className="grid bg-ink text-ink-foreground lg:grid-cols-2">
         <div className="relative min-h-[480px] lg:min-h-[680px]">
-          <img src={birthday} alt="Little kids laughing and playing together at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={birthday} alt="A young child balancing on a low beam during preschool gymnastics at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16">
           <div className="max-w-xl">
@@ -150,7 +150,7 @@ function PreschoolPage() {
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
         image={preschool.url}
-        imageAlt="Smiling toddlers celebrating during a GAGE preschool class"
+        imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
         programName="Preschool Gymnastics"
         eyebrow="It starts with one try"
         headline={<>Their first<br />favorite class.</>}

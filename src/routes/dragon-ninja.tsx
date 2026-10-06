@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, HeartHandshake, Sparkles, Activity, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
-import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+import ninja from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
+import heroFunPhoto from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
 const heroFun = heroFunPhoto.url;
-import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
+import tumbling from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
@@ -81,7 +81,7 @@ function DragonNinjaPage() {
         message="Dragon Ninja turns active energy into agility, strength, and confidence through exciting obstacle courses, supportive coaching, and a whole lot of fun."
         details="Ages 5–14 · $85/mo daytime · $95/mo standard · $44 one-time registration fee · Free trial available"
         image={ninja.url}
-        imageAlt="Kids conquering the Dragon Ninja obstacle course at GAGE"
+        imageAlt="A child balancing across the Dragon Ninja obstacle course at GAGE"
         programName="Ninja Warrior Training"
         ctaAnchor="#ninja-classes"
       />
@@ -100,7 +100,7 @@ function DragonNinjaPage() {
 
       <section className="grid bg-ink text-ink-foreground lg:grid-cols-2">
         <div className="relative min-h-[480px] lg:min-h-[680px]">
-          <img src={heroFun} alt="Happy kids jumping mid-air during a GAGE class" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={heroFun} alt="A child balancing across the Dragon Ninja obstacle course at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16">
           <div className="max-w-xl">
@@ -149,7 +149,7 @@ function DragonNinjaPage() {
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
         image={tumbling.url}
-        imageAlt="Kids celebrating a victory in a GAGE class"
+        imageAlt="A child balancing across the Dragon Ninja obstacle course at GAGE"
         programName="Ninja Warrior Training"
         eyebrow="It starts with one try"
         headline={<>Ready for the course?</>}

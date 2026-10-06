@@ -93,3 +93,7 @@
 - [x] Add six verified live-schedule shortcuts and a three-step enrollment guide
 - [x] Preserve iClassPro tracking, campaign attribution, and verified destinations
 - [x] Verify type safety, filters, links, and desktop/mobile presentation
+
+## Customer photo replacements
+- [x] Use all seven supplied photos in matching program, birthday, camp, and open-play placements; preserve the homepage banner
+- [x] Verify photo loading and existing page links

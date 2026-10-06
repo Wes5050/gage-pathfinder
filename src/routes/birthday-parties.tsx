@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import { siteConfig } from "@/data/config";
 import { trackCta, withCampaignAttribution } from "@/lib/analytics";
-import preschool from "@/assets/gage-preschool.jpg.asset.json";
+import preschool from "@/assets/GAGE-Birthday-Parties.png.asset.json";
 
 export const Route = createFileRoute("/birthday-parties")({
   head: () => ({

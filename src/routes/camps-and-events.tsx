@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
-import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+import heroFunPhoto from "@/assets/GAGE-Camps.png.asset.json";
 const heroFun = heroFunPhoto.url;
-import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+import birthdayPhoto from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
 const birthday = birthdayPhoto.url;
-import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import competitivePhoto from "@/assets/gage-hero.jpg.asset.json";
+import camps from "@/assets/GAGE-Camps.png.asset.json";
+import openPlay from "@/assets/GAGE-Bump-City-Open-Play.png.asset.json";
+import competitivePhoto from "@/assets/GAGE-Recreational-Gymnastics.png.asset.json";
 const competitive = competitivePhoto.url;
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta, withCampaignAttribution } from "@/lib/analytics";
@@ -118,7 +118,7 @@ function CampsEventsPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <div className="max-w-3xl"><p className="eyebrow">Camps & clinics</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed in the GAGE registration portal.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
-            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={ninja.url} imageAlt="Kids on the ninja course at GAGE" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
+            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={camps.url} imageAlt="Children playing a ball game at GAGE camp" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
             <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={competitive} imageAlt="A gymnast at GAGE" cta="Call for current clinics" />
           </div>
         </div>
@@ -129,7 +129,7 @@ function CampsEventsPage() {
           <div className="max-w-3xl"><p className="eyebrow">Events</p><h2 className="section-title mt-4">Special nights and family events.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Each card tells you what it is, who it's for, and where to check current dates.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
             <EventCard icon={MoonStar} eyebrow="For kids · Select evenings" title="Parent Night Out" description="A fun night for them. A night off for you." details="Games and coach-supervised active play. See upcoming dates and ages in the portal." image={birthday} imageAlt="Kids playing at GAGE" cta="See upcoming dates" destination={siteConfig.external.booking} portal />
-            <EventCard icon={Sparkles} eyebrow="For families with little ones" title="Bump City Open Play" description="Climb, jump, swing and play." details="Open play schedule and details live on the Bump City site." image={preschool.url} imageAlt="Little kids playing at GAGE" cta="Explore Bump City" destination={siteConfig.external.bumpCity} />
+            <EventCard icon={Sparkles} eyebrow="For families with little ones" title="Bump City Open Play" description="Climb, jump, swing and play." details="Open play schedule and details live on the Bump City site." image={openPlay.url} imageAlt="Children enjoying the colorful slides at Bump City" cta="Explore Bump City" destination={siteConfig.external.bumpCity} />
             <EventCard icon={CalendarDays} eyebrow="For families & spectators" title="Meets & Showcases" description="Dragon Invites and showcase meets — come cheer on GAGE gymnasts." details="Attendance and spectator information is shared as each event is confirmed." image={competitive} imageAlt="A gymnast at GAGE" cta="Call for spectator details" />
           </div>
         </div>
