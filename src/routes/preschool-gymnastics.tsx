@@ -149,7 +149,7 @@ function PreschoolPage() {
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
         image={photos.social.src}
-        imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
+        imageAlt={photos.social.alt}
         programName="Preschool Gymnastics"
         eyebrow="It starts with one try"
         headline={<>Their first<br />favorite class.</>}

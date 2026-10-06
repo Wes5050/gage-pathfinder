@@ -78,7 +78,7 @@ function DragonNinjaPage() {
         message="Dragon Ninja turns active energy into agility, strength, and confidence through exciting obstacle courses, supportive coaching, and a whole lot of fun."
         details="Ages 5–14 · $85/mo daytime · $95/mo standard · $44 one-time registration fee · Free trial available"
         image={photos.nihero.src}
-        imageAlt="A child balancing across the Dragon Ninja obstacle course at GAGE"
+        imageAlt={photos.nihero.alt}
         programName="Ninja Warrior Training"
         ctaAnchor="#ninja-classes"
       />
@@ -146,7 +146,7 @@ function DragonNinjaPage() {
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
         image={photos.ring.src}
-        imageAlt="A child balancing across the Dragon Ninja obstacle course at GAGE"
+        imageAlt={photos.ring.alt}
         programName="Ninja Warrior Training"
         eyebrow="It starts with one try"
         headline={<>Ready for the course?</>}
