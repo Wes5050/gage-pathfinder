@@ -42,12 +42,13 @@ type EventCardProps = {
   details: string;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   cta: string;
   destination?: string;
   portal?: boolean;
 };
 
-function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, cta, destination, portal }: EventCardProps) {
+function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal }: EventCardProps) {
   const action = destination ? (
     <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
       <a
@@ -74,7 +75,7 @@ function EventCard({ icon: Icon, eyebrow, title, description, details, image, im
 
   return (
     <article className="grid overflow-hidden bg-ink text-ink-foreground sm:grid-cols-[.42fr_.58fr] lg:grid-cols-1">
-      <div className="relative min-h-[260px] lg:min-h-[300px]"><img src={image} alt={imageAlt} width={900} height={700} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" /></div>
+      <div className="relative min-h-[260px] lg:min-h-[300px]"><img src={image} alt={imageAlt} width={900} height={700} loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${imagePosition ?? "object-center"}`} /><div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" /></div>
       <div className="flex flex-col p-7 sm:p-9">
         <div className="flex items-center gap-3"><Icon className="h-6 w-6 text-primary" aria-hidden /><p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p></div>
         <h3 className="mt-6 font-display text-2xl font-black uppercase leading-tight sm:text-3xl">{title}</h3>
@@ -111,8 +112,8 @@ function CampsEventsPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <div className="max-w-3xl"><p className="eyebrow">Camps & clinics</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed in the GAGE registration portal.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
-            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
-            <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={photos.rec.src} imageAlt={photos.rec.alt} cta="Call for current clinics" />
+            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
+            <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={photos.rec.src} imageAlt={photos.rec.alt} imagePosition="object-[center_30%]" cta="Call for current clinics" />
           </div>
         </div>
       </section>
