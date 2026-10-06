@@ -77,7 +77,7 @@ function RecreationalGymnasticsPage() {
 }
 
 const googleReviewsGymnastics = {
-  quote: "My daughter loves her coaches at Gage! She has learned so much and loves to show us everything she has learned every week!",
+  quote: "My daughter loves her coaches at GAGE! She has learned so much and loves to show us everything she has learned every week!",
   attribution: "GAGE parent",
   experience: "Gymnastics",
 } as const;
