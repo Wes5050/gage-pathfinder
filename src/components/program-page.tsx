@@ -9,7 +9,7 @@ import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 export const googleReviews = [
   {
-    quote: "My daughter loves her coaches at Gage! She has learned so much and loves to show us everything she has learned every week!",
+    quote: "My daughter loves her coaches at GAGE! She has learned so much and loves to show us everything she has learned every week!",
     attribution: "GAGE parent",
     experience: "Gymnastics",
   },
@@ -19,7 +19,7 @@ export const googleReviews = [
     experience: "Parent + Tot",
   },
   {
-    quote: "We’ve loved our time at Gage! Ninja, dragon fly gymnastics, parents night out and birthday parties…They have it all! The staff are great and always welcome the kids when they come in for class!",
+    quote: "We’ve loved our time at GAGE! Ninja, dragon fly gymnastics, parents night out and birthday parties…They have it all! The staff are great and always welcome the kids when they come in for class!",
     attribution: "GAGE family",
     experience: "Ninja + Dragonfly",
   },
@@ -86,7 +86,7 @@ export function GoogleReviewsShowcase({ reviews = googleReviews }: { reviews?: r
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-px lg:overflow-visible lg:bg-ink-foreground/15 lg:p-px">
           {reviews.map((review, index) => <article key={review.quote} className="relative flex min-h-[330px] min-w-[86vw] snap-center flex-col justify-between bg-ink p-7 sm:min-w-[420px] sm:p-9 lg:min-w-0"><div><div className="flex items-center justify-between gap-4"><span className="bg-primary px-3 py-1.5 font-display text-[10px] font-black uppercase text-primary-foreground">{review.experience}</span><Quote className="h-9 w-9 text-primary" aria-hidden /></div><blockquote className="mt-8 font-display text-xl font-bold leading-8 text-ink-foreground sm:text-2xl sm:leading-9">“{review.quote}”</blockquote></div><footer className="mt-8 flex items-end justify-between gap-4 border-t border-ink-foreground/15 pt-5"><div><p className="font-display text-xs font-black uppercase text-ink-foreground">{review.attribution}</p><p className="mt-1 text-xs text-ink-foreground/50">Verified Google review</p></div><span className="font-display text-4xl font-black text-ink-foreground/10">0{index + 1}</span></footer></article>)}
         </div>
-        <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-xl text-xs leading-5 text-ink-foreground/50">Reviews are curated from GAGE Center’s public Google profile and shown in their original wording.</p><Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer" onClick={() => trackCta("READ GOOGLE REVIEWS", "programs_grid")}>Read all reviews on Google<ExternalLink /></a></Button></div>
+        <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-xl text-xs leading-5 text-ink-foreground/50">Reviews are curated from GAGE Center’s public Google profile. Only GAGE’s capitalization has been standardized.</p><Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer" onClick={() => trackCta("READ GOOGLE REVIEWS", "programs_grid")}>Read all reviews on Google<ExternalLink /></a></Button></div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 # Site-wide One Kreative correction
+- [x] Standardize the brand spelling to GAGE across all website copy, including reviews
 - [x] Apply “Fun first. Growth follows.” across the homepage and every public page
 - [x] Align shared navigation, footer, page shells, and reusable program CTAs
 - [x] Preserve verified registration links, analytics, UTM attribution, pricing, and business details
