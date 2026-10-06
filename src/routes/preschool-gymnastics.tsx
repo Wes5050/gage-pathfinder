@@ -148,7 +148,7 @@ function PreschoolPage() {
       <GoogleReviewsShowcase reviews={[googleReviews[1]]} />
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
-        image={preschool.url}
+        image={photos.social.src}
         imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
         programName="Preschool Gymnastics"
         eyebrow="It starts with one try"

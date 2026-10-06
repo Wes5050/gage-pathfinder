@@ -5,10 +5,7 @@ import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
 import { trackCta } from "@/lib/analytics";
-import facilityPhoto from "@/assets/gage-tumbling.jpg.asset.json";
-const facility = facilityPhoto.url;
-import coachesPhoto from "@/assets/gage-hero.jpg.asset.json";
-const coaches = coachesPhoto.url;
+import { photos } from "@/data/photos";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -67,7 +64,7 @@ function Page() {
       eyebrow="GAGE Center · Blue Springs, MO"
       title="We're here to help."
       intro="Have a question about classes, trials, or Bump City? Reach out anytime — a real person who knows the gym will get back to you."
-      image={facility}
+      image={photos.facility.src}
     >
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
@@ -122,8 +119,8 @@ function Page() {
             </Button>
             <figure className="mt-8 overflow-hidden rounded-3xl">
               <img
-                src={coaches}
-                alt="A GAGE coach high-fiving a smiling child during class"
+                src={photos.coaching.src}
+                alt={photos.coaching.alt}
                 loading="lazy"
                 width={1600}
                 height={1000}
