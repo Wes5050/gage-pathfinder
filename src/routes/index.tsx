@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, Check, ChevronRight, ExternalLink } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, ChevronRight, ExternalLink, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -179,6 +179,14 @@ function Home() {
               <p className="mt-4 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">From gymnastics and ninja to tumbling and unforgettable celebrations, GAGE is a place to move, explore, make friends, and discover something they love.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button type="button" size="lg" onClick={() => { trackCta("FIND THEIR FUN", "hero"); focusFinder(); }} className="h-14 rounded-none px-8 font-display text-xs font-black uppercase shadow-lg">Find their fun<ArrowDown /></Button><Button asChild size="lg" variant="outline" className="h-14 rounded-none border-ink-foreground/40 bg-transparent px-7 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" title={siteConfig.registration.trialNote} onClick={(event) => { trackCta("TRY A CLASS FREE", "hero"); forwardIclassProHandoff(event, { program_name: "All Programs", monthly_tuition: 0, source_section: "hero", destination_url: siteConfig.external.booking }); }}>Try a class free<ArrowRight /></a></Button></div>
               <p className="mt-3 max-w-lg text-xs leading-5 text-ink-foreground/60">{siteConfig.registration.trialNote}</p>
+              <div className="mt-6 flex flex-col gap-3 text-sm text-ink-foreground/85 sm:flex-row sm:items-center sm:gap-8">
+                <a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-primary" onClick={() => trackCta("VIEW MAP", "hero")}>
+                  <MapPin className="h-4 w-4 shrink-0 text-primary" />{siteConfig.address}
+                </a>
+                <a href={siteConfig.phoneHref} className="inline-flex items-center gap-2 hover:text-primary" onClick={() => trackCta("CALL GAGE", "hero")}>
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />{siteConfig.phoneDisplay}
+                </a>
+              </div>
             </div>
           </div>
         </section>
