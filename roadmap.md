@@ -97,3 +97,7 @@
 ## Customer photo replacements
 - [x] Use all seven supplied photos in matching program, birthday, camp, and open-play placements; preserve the homepage banner
 - [x] Verify photo loading and existing page links
+
+## Tumbling visual placement guide
+- [x] Match the three supplied photos to the Tumbling banner, equipment section, and final CTA; keep all other placements unchanged
+- [x] Verify the three photos load in their intended sections

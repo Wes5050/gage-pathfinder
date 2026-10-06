@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Dumbbell, Footprints, HeartHandshake, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
-import tumbling from "@/assets/GAGE-Tumbling.png.asset.json";
-import birthdayPhoto from "@/assets/GAGE-Tumbling.png.asset.json";
-const birthday = birthdayPhoto.url;
+import tumblingHero from "@/assets/GAGE-Tumbling-01-Hero.png.asset.json";
+import tumblingEquipment from "@/assets/GAGE-Tumbling-02-Equipment.png.asset.json";
+import tumblingFinalCta from "@/assets/GAGE-Tumbling-03-Final-CTA.png.asset.json";
 import { siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
@@ -97,7 +97,7 @@ function TumblingPage() {
         subheadline="Floor, flips, trampolines, and power."
         message="Focused tumbling and trampoline instruction designed for kids, dancers, cheerleaders, and athletes. From learning their first cartwheel to mastering back handsprings and aerials, kids develop explosive power and fearless confidence."
         details="Ages 5–18 · $95/mo · $44 one-time registration fee · Free trial available"
-        image={tumbling.url}
+        image={tumblingHero.url}
         imageAlt="A young athlete running along the tumbling track at GAGE"
         programName="Tumbling"
         ctaAnchor="#choose-program"
@@ -117,7 +117,7 @@ function TumblingPage() {
 
       <section className="grid bg-ink text-ink-foreground lg:grid-cols-2">
         <div className="relative min-h-[480px] lg:min-h-[680px]">
-          <img src={tumbling.url} alt="A young athlete running along the tumbling track at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={tumblingEquipment.url} alt="Blue tumbling tracks, trampolines, and landing mats in the GAGE tumbling gym" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
         <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16">
           <div className="max-w-xl">
@@ -149,8 +149,8 @@ function TumblingPage() {
       <GoogleReviewsShowcase reviews={[googleReviews[0]]} />
       <ProgramFaq items={[...faqs]} />
       <ProgramFinalCta
-        image={birthday}
-        imageAlt="A young athlete running along the tumbling track at GAGE"
+        image={tumblingFinalCta.url}
+        imageAlt="A GAGE coach guiding three young athletes beside a trampoline"
         programName="Tumbling"
         eyebrow="It starts with one try"
         headline={<>Ready to flip?</>}
