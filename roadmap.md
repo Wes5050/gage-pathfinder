@@ -100,4 +100,4 @@
 
 ## Tumbling visual placement guide
 - [x] Match the three supplied photos to the Tumbling banner, equipment section, and final CTA; keep all other placements unchanged
-- [ ] Verify the three photos load in their intended sections
+- [x] Verify the three photos load in their intended sections
