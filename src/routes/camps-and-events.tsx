@@ -42,12 +42,13 @@ type EventCardProps = {
   details: string;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   cta: string;
   destination?: string;
   portal?: boolean;
 };
 
-function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, cta, destination, portal }: EventCardProps) {
+function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal }: EventCardProps) {
   const action = destination ? (
     <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
       <a
