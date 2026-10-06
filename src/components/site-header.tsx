@@ -9,7 +9,7 @@ import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const GROUPS = [
   { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/tumbling"], ["Pre-Team", "/find-a-class"]] },
-  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Xcel", "/about"], ["Team Camps", "/camps-and-events#camps"]] },
+  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Team Camps", "/camps-and-events#camps"]] },
   { label: "Camps & Events", items: [["Camps & Clinics", "/camps-and-events#camps"], ["Parent Night Out", "/camps-and-events#events"], ["Events & Meets", "/camps-and-events#events"]] },
   { label: "Birthdays & Play", items: [["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity]] },
   { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/contact"], ["Careers", "/careers"]] },
