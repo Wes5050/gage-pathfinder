@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep uploaded activity photos as Lovable Assets pointers and reuse each matching photo across discovery and program pages, so imagery stays consistent without duplicating binaries.

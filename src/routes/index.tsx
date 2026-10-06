@@ -9,12 +9,15 @@ import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/dat
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
 import hero from "@/assets/gage-hero-new.png.asset.json";
-import heroFunPhoto from "@/assets/gage-ninja.jpg.asset.json";
+import heroFunPhoto from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
 const heroFun = heroFunPhoto.url;
-import preschool from "@/assets/gage-preschool.jpg.asset.json";
-import tumbling from "@/assets/gage-tumbling.jpg.asset.json";
-import ninja from "@/assets/gage-ninja.jpg.asset.json";
-import birthdayPhoto from "@/assets/gage-preschool.jpg.asset.json";
+import preschool from "@/assets/GAGE-Preschool-Gymnastics.png.asset.json";
+import tumbling from "@/assets/GAGE-Tumbling.png.asset.json";
+import ninja from "@/assets/GAGE-Dragon-Ninja.png.asset.json";
+import birthdayPhoto from "@/assets/GAGE-Birthday-Parties.png.asset.json";
+import recreation from "@/assets/GAGE-Recreational-Gymnastics.png.asset.json";
+import camps from "@/assets/GAGE-Camps.png.asset.json";
+import openPlay from "@/assets/GAGE-Bump-City-Open-Play.png.asset.json";
 const birthday = birthdayPhoto.url;
 
 export const Route = createFileRoute("/")({
@@ -32,11 +35,11 @@ export const Route = createFileRoute("/")({
 });
 
 const signaturePrograms = [
-  { name: "Recreational Gymnastics", line: "Cartwheels, confidence, new friends, and a whole lot of fun.", image: hero.url, to: "/recreational-gymnastics", tone: "bg-primary", external: false },
+  { name: "Recreational Gymnastics", line: "Cartwheels, confidence, new friends, and a whole lot of fun.", image: recreation.url, to: "/recreational-gymnastics", tone: "bg-primary", external: false },
   { name: "Ninja", line: "Climb, jump, conquer obstacles, and let that energy loose.", image: ninja.url, to: "/dragon-ninja", tone: "bg-accent", external: false },
   { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: tumbling.url, to: "/tumbling", tone: "bg-primary", external: false },
   { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: preschool.url, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
-  { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: ninja.url, to: "/camps-and-events", tone: "bg-primary", external: false },
+  { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: camps.url, to: "/camps-and-events", tone: "bg-primary", external: false },
   { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: birthday, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },
 ] as const;
 
@@ -147,8 +150,8 @@ function TuitionTier({ tier, title, price, description }: { tier: "daytime" | "s
 
 const moreFun = [
   { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.booking, internal: false, image: preschool.url },
-  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: ninja.url },
-  { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: tumbling.url },
+  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: camps.url },
+  { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: openPlay.url },
 ] as const;
 
 function MoreFunAtGage() {
@@ -200,7 +203,7 @@ function Home() {
         </section>
 
         <section className="grid bg-background lg:grid-cols-2">
-          <div className="relative min-h-[500px]"><img src={birthday} alt="Happy children celebrating together at GAGE" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /></div>
+          <div className="relative min-h-[500px]"><img src={camps.url} alt="Children playing a ball game at GAGE camp" width={1600} height={1100} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /></div>
           <div className="flex items-center px-5 py-20 sm:px-12 lg:px-16"><div className="max-w-xl"><p className="eyebrow">Fun first. Growth follows.</p><h2 className="section-title mt-4">A place to move, belong, and smile.</h2><p className="mt-7 text-xl leading-8 text-ink">Kids come for the jumping, climbing, cartwheels, and high-fives. They stay for the friends, caring coaches, and proud feeling of doing something new.</p><p className="mt-5 leading-7 text-muted-foreground">Rooted in Blue Springs, GAGE welcomes every starting point. Whether your child is trying a class for the first time or chooses a more focused path later, they'll be supported by coaches who care.</p><div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-7"><div><strong className="block font-display text-2xl font-black text-primary">Fun</strong><span className="text-xs text-muted-foreground">They want to return</span></div><div><strong className="block font-display text-2xl font-black text-primary">Friends</strong><span className="text-xs text-muted-foreground">They feel they belong</span></div><div><strong className="block font-display text-2xl font-black text-primary">Growth</strong><span className="text-xs text-muted-foreground">They feel proud</span></div></div></div></div>
         </section>
 
