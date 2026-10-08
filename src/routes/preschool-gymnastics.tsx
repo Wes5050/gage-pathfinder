@@ -11,7 +11,7 @@ export const Route = createFileRoute("/preschool-gymnastics")({
   head: () => ({
     meta: [
       { title: "Preschool Gymnastics Ages 2 & Under to 5 | GAGE Center" },
-      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from age 3 in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
+      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from 2.5 years (30 months) in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
       { property: "og:title", content: "Little Movers. Big Smiles. | GAGE Center" },
       { property: "og:description", content: "Big movement for little humans. Playful preschool gymnastics for little ones at GAGE Center in Blue Springs, MO." },
       { property: "og:type", content: "website" },
@@ -72,7 +72,7 @@ function PreschoolPage() {
   return (
     <ProgramPage>
       <ProgramHero
-        eyebrow="Parent / Tot 2 & under · Preschool 3+ · Blue Springs, MO"
+        eyebrow="Parent / Tot 2 & under · Preschool 2.5+ · Blue Springs, MO"
         title="Little movers. Big smiles."
         subheadline="Big movement for little humans."
         message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From Parent / Tot for age 2 and under to independent classes starting at age 3, every session is filled with movement, milestones, and high-fives."
@@ -117,7 +117,7 @@ function PreschoolPage() {
           <div className="max-w-3xl">
             <p className="eyebrow">Class pathways</p>
             <h2 className="section-title mt-4">Let's find their first class.</h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">Start side by side in Parent / Tot, then move into an independent class at age 3. Ask our team which independent class fits your child best.</p>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">Start side by side in Parent / Tot, then move into an independent class from 2.5 years (30 months). Ask our team which independent class fits your child best.</p>
           </div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-3">
             <PreschoolClassOption
