@@ -23,15 +23,15 @@ export const Route = createFileRoute("/camps-and-events")({
 const expectations = [
   { icon: ShieldCheck, title: "Safety-certified coaching", text: "Attentive, positive coaches supervise every activity and keep the energy high and encouraging." },
   { icon: ThermometerSun, title: "Big indoor gym", text: "A climate-controlled gym with trampolines, air pits, and ninja obstacles." },
-  { icon: Users, title: "Open to everyone", text: "Your child does not need to be enrolled in weekly classes to join GAGE camps or Parent Night Out." },
+  { icon: Users, title: "Open to everyone", text: "Your child does not need to be enrolled in weekly classes to join camps or Parent Night Out." },
   { icon: TicketCheck, title: "Convenient registration", text: "Fast online enrollment and payment through the GAGE parent portal." },
 ] as const;
 
 const faqs = [
   { question: "What should campers bring?", answer: "Pack a peanut-free sack lunch or snack, a refillable water bottle, and comfortable athletic clothes made for active play." },
-  { question: "Does my child need gymnastics experience?", answer: "None at all. GAGE camps and events are designed for kids of every experience level to have fun, make friends, and move." },
-  { question: "How do we sign up?", answer: `Camps and events are booked directly through the GAGE customer portal or over the phone at ${siteConfig.phoneDisplay}. Open the portal to see current availability and registration details.` },
-  { question: "What ages can attend?", answer: "Ages vary by camp and event. Each listing in the portal shows its confirmed age range — or call us and we will help." },
+  { question: "Does my child need gymnastics experience?", answer: "None at all. Our camps and events are designed for kids of every experience level to have fun, make friends, and move." },
+  { question: "How do we sign up?", answer: `Camps and Parent Night Out are booked online through Bump City's booking page, or call us at ${siteConfig.phoneDisplay}. Each listing shows current availability and details.` },
+  { question: "What ages can attend?", answer: "Ages vary by camp and event. Each booking listing shows its confirmed age range — or call us and we will help." },
 ] as const;
 
 type EventCardProps = {
@@ -96,13 +96,13 @@ function CampsEventsPage() {
         <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
           <div className="max-w-4xl">
             <p className="font-display text-xs font-black uppercase text-primary">GAGE Center · Blue Springs, MO</p>
-            <p className="mt-4 font-display text-sm font-black uppercase">Camps, Clinics & Events</p>
+            <p className="mt-4 font-display text-sm font-black uppercase">Camps & Events</p>
             <h1 className="mt-5 font-display text-[2.9rem] font-black uppercase leading-[.84] sm:text-[clamp(3.5rem,8.5vw,7.8rem)]">Big days. Bigger smiles.</h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-ink-foreground/80 sm:text-lg">Active school break camps, weekend Parent Night Out, and seasonal events packed with gymnastics, ninja obstacles, games, and new friendships. A high-energy experience kids look forward to all year.</p>
             <p className="mt-6 font-display text-xs font-black uppercase text-ink-foreground/70">Open to everyone · No weekly class membership required</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="h-16 rounded-none px-9 font-display text-sm font-black uppercase shadow-xl"><a href="#event-listings" onClick={(event) => { trackCta("EXPLORE EVENTS", "hero"); const target = document.querySelector("#event-listings"); if (target) { event.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); window.history.replaceState(null, "", "#event-listings"); } }}>Explore events<ArrowRight aria-hidden /></a></Button>
-              <Button asChild size="lg" variant="outline" className="h-16 rounded-none border-ink-foreground/40 bg-transparent px-8 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink"><a href={siteConfig.external.booking} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("CHECK AVAILABILITY IN PORTAL", "hero"); forwardIclassProHandoff(event, { program_name: "Camps & Events", monthly_tuition: 0, source_section: "events_hero", destination_url: siteConfig.external.booking }); }}>Check availability in portal<ExternalLink aria-hidden /></a></Button>
+              <Button asChild size="lg" variant="outline" className="h-16 rounded-none border-ink-foreground/40 bg-transparent px-8 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink"><a href={siteConfig.external.rollerEvents} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("VIEW CURRENT EVENTS", "hero"); event.currentTarget.href = withCampaignAttribution(siteConfig.external.rollerEvents); }}>View current events<ExternalLink aria-hidden /></a></Button>
             </div>
           </div>
         </div>
@@ -110,9 +110,9 @@ function CampsEventsPage() {
 
       <section id="camps" className="scroll-mt-24 py-20 sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-          <div className="max-w-3xl"><p className="eyebrow">Camps & clinics</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed in the GAGE registration portal.</p></div>
+          <div className="max-w-3xl"><p className="eyebrow">Camps & Events</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed with each booking page.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
-            <EventCard icon={TentTree} eyebrow="Recreational camps · School breaks & summer" title="GAGE Camps" description="Active camp days during school breaks and summer — who it's for and dates are listed with each camp in the portal." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Check camp dates & register" destination={siteConfig.external.booking} portal />
+            <EventCard icon={TentTree} eyebrow="Camp days · School breaks & summer" title="Bump City Adventure Club" description="Active camp days during school breaks and summer — who it's for and dates are listed on the booking page." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Check camp dates & book" destination={siteConfig.external.adventureClub} />
             <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={photos.rec.src} imageAlt={photos.rec.alt} imagePosition="object-top" cta="Call for current clinics" />
           </div>
         </div>
@@ -122,7 +122,7 @@ function CampsEventsPage() {
         <div id="events" className="mx-auto max-w-[1440px] scroll-mt-24 px-5 sm:px-8 lg:px-10">
           <div className="max-w-3xl"><p className="eyebrow">Events</p><h2 className="section-title mt-4">Special nights and family events.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">Each card tells you what it is, who it's for, and where to check current dates.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2 [&>article:last-child]:lg:col-span-2 [&>article:last-child]:lg:grid-cols-2">
-            <EventCard icon={MoonStar} eyebrow="For kids · Select evenings" title="Parent Night Out" description="A fun night for them. A night off for you." details="Games and coach-supervised active play. See upcoming dates and ages in the portal." image={photos.friends.src} imageAlt={photos.friends.alt} cta="See upcoming dates" destination={siteConfig.external.booking} portal />
+            <EventCard icon={MoonStar} eyebrow="For kids · Select evenings" title="Parent Night Out" description="A fun night for them. A night off for you." details="Games and coach-supervised active play. See upcoming dates and ages on the booking page." image={photos.friends.src} imageAlt={photos.friends.alt} cta="See upcoming dates" destination={siteConfig.external.parentNightOut} />
             <EventCard icon={Sparkles} eyebrow="For families with little ones" title="Bump City Open Play" description="Climb, jump, swing and play." details="Open play schedule and details live on the Bump City site." image={photos.play.src} imageAlt={photos.play.alt} cta="Explore Bump City" destination={siteConfig.external.bumpCity} />
             <EventCard icon={CalendarDays} eyebrow="For families & spectators" title="Meets & Showcases" description="Dragon Invites and showcase meets — come cheer on GAGE gymnasts." details="Attendance and spectator information is shared as each event is confirmed." image={photos.beginner.src} imageAlt={photos.beginner.alt} cta="Call for spectator details" />
           </div>
