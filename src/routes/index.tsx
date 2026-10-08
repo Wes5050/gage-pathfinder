@@ -168,10 +168,11 @@ function Home() {
     <div className="min-h-screen bg-background font-sans text-foreground">
       <SiteHeader />
       <main>
-        <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-ink text-ink-foreground lg:min-h-[calc(100svh-5rem)]">
-          <img src={hero.url} alt="Smiling girl climbing over a blue obstacle mat at GAGE with friends behind her" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[52%_30%] opacity-80" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
-          <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
+        <section className="relative overflow-hidden bg-ink text-ink-foreground md:min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)]">
+          <img src={hero.url} alt="Smiling girl climbing over a blue obstacle mat at GAGE with friends behind her" width={1920} height={1080} fetchPriority="high" className="relative block h-[46svh] w-full object-cover object-[62%_22%] md:absolute md:inset-0 md:h-full md:object-[52%_30%] md:opacity-80" />
+          <div className="pointer-events-none absolute inset-x-0 top-[calc(46svh-5rem)] h-20 bg-gradient-to-b from-transparent to-ink md:hidden" aria-hidden />
+          <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
+          <div className="relative mx-auto flex max-w-[1440px] flex-col justify-end px-5 pb-16 pt-6 sm:px-8 md:min-h-[calc(100svh-4rem)] md:pt-28 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
             <div className="max-w-4xl">
               <p className="font-display text-xs font-black uppercase text-primary">Blue Springs, Missouri · Fun first. Growth follows.</p>
               <h1 className="mt-5 font-display text-[clamp(3.7rem,10vw,8.6rem)] font-black uppercase leading-[.82] text-ink-foreground">The fun<br /><span className="text-primary">starts here.</span></h1>
