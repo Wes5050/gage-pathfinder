@@ -24,7 +24,7 @@ const expectations = [
   { icon: ShieldCheck, title: "Safety-certified coaching", text: "Attentive, positive coaches supervise every activity and keep the energy high and encouraging." },
   { icon: ThermometerSun, title: "Big indoor gym", text: "A climate-controlled gym with trampolines, air pits, and ninja obstacles." },
   { icon: Users, title: "Open to everyone", text: "Your child does not need to be enrolled in weekly classes to join camps or Parent Night Out." },
-  { icon: TicketCheck, title: "Convenient registration", text: "Fast online enrollment and payment through the GAGE parent portal." },
+  { icon: TicketCheck, title: "Convenient registration", text: "Fast online booking and payment for each camp and event." },
 ] as const;
 
 const faqs = [
