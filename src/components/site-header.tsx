@@ -8,14 +8,14 @@ import { cn } from "@/lib/utils";
 import { forwardIclassProHandoff, trackCta } from "@/lib/analytics";
 
 const GROUPS = [
-  { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/tumbling"], ["Pre-Team", "/find-a-class"]] },
-  { label: "Competitive", items: [["Women's Team", "/about"], ["Men's Team", "/about"], ["Team Camps", "/camps-and-events#camps"]] },
-  { label: "Camps & Events", items: [["Camps & Clinics", "/camps-and-events#camps"], ["Parent Night Out", "/camps-and-events#events"], ["Events & Meets", "/camps-and-events#events"]] },
+  { label: "Classes", items: [["Preschool", "/preschool-gymnastics"], ["Gymnastics", "/recreational-gymnastics"], ["Ninja", "/dragon-ninja"], ["Tumbling", "/tumbling"]] },
+  { label: "Competitive", items: [["Competitive Teams", "/competitive-teams"], ["Women's Teams", "/womens-teams"], ["Women's Dragon Team", "/womens-dragon-team"], ["Xcel Team", "/xcel-team"], ["Men's Team", "/mens-team"]] },
+  { label: "Camps & Events", items: [["Camps & Events", "/camps-and-events"], ["Bump City Adventure Club", "/camps-and-events#camps"], ["Parent Night Out", "/camps-and-events#events"]] },
   { label: "Birthdays & Play", items: [["Birthday Parties", siteConfig.external.birthdayParties], ["Bump City", siteConfig.external.bumpCity]] },
   { label: "About", items: [["Why GAGE", "/about"], ["Coaches", "/about"], ["Contact", "/contact"], ["Careers", "/careers"]] },
 ] as const;
 
-type NavPath = "/about" | "/camps-and-events" | "/contact" | "/careers";
+type NavPath = "/about" | "/camps-and-events" | "/contact" | "/careers" | "/competitive-teams" | "/womens-teams" | "/womens-dragon-team" | "/xcel-team" | "/mens-team";
 const isExternal = (to: string) => to.startsWith("http");
 
 export function SiteHeader() {

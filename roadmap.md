@@ -104,3 +104,12 @@
 ## Tumbling visual placement guide
 - [x] Match the three supplied photos to the Tumbling banner, equipment section, and final CTA; keep all other placements unchanged
 - [x] Verify the three photos load in their intended sections
+
+## Client revision pass (Oct 2026)
+- [x] New homepage photo, 2.5–4 age logic, no Preschool for 5–6 + Not Sure
+- [x] Tumbling and Parent/Tot filtered links; Dragonflys rename; Preschool Prep removed
+- [x] Camps & Events naming, Bump City Adventure Club, Parent Night Out and events links
+- [x] Pre-Team removed; competitive pages and menu
+- [ ] Daytime Ninja filter — blocked: no daytime Ninja classes currently in the schedule
+- [ ] Adventure Club booking product link — blocked: needs client link
+- [ ] Employee Portal footer link — blocked: needs working URL

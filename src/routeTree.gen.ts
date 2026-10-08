@@ -15,15 +15,20 @@ import { Route as BirthdayPartiesRouteImport } from './routes/birthday-parties'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
 import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as CompetitiveTeamsRouteImport } from './routes/competitive-teams'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
 import { Route as FindAClassRouteImport } from './routes/find-a-class'
+import { Route as MensTeamRouteImport } from './routes/mens-team'
 import { Route as PreschoolGymnasticsRouteImport } from './routes/preschool-gymnastics'
 import { Route as RecreationGymnatsticsRouteImport } from './routes/recreation-gymnatstics'
 import { Route as RecreationalGymnasticsRouteImport } from './routes/recreational-gymnastics'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as TumblingRouteImport } from './routes/tumbling'
 import { Route as TumblingAndTrampolineRouteImport } from './routes/tumbling-and-trampoline'
+import { Route as WomensDragonTeamRouteImport } from './routes/womens-dragon-team'
+import { Route as WomensTeamsRouteImport } from './routes/womens-teams'
+import { Route as XcelTeamRouteImport } from './routes/xcel-team'
 import { Route as BookATrialConfirmationRouteImport } from './routes/book-a-trial_.confirmation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -56,6 +61,11 @@ const CareersRoute = CareersRouteImport.update({
   path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompetitiveTeamsRoute = CompetitiveTeamsRouteImport.update({
+  id: '/competitive-teams',
+  path: '/competitive-teams',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -69,6 +79,11 @@ const DragonNinjaRoute = DragonNinjaRouteImport.update({
 const FindAClassRoute = FindAClassRouteImport.update({
   id: '/find-a-class',
   path: '/find-a-class',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MensTeamRoute = MensTeamRouteImport.update({
+  id: '/mens-team',
+  path: '/mens-team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PreschoolGymnasticsRoute = PreschoolGymnasticsRouteImport.update({
@@ -101,6 +116,21 @@ const TumblingAndTrampolineRoute = TumblingAndTrampolineRouteImport.update({
   path: '/tumbling-and-trampoline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WomensDragonTeamRoute = WomensDragonTeamRouteImport.update({
+  id: '/womens-dragon-team',
+  path: '/womens-dragon-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WomensTeamsRoute = WomensTeamsRouteImport.update({
+  id: '/womens-teams',
+  path: '/womens-teams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const XcelTeamRoute = XcelTeamRouteImport.update({
+  id: '/xcel-team',
+  path: '/xcel-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookATrialConfirmationRoute = BookATrialConfirmationRouteImport.update({
   id: '/book-a-trial_/confirmation',
   path: '/book-a-trial/confirmation',
@@ -114,15 +144,20 @@ export interface FileRoutesByFullPath {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
+  '/mens-team': typeof MensTeamRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/tumbling': typeof TumblingRoute
   '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
+  '/womens-dragon-team': typeof WomensDragonTeamRoute
+  '/womens-teams': typeof WomensTeamsRoute
+  '/xcel-team': typeof XcelTeamRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesByTo {
@@ -132,15 +167,20 @@ export interface FileRoutesByTo {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
+  '/mens-team': typeof MensTeamRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/tumbling': typeof TumblingRoute
   '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
+  '/womens-dragon-team': typeof WomensDragonTeamRoute
+  '/womens-teams': typeof WomensTeamsRoute
+  '/xcel-team': typeof XcelTeamRoute
   '/book-a-trial/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRoutesById {
@@ -151,15 +191,20 @@ export interface FileRoutesById {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
   '/find-a-class': typeof FindAClassRoute
+  '/mens-team': typeof MensTeamRoute
   '/preschool-gymnastics': typeof PreschoolGymnasticsRoute
   '/recreation-gymnatstics': typeof RecreationGymnatsticsRoute
   '/recreational-gymnastics': typeof RecreationalGymnasticsRoute
   '/schedule': typeof ScheduleRoute
   '/tumbling': typeof TumblingRoute
   '/tumbling-and-trampoline': typeof TumblingAndTrampolineRoute
+  '/womens-dragon-team': typeof WomensDragonTeamRoute
+  '/womens-teams': typeof WomensTeamsRoute
+  '/xcel-team': typeof XcelTeamRoute
   '/book-a-trial_/confirmation': typeof BookATrialConfirmationRoute
 }
 export interface FileRouteTypes {
@@ -171,15 +216,20 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
+    | '/mens-team'
     | '/preschool-gymnastics'
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/tumbling'
     | '/tumbling-and-trampoline'
+    | '/womens-dragon-team'
+    | '/womens-teams'
+    | '/xcel-team'
     | '/book-a-trial/confirmation'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -189,15 +239,20 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
+    | '/mens-team'
     | '/preschool-gymnastics'
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/tumbling'
     | '/tumbling-and-trampoline'
+    | '/womens-dragon-team'
+    | '/womens-teams'
+    | '/xcel-team'
     | '/book-a-trial/confirmation'
   id:
     | '__root__'
@@ -207,15 +262,20 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
     | '/find-a-class'
+    | '/mens-team'
     | '/preschool-gymnastics'
     | '/recreation-gymnatstics'
     | '/recreational-gymnastics'
     | '/schedule'
     | '/tumbling'
     | '/tumbling-and-trampoline'
+    | '/womens-dragon-team'
+    | '/womens-teams'
+    | '/xcel-team'
     | '/book-a-trial_/confirmation'
   fileRoutesById: FileRoutesById
 }
@@ -226,15 +286,20 @@ export interface RootRouteChildren {
   BookATrialRoute: typeof BookATrialRoute
   CampsAndEventsRoute: typeof CampsAndEventsRoute
   CareersRoute: typeof CareersRoute
+  CompetitiveTeamsRoute: typeof CompetitiveTeamsRoute
   ContactRoute: typeof ContactRoute
   DragonNinjaRoute: typeof DragonNinjaRoute
   FindAClassRoute: typeof FindAClassRoute
+  MensTeamRoute: typeof MensTeamRoute
   PreschoolGymnasticsRoute: typeof PreschoolGymnasticsRoute
   RecreationGymnatsticsRoute: typeof RecreationGymnatsticsRoute
   RecreationalGymnasticsRoute: typeof RecreationalGymnasticsRoute
   ScheduleRoute: typeof ScheduleRoute
   TumblingRoute: typeof TumblingRoute
   TumblingAndTrampolineRoute: typeof TumblingAndTrampolineRoute
+  WomensDragonTeamRoute: typeof WomensDragonTeamRoute
+  WomensTeamsRoute: typeof WomensTeamsRoute
+  XcelTeamRoute: typeof XcelTeamRoute
   BookATrialConfirmationRoute: typeof BookATrialConfirmationRoute
 }
 
@@ -282,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/competitive-teams': {
+      id: '/competitive-teams'
+      path: '/competitive-teams'
+      fullPath: '/competitive-teams'
+      preLoaderRoute: typeof CompetitiveTeamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -301,6 +373,13 @@ declare module '@tanstack/react-router' {
       path: '/find-a-class'
       fullPath: '/find-a-class'
       preLoaderRoute: typeof FindAClassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mens-team': {
+      id: '/mens-team'
+      path: '/mens-team'
+      fullPath: '/mens-team'
+      preLoaderRoute: typeof MensTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/preschool-gymnastics': {
@@ -345,6 +424,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TumblingAndTrampolineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/womens-dragon-team': {
+      id: '/womens-dragon-team'
+      path: '/womens-dragon-team'
+      fullPath: '/womens-dragon-team'
+      preLoaderRoute: typeof WomensDragonTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/womens-teams': {
+      id: '/womens-teams'
+      path: '/womens-teams'
+      fullPath: '/womens-teams'
+      preLoaderRoute: typeof WomensTeamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/xcel-team': {
+      id: '/xcel-team'
+      path: '/xcel-team'
+      fullPath: '/xcel-team'
+      preLoaderRoute: typeof XcelTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-a-trial_/confirmation': {
       id: '/book-a-trial_/confirmation'
       path: '/book-a-trial/confirmation'
@@ -362,15 +462,20 @@ const rootRouteChildren: RootRouteChildren = {
   BookATrialRoute: BookATrialRoute,
   CampsAndEventsRoute: CampsAndEventsRoute,
   CareersRoute: CareersRoute,
+  CompetitiveTeamsRoute: CompetitiveTeamsRoute,
   ContactRoute: ContactRoute,
   DragonNinjaRoute: DragonNinjaRoute,
   FindAClassRoute: FindAClassRoute,
+  MensTeamRoute: MensTeamRoute,
   PreschoolGymnasticsRoute: PreschoolGymnasticsRoute,
   RecreationGymnatsticsRoute: RecreationGymnatsticsRoute,
   RecreationalGymnasticsRoute: RecreationalGymnasticsRoute,
   ScheduleRoute: ScheduleRoute,
   TumblingRoute: TumblingRoute,
   TumblingAndTrampolineRoute: TumblingAndTrampolineRoute,
+  WomensDragonTeamRoute: WomensDragonTeamRoute,
+  WomensTeamsRoute: WomensTeamsRoute,
+  XcelTeamRoute: XcelTeamRoute,
   BookATrialConfirmationRoute: BookATrialConfirmationRoute,
 }
 export const routeTree = rootRouteImport

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/preschool-gymnastics")({
   head: () => ({
     meta: [
       { title: "Preschool Gymnastics Ages 2 & Under to 5 | GAGE Center" },
-      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from age 3 in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
+      { name: "description", content: "Playful Parent / Tot (2 & under) and independent preschool gymnastics from 2.5 years (30 months) in Blue Springs, MO. Big movement for little humans — $85/month daytime, $95/month standard, free trial available." },
       { property: "og:title", content: "Little Movers. Big Smiles. | GAGE Center" },
       { property: "og:description", content: "Big movement for little humans. Playful preschool gymnastics for little ones at GAGE Center in Blue Springs, MO." },
       { property: "og:type", content: "website" },
@@ -37,13 +37,13 @@ const experiences = [
 ] as const;
 
 const faqs = [
-  { question: "Do parents participate in class?", answer: "Only in Parent / Tot, which is for children age 2 and under — grown-ups join their little one on the floor. At age 3, children can join an independent class, and parents can watch from the viewing lobby." },
+  { question: "Do parents participate in class?", answer: "Only in Parent / Tot, which is for children age 2 and under — grown-ups join their little one on the floor. From 2.5 years (30 months), children can join an independent class, and parents can watch from the viewing lobby." },
   { question: "What should little ones wear?", answer: "Comfortable play clothes they can move, jump, and climb in. No shoes in any class — kids go bare feet on the floor. Please skip zippers and jewelry, and tie long hair back." },
   { question: "How does the free trial work?", answer: `Open the GAGE registration portal, choose a class that works for your family, then select Request a Trial and follow the steps. If you have any questions, call GAGE at ${siteConfig.phoneDisplay}.` },
   { question: "How long are classes?", answer: "Preschool classes are 45 minutes, once a week — a perfect length for little attention spans and big energy." },
 ] as const;
 
-function PreschoolClassOption({ eyebrow, name, description, tuition, note }: { eyebrow: string; name: string; description: string; tuition: number; note: string }) {
+function PreschoolClassOption({ eyebrow, name, description, tuition, note, href = siteConfig.external.classes }: { eyebrow: string; name: string; description: string; tuition: number; note: string; href?: string }) {
   return (
     <div className="flex flex-col bg-ink p-8 text-ink-foreground sm:p-10">
       <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
@@ -54,10 +54,10 @@ function PreschoolClassOption({ eyebrow, name, description, tuition, note }: { e
       <div className="mt-auto pt-8">
         <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
           <a
-            href={siteConfig.external.classes}
+            href={href}
             target="_blank"
             rel="noreferrer"
-            onClick={(event) => { trackCta("VIEW CLASSES & TRY FREE", "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: tuition, source_section: "preschool_class_options", destination_url: siteConfig.external.classes }); }}
+            onClick={(event) => { trackCta("VIEW CLASSES & TRY FREE", "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: tuition, source_section: "preschool_class_options", destination_url: href }); }}
           >
             View classes & try free<ArrowRight aria-hidden />
           </a>
@@ -72,10 +72,10 @@ function PreschoolPage() {
   return (
     <ProgramPage>
       <ProgramHero
-        eyebrow="Parent / Tot 2 & under · Preschool 3+ · Blue Springs, MO"
+        eyebrow="Parent / Tot 2 & under · Preschool 2.5+ · Blue Springs, MO"
         title="Little movers. Big smiles."
         subheadline="Big movement for little humans."
-        message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From Parent / Tot for age 2 and under to independent classes starting at age 3, every session is filled with movement, milestones, and high-fives."
+        message="Playful, joyful gymnastics crafted specifically for toddlers and preschoolers. From Parent / Tot for age 2 and under to independent classes starting at 2.5 years (30 months), every session is filled with movement, milestones, and high-fives."
         details="45-minute classes · Daytime $85/mo · Standard $95/mo · $44 one-time registration fee · Free trial available"
         image={preschool.url}
         imageAlt="A young child balancing on a low beam during preschool gymnastics at GAGE"
@@ -117,26 +117,20 @@ function PreschoolPage() {
           <div className="max-w-3xl">
             <p className="eyebrow">Class pathways</p>
             <h2 className="section-title mt-4">Let's find their first class.</h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">Start side by side in Parent / Tot, then move into an independent class at age 3. Ask our team which independent class fits your child best.</p>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">Start side by side in Parent / Tot, then move into an independent class from 2.5 years (30 months). Ask our team which independent class fits your child best.</p>
           </div>
-          <div className="mt-12 grid gap-px bg-border lg:grid-cols-3">
+          <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
             <PreschoolClassOption
               eyebrow="Age 2 & under · With a grown-up"
               name="Parent / Tot"
               description="A fun parent-and-child class exploring movement, balance, and bonding side-by-side."
               tuition={85}
               note={siteConfig.registration.trialNote}
+              href={siteConfig.external.parentTotClasses}
             />
             <PreschoolClassOption
               eyebrow="Independent class · Details coming soon"
-              name="Little Dragons"
-              description="An independent preschool class at GAGE. Call us or check the live class list for current ages and times."
-              tuition={95}
-              note={siteConfig.registration.trialNote}
-            />
-            <PreschoolClassOption
-              eyebrow="Independent class · Details coming soon"
-              name="Preschool Prep"
+              name="Dragonflys"
               description="An independent preschool class at GAGE. Call us or check the live class list for current ages and times."
               tuition={95}
               note={siteConfig.registration.trialNote}

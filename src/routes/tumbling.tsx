@@ -72,10 +72,10 @@ function TumblingLevelCard({ eyebrow, name, description, price }: { eyebrow: str
       <div className="mt-auto pt-8">
         <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
           <a
-            href={siteConfig.external.classes}
+            href={siteConfig.external.tumblingClasses}
             target="_blank"
             rel="noreferrer"
-            onClick={(event) => { trackCta("VIEW TUMBLING CLASSES & TRY FREE", "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: 95, source_section: "tumbling_class_options", destination_url: siteConfig.external.classes }); }}
+            onClick={(event) => { trackCta("VIEW TUMBLING CLASSES & TRY FREE", "programs_grid"); forwardIclassProHandoff(event, { program_name: name, monthly_tuition: 95, source_section: "tumbling_class_options", destination_url: siteConfig.external.tumblingClasses }); }}
           >
             View tumbling classes & try free<ArrowRight aria-hidden />
           </a>

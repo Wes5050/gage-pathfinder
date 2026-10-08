@@ -8,7 +8,7 @@ import { siteConfig } from "@/data/config";
 import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
-import hero from "@/assets/gage-hero-new.png.asset.json";
+import hero from "@/assets/gage-hero-facility.png.asset.json";
 import { photos } from "@/data/photos";
 
 export const Route = createFileRoute("/")({
@@ -30,7 +30,7 @@ const signaturePrograms = [
   { name: "Ninja", line: "Climb, jump, conquer obstacles, and let that energy loose.", image: photos.ninja.src, to: "/dragon-ninja", tone: "bg-accent", external: false },
   { name: "Tumbling", line: "Big flips, little victories, and the excitement of learning something new.", image: photos.tumble.src, to: "/tumbling", tone: "bg-primary", external: false },
   { name: "Preschool", line: "Little movers. Big discoveries. Endless smiles.", image: photos.preschool.src, to: "/preschool-gymnastics", tone: "bg-accent", external: false },
-  { name: "Camps", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: photos.camp.src, to: "/camps-and-events", tone: "bg-primary", external: false },
+  { name: "Camps & Events", line: "Big adventures, new friends, and days they'll talk about all the way home.", image: photos.camp.src, to: "/camps-and-events", tone: "bg-primary", external: false },
   { name: "Birthday Parties", line: "All the excitement. All the smiles. A birthday they'll never forget.", image: photos.party.src, to: siteConfig.external.birthdayParties, tone: "bg-accent", external: true },
 ] as const;
 
@@ -140,8 +140,8 @@ function TuitionTier({ tier, title, price, description }: { tier: "daytime" | "s
 }
 
 const moreFun = [
-  { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.booking, internal: false, image: photos.social.src },
-  { title: "Camps & Clinics", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: photos.beginner.src },
+  { title: "Parent Night Out", who: "For kids · Select evenings", line: "A fun night for them. A night off for you.", cta: "See upcoming dates", href: siteConfig.external.parentNightOut, internal: false, image: photos.social.src },
+  { title: "Camps & Events", who: "For kids on school breaks", line: "More time to move, learn, play and have fun.", cta: "Explore camps", href: "/camps-and-events", internal: true, image: photos.beginner.src },
   { title: "Bump City", who: "For families with little ones", line: "Climb, jump, swing and play.", cta: "Explore Bump City", href: siteConfig.external.bumpCity, internal: false, image: photos.play.src },
 ] as const;
 
@@ -169,7 +169,7 @@ function Home() {
       <SiteHeader />
       <main>
         <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-ink text-ink-foreground lg:min-h-[calc(100svh-5rem)]">
-          <img src={hero.url} alt="Happy kids jumping and laughing during a fun GAGE gymnastics class" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-80" />
+          <img src={hero.url} alt="Smiling girl climbing over a blue obstacle mat at GAGE with friends behind her" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[52%_30%] opacity-80" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
           <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
             <div className="max-w-4xl">
