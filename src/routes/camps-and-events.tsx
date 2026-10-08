@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
@@ -35,6 +35,7 @@ const faqs = [
 ] as const;
 
 type EventCardProps = {
+  contactLink?: boolean;
   icon: typeof TentTree;
   eyebrow: string;
   title: string;
