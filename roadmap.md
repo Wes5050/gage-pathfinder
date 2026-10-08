@@ -113,3 +113,6 @@
 - [ ] Daytime Ninja filter — blocked: no daytime Ninja classes currently in the schedule
 - [ ] Adventure Club booking product link — blocked: needs client link
 - [ ] Employee Portal footer link — blocked: needs working URL
+
+## Follow-up corrections (Oct 8 2026)
+- [x] Mobile hero face visible; Daytime Ninja -> Contact inquiry; Adventure Club -> Contact inquiry; restricted terms verified absent
