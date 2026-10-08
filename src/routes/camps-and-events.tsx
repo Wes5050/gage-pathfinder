@@ -48,8 +48,12 @@ type EventCardProps = {
   portal?: boolean;
 };
 
-function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal }: EventCardProps) {
-  const action = destination ? (
+function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal, contactLink }: EventCardProps) {
+  const action = contactLink ? (
+    <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
+      <Link to="/contact" onClick={() => trackCta(cta.toUpperCase(), "programs_grid")}>{cta}<ArrowRight aria-hidden /></Link>
+    </Button>
+  ) : destination ? (
     <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
       <a
         href={destination}
@@ -112,7 +116,7 @@ function CampsEventsPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <div className="max-w-3xl"><p className="eyebrow">Camps & Events</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed with each booking page.</p></div>
           <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
-            <EventCard icon={TentTree} eyebrow="Camp days · School breaks & summer" title="Bump City Adventure Club" description="Active camp days during school breaks and summer — who it's for and dates are listed on the booking page." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Check camp dates & book" destination={siteConfig.external.adventureClub} />
+            <EventCard icon={TentTree} eyebrow="Camp days · School breaks & summer" title="Bump City Adventure Club" description="Camp days during school breaks and summer. Booking details are coming soon — contact GAGE to ask about ages, dates, and availability." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Ask About Adventure Club" contactLink />
             <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={photos.rec.src} imageAlt={photos.rec.alt} imagePosition="object-top" cta="Call for current clinics" />
           </div>
         </div>

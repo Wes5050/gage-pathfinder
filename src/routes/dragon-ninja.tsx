@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, HeartHandshake, Sparkles, Activity, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramFinalCta, ProgramHero, ProgramPage, googleReviews } from "@/components/program-page";
@@ -43,7 +43,7 @@ const faqs = [
   { question: "Can parents watch class?", answer: "Yes — parents are welcome to stay and watch from the comfortable viewing lobby while class is in session." },
 ] as const;
 
-function NinjaClassOption({ eyebrow, name, description, price, priceNote, tuition, note }: { eyebrow: string; name: string; description: string; price: string; priceNote: string; tuition: number; note: string }) {
+function NinjaClassOption({ eyebrow, name, description, price, priceNote, tuition, note, inquiry }: { eyebrow: string; name: string; description: string; price: string; priceNote: string; tuition: number; note: string; inquiry?: boolean }) {
   return (
     <div className="flex flex-col bg-ink p-8 text-ink-foreground sm:p-10">
       <p className="font-display text-xs font-black uppercase text-primary">{eyebrow}</p>
@@ -52,7 +52,11 @@ function NinjaClassOption({ eyebrow, name, description, price, priceNote, tuitio
       <p className="mt-8 font-display text-4xl font-black">{price}<span className="text-sm text-ink-foreground/50">/month</span></p>
       <p className="mt-2 font-display text-xs font-black uppercase text-ink-foreground/60">{priceNote}</p>
       <div className="mt-auto pt-8">
-        <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
+        {inquiry ? (
+          <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
+            <Link to="/contact" onClick={() => trackCta("ASK ABOUT DAYTIME NINJA", "programs_grid")}>Ask About Daytime Ninja<ArrowRight aria-hidden /></Link>
+          </Button>
+        ) : <Button asChild size="lg" className="h-14 w-full rounded-none px-7 font-display text-xs font-black uppercase">
           <a
             href={siteConfig.external.ninjaClasses}
             target="_blank"
@@ -61,7 +65,7 @@ function NinjaClassOption({ eyebrow, name, description, price, priceNote, tuitio
           >
             View ninja classes & try free<ArrowRight aria-hidden />
           </a>
-        </Button>
+        </Button>}
         <p className="mt-3 text-xs leading-5 text-ink-foreground/50">{note}</p>
       </div>
     </div>
@@ -132,11 +136,12 @@ function DragonNinjaPage() {
             <NinjaClassOption
               eyebrow="Homeschool & flexible schedules"
               name="Daytime Dragon Ninja"
-              description="The same high-energy obstacle fun, scheduled earlier in the day for homeschool and flexible routines."
+              description="Interested in daytime Ninja for homeschool or a flexible routine? There are no daytime Ninja classes on the current schedule — contact GAGE to ask about future daytime options."
               price="$85"
-              priceNote="One 50-minute class per week · $44 one-time registration fee"
+              priceNote="Daytime tuition rate · $44 one-time registration fee"
               tuition={85}
-              note={siteConfig.registration.trialNote}
+              note="This is an inquiry, not a booking. The GAGE team will let you know about daytime availability."
+              inquiry
             />
           </div>
         </div>
