@@ -4,7 +4,7 @@ import { ArrowRight, ExternalLink, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import { finderAgeBounds, finderAgeGroups, programs, type ProgramCategory } from "@/data/programs";
-import { siteConfig } from "@/data/config";
+import { inquiryPrograms, siteConfig } from "@/data/config";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { photos, type PhotoKey } from "@/data/photos";
 
