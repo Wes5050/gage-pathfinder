@@ -23,10 +23,10 @@ export function TeamPlacementCta({ team }: { team: string }) {
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-ink-foreground/70">Team spots are by coach invitation. Reach out and our team will talk with you about where your athlete fits best.</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="h-14 rounded-none px-8 font-display text-xs font-black uppercase">
-            <Link to="/contact" onClick={() => trackCta("ASK ABOUT TEAM PLACEMENT", team)}>Ask about team placement<ArrowRight aria-hidden /></Link>
+            <Link to="/contact" onClick={() => trackCta(`ASK ABOUT TEAM PLACEMENT · ${team}`, "final_conversion")}>Ask about team placement<ArrowRight aria-hidden /></Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="h-14 rounded-none border-ink-foreground/40 bg-transparent px-8 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink">
-            <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL GAGE", team)}><Phone aria-hidden />Call {siteConfig.phoneDisplay}</a>
+            <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL GAGE", "final_conversion")}><Phone aria-hidden />Call {siteConfig.phoneDisplay}</a>
           </Button>
         </div>
       </div>
