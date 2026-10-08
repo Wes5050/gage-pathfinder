@@ -40,9 +40,9 @@ const shared = {
 const programSeed: Program[] = [
   { ...shared, name: "Parent / Tot Daytime", category: "Preschool", duration: 45, ageMin: 1, ageMax: 2, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Move, play, and build confidence together.", longDescription: "A coach-led first movement class with a parent or caregiver alongside every little athlete.", benefits: ["Balance and coordination", "Parent-child connection", "Comfort in the gym"], heroImage: preschool.url, featured: true, displayOrder: 1 },
   { ...shared, name: "Parent / Tot", category: "Preschool", duration: 45, ageMin: 1, ageMax: 2, gender: "All", level: "Beginner", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "A playful first step into movement.", longDescription: "An active parent-and-child class designed around safe exploration, listening, and joyful movement.", benefits: ["Strength through play", "Early social skills", "Guided exploration"], heroImage: preschool.url, featured: false, displayOrder: 2 },
-  { ...shared, name: "Gymnastics Ages 3–4 Daytime", category: "Preschool", duration: 45, ageMin: 3, ageMax: 4, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Independent movement for growing confidence.", longDescription: "A welcoming daytime class that introduces foundational shapes, rolls, balance, and safe landings.", benefits: ["Independent learning", "Body awareness", "Foundational skills"], heroImage: preschool.url, featured: true, displayOrder: 3 },
-  { ...shared, name: "Gymnastics Ages 3–4", category: "Preschool", duration: 45, ageMin: 3, ageMax: 4, gender: "All", level: "Beginner", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "Big movement for little humans.", longDescription: "A positive introduction to gymnastics that turns energy into confidence and coordination.", benefits: ["Listening and turn-taking", "Balance and flexibility", "Confident independence"], heroImage: preschool.url, featured: true, displayOrder: 4 },
-  { ...shared, name: "Gymnastics Ages 3–5 Daytime", category: "Preschool", duration: 45, ageMin: 3, ageMax: 5, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Daytime gymnastics built for curious kids.", longDescription: "Progressive circuits help preschoolers learn at their pace while building strength and confidence.", benefits: ["Coordination", "Safe risk-taking", "School readiness"], heroImage: preschool.url, featured: false, displayOrder: 5 },
+  { ...shared, name: "Gymnastics Ages 3–4 Daytime", category: "Preschool", duration: 45, ageMin: 2.5, ageMax: 4, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Independent movement for growing confidence.", longDescription: "A welcoming daytime class that introduces foundational shapes, rolls, balance, and safe landings.", benefits: ["Independent learning", "Body awareness", "Foundational skills"], heroImage: preschool.url, featured: true, displayOrder: 3 },
+  { ...shared, name: "Gymnastics Ages 3–4", category: "Preschool", duration: 45, ageMin: 2.5, ageMax: 4, gender: "All", level: "Beginner", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "Big movement for little humans.", longDescription: "A positive introduction to gymnastics that turns energy into confidence and coordination.", benefits: ["Listening and turn-taking", "Balance and flexibility", "Confident independence"], heroImage: preschool.url, featured: true, displayOrder: 4 },
+  { ...shared, name: "Gymnastics Ages 3–5 Daytime", category: "Preschool", duration: 45, ageMin: 2.5, ageMax: 5, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Daytime gymnastics built for curious kids.", longDescription: "Progressive circuits help preschoolers learn at their pace while building strength and confidence.", benefits: ["Coordination", "Safe risk-taking", "School readiness"], heroImage: preschool.url, featured: false, displayOrder: 5 },
   { ...shared, name: "Girls Gymnastics Level 1", category: "Gymnastics", ageMin: 5, ageMax: 18, gender: "Girls", level: "Level 1", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "Cartwheels, confidence, new friends, and a whole lot of fun.", longDescription: "A welcoming beginner class where kids jump, roll, balance, swing, and celebrate every new milestone.", benefits: ["Joyful movement", "New friendships", "Confidence through trying"], heroImage: hero.url, featured: true, displayOrder: 6 },
   { ...shared, name: "Boys Gymnastics Level 1", category: "Gymnastics", ageMin: 5, ageMax: 18, gender: "Boys", level: "Level 1", invitationOnly: false, daytime: false, monthlyTuition: 95, shortDescription: "Jump, swing, roll, and discover something new.", longDescription: "A beginner-friendly class filled with movement, encouragement, friends, and fun.", benefits: ["Active fun", "Confidence", "New friendships"], heroImage: hero.url, featured: true, displayOrder: 7 },
   { ...shared, name: "Homeschool Gymnastics", category: "Gymnastics", ageMin: 5, ageMax: 18, gender: "All", level: "Beginner", invitationOnly: false, daytime: true, monthlyTuition: 85, shortDescription: "Movement and community during the day.", longDescription: "A flexible daytime class for homeschool athletes of varied experience levels.", benefits: ["Physical education", "Social connection", "Progressive instruction"], heroImage: hero.url, featured: true, displayOrder: 8 },
@@ -61,11 +61,11 @@ export const programs = programSeed
   .map((program) => ({ ...program, iclassProUrl: resolveProgramUrl(program.name) }))
   .sort((a, b) => a.displayOrder - b.displayOrder);
 
-export const finderAgeGroups = ["2 & under", "3–4 years", "5–6 years", "7–9 years", "10 & up"] as const;
+export const finderAgeGroups = ["2 & under", "2.5–4 years", "5–6 years", "7–9 years", "10 & up"] as const;
 export type FinderAgeGroup = (typeof finderAgeGroups)[number];
 export const finderAgeBounds: Record<FinderAgeGroup, [number, number]> = {
   "2 & under": [0, 2],
-  "3–4 years": [3, 4],
+  "2.5–4 years": [2.5, 4],
   "5–6 years": [5, 6],
   "7–9 years": [7, 9],
   "10 & up": [10, 18],
@@ -80,6 +80,8 @@ export function beginnerProgramsForAge(ageGroup: string) {
   return programs.filter((program) => {
     if (program.invitationOnly || !program.trialAvailable) return false;
     if (!(program.ageMin <= max && program.ageMax >= min)) return false;
+    // Preschool classes are never suggested once a child is 5 or older.
+    if (program.category === "Preschool" && min >= 5) return false;
     if (seen.has(program.category)) return false;
     seen.add(program.category);
     return true;

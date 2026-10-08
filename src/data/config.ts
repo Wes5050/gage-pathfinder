@@ -18,7 +18,16 @@ export const siteConfig = {
     boysGymnasticsClasses: `${PORTAL}/classes?genders=1&programs=20`,
     girlsGymnasticsClasses: `${PORTAL}/classes?genders=0&programs=20`,
     ninjaClasses: `${PORTAL}/classes?genders=2&programs=163`,
+    // Verified against the live GAGE class list (Oct 2026): program 180 = Tumbling only;
+    // program 17 + ages=1 = Parent Participation (Parent / Tot) only.
+    tumblingClasses: `${PORTAL}/classes?programs=180`,
+    parentTotClasses: `${PORTAL}/classes?programs=17&ages=1`,
     // Interim partner destinations until GAGE publishes in-portal party booking.
+    // Bump City ROLLER destinations (verified from bump-city.com/events).
+    parentNightOut: "https://ecom.roller.app/bumpcity/booknow/en-us/product/1479642",
+    rollerEvents: "https://ecom.roller.app/bumpcity/booknow/en-us/home",
+    // Interim: Bump City camp page until the Adventure Club ROLLER product link is confirmed.
+    adventureClub: "https://www.bump-city.com/summer-camp",
     birthdayParties: "https://www.bump-city.com/birthday-parties",
     bumpCity: "https://www.bump-city.com/",
   },
@@ -48,6 +57,11 @@ export const programUrlOverrides: Record<string, string> = {
   "Girls Gymnastics Level 1": siteConfig.external.girlsGymnasticsClasses,
   "Ninja Warrior Training": siteConfig.external.ninjaClasses,
   "Ninja Warrior Training Daytime": siteConfig.external.ninjaClasses,
+  "Parent / Tot": siteConfig.external.parentTotClasses,
+  "Parent / Tot Daytime": siteConfig.external.parentTotClasses,
+  "Tumbling Level 1": siteConfig.external.tumblingClasses,
+  "Tumbling Level 2": siteConfig.external.tumblingClasses,
+  "Tumbling Level 3": siteConfig.external.tumblingClasses,
 };
 
 export function resolveProgramUrl(programName: string) {
