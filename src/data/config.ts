@@ -56,7 +56,6 @@ export const programUrlOverrides: Record<string, string> = {
   "Boys Gymnastics Level 1": siteConfig.external.boysGymnasticsClasses,
   "Girls Gymnastics Level 1": siteConfig.external.girlsGymnasticsClasses,
   "Ninja Warrior Training": siteConfig.external.ninjaClasses,
-  "Ninja Warrior Training Daytime": siteConfig.external.ninjaClasses,
   "Parent / Tot": siteConfig.external.parentTotClasses,
   "Parent / Tot Daytime": siteConfig.external.parentTotClasses,
   "Tumbling Level 1": siteConfig.external.tumblingClasses,
@@ -67,3 +66,8 @@ export const programUrlOverrides: Record<string, string> = {
 export function resolveProgramUrl(programName: string) {
   return programUrlOverrides[programName] ?? siteConfig.external.classes;
 }
+
+/** No verified daytime Ninja classes exist yet — these programs route to a Contact inquiry instead of booking. */
+export const inquiryPrograms: Record<string, string> = {
+  "Ninja Warrior Training Daytime": "Ask About Daytime Ninja",
+};

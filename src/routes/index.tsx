@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight, Check, ChevronRight, ExternalLink, MapPin, Phone
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { siteConfig } from "@/data/config";
+import { inquiryPrograms, siteConfig } from "@/data/config";
 import { beginnerProgramsForAge, finderAgeGroups, recommendProgram } from "@/data/programs";
 import { forwardIclassProHandoff, trackCta, trackEvent } from "@/lib/analytics";
 import { GoogleReviewsShowcase } from "@/components/program-page";
@@ -41,7 +41,7 @@ function ClassFinder() {
   const asksGender = interest === "Gymnastics" && ["5–6 years", "7–9 years", "10 & up"].includes(age);
   const selectionComplete = Boolean(age && interest && (!asksGender || gender));
   const result = useMemo(() => selectionComplete ? recommendProgram(age, interest, gender) : undefined, [age, interest, gender, selectionComplete]);
-  const notSureOptions = useMemo(() => selectionComplete && interest === "Not Sure" ? beginnerProgramsForAge(age) : [], [age, interest, selectionComplete]);
+  const notSureOptions = useMemo(() => selectionComplete && interest === "Not Sure" ? beginnerProgramsForAge(age).filter((option) => !inquiryPrograms[option.name]) : [], [age, interest, selectionComplete]);
   const started = useRef(false);
   const lastRecommendation = useRef("");
 
@@ -105,10 +105,10 @@ function ClassFinder() {
             {result ? <div className="animate-reveal">
               <p className="font-display text-xs font-black uppercase text-primary">We found something fun to try.</p>
               <h3 className="mt-5 font-display text-3xl font-black uppercase leading-tight">{result.name}</h3>
-              <span className="mt-4 inline-flex bg-ink-foreground/10 px-3 py-1.5 font-display text-[10px] font-black uppercase text-ink-foreground">{result.daytime ? "Daytime availability" : "Standard class availability"}</span>
+              <span className="mt-4 inline-flex bg-ink-foreground/10 px-3 py-1.5 font-display text-[10px] font-black uppercase text-ink-foreground">{inquiryPrograms[result.name] ? "Daytime inquiry · not on current schedule" : result.daytime ? "Daytime availability" : "Standard class availability"}</span>
               <p className="mt-4 text-sm leading-6 text-ink-foreground/65">{result.shortDescription}</p>
               <ul className="mt-6 space-y-3">{result.benefits.map((benefit) => <li key={benefit} className="flex items-center gap-3 text-sm"><span className="grid h-5 w-5 place-items-center bg-primary"><Check className="h-3 w-3" /></span>{benefit}</li>)}</ul>
-              <div className="mt-8 border-t border-ink-foreground/15 pt-6"><div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><span className="text-xs uppercase text-ink-foreground/50">Monthly tuition</span><p className="font-display text-3xl font-black">${result.monthlyTuition}<span className="text-sm text-ink-foreground/50">/mo</span></p></div><Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={result.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "finder_result"); forwardIclassProHandoff(event, { program_name: result.name, monthly_tuition: result.monthlyTuition, source_section: "finder_result", destination_url: result.iclassProUrl }); }}>Try a class free<ArrowRight /></a></Button></div><p className="mt-4 text-xs leading-5 text-ink-foreground/50">One-time ${siteConfig.registrationFee} registration fee. {siteConfig.registration.trialNote}</p></div>
+              <div className="mt-8 border-t border-ink-foreground/15 pt-6"><div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><span className="text-xs uppercase text-ink-foreground/50">Monthly tuition</span><p className="font-display text-3xl font-black">${result.monthlyTuition}<span className="text-sm text-ink-foreground/50">/mo</span></p></div>{inquiryPrograms[result.name] ? <Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><Link to="/contact" onClick={() => trackCta("ASK ABOUT DAYTIME NINJA", "finder_result")}>{inquiryPrograms[result.name]}<ArrowRight /></Link></Button> : <Button asChild size="lg" className="h-14 rounded-none px-7 font-display text-xs font-black uppercase"><a href={result.iclassProUrl} target="_blank" rel="noreferrer" onClick={(event) => { trackCta("TRY A CLASS FREE", "finder_result"); forwardIclassProHandoff(event, { program_name: result.name, monthly_tuition: result.monthlyTuition, source_section: "finder_result", destination_url: result.iclassProUrl }); }}>Try a class free<ArrowRight /></a></Button>}</div><p className="mt-4 text-xs leading-5 text-ink-foreground/50">One-time ${siteConfig.registrationFee} registration fee. {siteConfig.registration.trialNote}</p></div>
             </div> : notSureOptions.length ? <div className="animate-reveal">
               <p className="font-display text-xs font-black uppercase text-primary">Not sure yet? That's okay.</p>
               <p className="mt-4 text-sm leading-6 text-ink-foreground/70">Every kid is different. Explore a few of GAGE's most popular beginner programs for this age, or let us help you find the right fit.</p>
@@ -168,10 +168,11 @@ function Home() {
     <div className="min-h-screen bg-background font-sans text-foreground">
       <SiteHeader />
       <main>
-        <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-ink text-ink-foreground lg:min-h-[calc(100svh-5rem)]">
-          <img src={hero.url} alt="Smiling girl climbing over a blue obstacle mat at GAGE with friends behind her" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[52%_30%] opacity-80" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
-          <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
+        <section className="relative overflow-hidden bg-ink text-ink-foreground md:min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)]">
+          <img src={hero.url} alt="Smiling girl climbing over a blue obstacle mat at GAGE with friends behind her" width={1920} height={1080} fetchPriority="high" className="relative block h-[46svh] w-full object-cover object-[62%_22%] md:absolute md:inset-0 md:h-full md:object-[52%_30%] md:opacity-80" />
+          <div className="pointer-events-none absolute inset-x-0 top-[calc(46svh-5rem)] h-20 bg-gradient-to-b from-transparent to-ink md:hidden" aria-hidden />
+          <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_88%,transparent)_42%,color-mix(in_oklab,var(--ink)_12%,transparent)_78%)]" />
+          <div className="relative mx-auto flex max-w-[1440px] flex-col justify-end px-5 pb-16 pt-6 sm:px-8 md:min-h-[calc(100svh-4rem)] md:pt-28 lg:min-h-[calc(100svh-5rem)] lg:px-10 lg:pb-20">
             <div className="max-w-4xl">
               <p className="font-display text-xs font-black uppercase text-primary">Blue Springs, Missouri · Fun first. Growth follows.</p>
               <h1 className="mt-5 font-display text-[clamp(3.7rem,10vw,8.6rem)] font-black uppercase leading-[.82] text-ink-foreground">The fun<br /><span className="text-primary">starts here.</span></h1>
