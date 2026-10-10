@@ -16,7 +16,7 @@ export const Route = createFileRoute("/womens-dragon-team")({
 
 function WomensDragonTeam() {
   return (
-    <TeamLayout eyebrow="Women's teams · Dragon Team" title="Women's Dragon Team." intro="Led by coaches Al Fong and Armine Barutyan-Fong, the Women's Dragon Team has been part of GAGE since 1979." image={photos.coaching.src} team="womens_dragon_team">
+    <TeamLayout eyebrow="Women's teams · Dragon Team" title="Women's Dragon Team." intro="Led by coaches Al Fong and Armine Barutyan-Fong, the Women's Dragon Team has been part of GAGE since 1979." image={photos.coaching.src} team="womens_dragon_team" inquiry="womens">
       <p className="eyebrow">About the team</p>
       <h2 className="section-title mt-4">A legacy of champions.</h2>
       <TeamPoints points={[

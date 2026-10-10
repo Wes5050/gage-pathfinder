@@ -16,7 +16,7 @@ export const Route = createFileRoute("/competitive-teams")({
 
 function CompetitiveTeams() {
   return (
-    <TeamLayout eyebrow="Competitive teams" title="Ready for the next challenge." intro="For athletes who love the gym and want to compete, GAGE offers women's and men's team pathways. Placement is by coach invitation." image={photos.coaching.src} team="competitive_overview">
+    <TeamLayout eyebrow="Competitive teams" title="Ready for the next challenge." intro="For athletes who love the gym and want to compete, GAGE offers women's and men's team pathways. Placement is by coach invitation." image={photos.coaching.src} team="competitive_overview" inquiry="both">
       <p className="eyebrow">Choose a pathway</p>
       <h2 className="section-title mt-4">Our teams.</h2>
       <TeamCards items={[
