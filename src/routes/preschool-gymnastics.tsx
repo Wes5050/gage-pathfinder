@@ -134,6 +134,7 @@ function PreschoolPage() {
               description="An independent preschool class at GAGE. Call us or check the live class list for current ages and times."
               tuition={95}
               note={siteConfig.registration.trialNote}
+              href={siteConfig.external.dragonflyClasses}
             />
           </div>
         </div>

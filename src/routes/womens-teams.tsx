@@ -16,7 +16,7 @@ export const Route = createFileRoute("/womens-teams")({
 
 function WomensTeams() {
   return (
-    <TeamLayout eyebrow="Women's teams" title="Two paths. One team spirit." intro="GAGE offers two competitive pathways for girls. Our coaches help each family find the one that fits." image={photos.rehero.src} team="womens_overview">
+    <TeamLayout eyebrow="Women's teams" title="Two paths. One team spirit." intro="GAGE offers two competitive pathways for girls. Our coaches help each family find the one that fits." image={photos.rehero.src} team="womens_overview" inquiry="womens">
       <p className="eyebrow">Two pathways</p>
       <h2 className="section-title mt-4">Find the right fit.</h2>
       <TeamCards items={[

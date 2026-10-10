@@ -8,6 +8,10 @@ export const siteConfig = {
   registrationFee: 44,
   address: "1101 NW Jefferson St, Blue Springs, MO 64015",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=GAGE+Center+1101+NW+Jefferson+St+Blue+Springs+MO+64015",
+  teamEmails: {
+    mens: "Wally@gagecenter.com",
+    womens: "xcel@gagecenter.com",
+  },
   external: {
     // Verified GAGE (dragongym) iClassPro destinations. Registration, scheduling,
     // trials, and billing all happen in iClassPro — never in this site.
@@ -22,6 +26,8 @@ export const siteConfig = {
     // program 17 + ages=1 = Parent Participation (Parent / Tot) only.
     tumblingClasses: `${PORTAL}/classes?programs=180`,
     parentTotClasses: `${PORTAL}/classes?programs=17&ages=1`,
+    // Program 17 + ages 3,4 = independent preschool (Dragonflys) classes, verified Oct 10 2026.
+    dragonflyClasses: `${PORTAL}/classes?programs=17&ages=3,4`,
     // Interim partner destinations until GAGE publishes in-portal party booking.
     // Bump City ROLLER destinations (verified from bump-city.com/events).
     parentNightOut: "https://ecom.roller.app/bumpcity/booknow/en-us/product/1479642",
@@ -58,6 +64,9 @@ export const programUrlOverrides: Record<string, string> = {
   "Ninja Warrior Training": siteConfig.external.ninjaClasses,
   "Parent / Tot": siteConfig.external.parentTotClasses,
   "Parent / Tot Daytime": siteConfig.external.parentTotClasses,
+  "Gymnastics Ages 3–4": siteConfig.external.dragonflyClasses,
+  "Gymnastics Ages 3–4 Daytime": siteConfig.external.dragonflyClasses,
+  "Gymnastics Ages 3–5 Daytime": siteConfig.external.dragonflyClasses,
   "Tumbling Level 1": siteConfig.external.tumblingClasses,
   "Tumbling Level 2": siteConfig.external.tumblingClasses,
   "Tumbling Level 3": siteConfig.external.tumblingClasses,
@@ -67,7 +76,7 @@ export function resolveProgramUrl(programName: string) {
   return programUrlOverrides[programName] ?? siteConfig.external.classes;
 }
 
-/** No verified daytime Ninja classes exist yet — these programs route to a Contact inquiry instead of booking. */
+/** Weekday daytime Ninja is an inquiry only — these programs route to a Contact inquiry instead of booking. */
 export const inquiryPrograms: Record<string, string> = {
   "Ninja Warrior Training Daytime": "Ask About Daytime Ninja",
 };

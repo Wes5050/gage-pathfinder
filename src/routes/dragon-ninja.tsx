@@ -136,7 +136,7 @@ function DragonNinjaPage() {
             <NinjaClassOption
               eyebrow="Homeschool & flexible schedules"
               name="Daytime Dragon Ninja"
-              description="Interested in daytime Ninja for homeschool or a flexible routine? There are no daytime Ninja classes on the current schedule — contact GAGE to ask about future daytime options."
+              description="Interested in weekday daytime Ninja? Contact us about options."
               price="$85"
               priceNote="Daytime tuition rate · $44 one-time registration fee"
               tuition={85}

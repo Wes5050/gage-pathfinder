@@ -16,7 +16,7 @@ export const Route = createFileRoute("/mens-team")({
 
 function MensTeam() {
   return (
-    <TeamLayout eyebrow="Competitive teams · Men's" title="Men's Dragon Team." intro="An invitation-only gymnastics team for boys and young men ages 6–18." image={photos.boys.src} team="mens_team">
+    <TeamLayout eyebrow="Competitive teams · Men's" title="Men's Dragon Team." intro="An invitation-only gymnastics team for boys and young men ages 6–18." image={photos.boys.src} team="mens_team" inquiry="mens">
       <p className="eyebrow">About the team</p>
       <h2 className="section-title mt-4">A brotherhood that pushes each other.</h2>
       <TeamPoints points={[

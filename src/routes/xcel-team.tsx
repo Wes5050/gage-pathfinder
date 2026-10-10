@@ -16,7 +16,7 @@ export const Route = createFileRoute("/xcel-team")({
 
 function XcelTeam() {
   return (
-    <TeamLayout eyebrow="Women's teams · Xcel" title="Inferno Dragon Xcel Team." intro="For girls who crave a bigger challenge and want to compete, while keeping time for other passions." image={photos.rec.src} team="xcel_team">
+    <TeamLayout eyebrow="Women's teams · Xcel" title="Inferno Dragon Xcel Team." intro="For girls who crave a bigger challenge and want to compete, while keeping time for other passions." image={photos.rec.src} team="xcel_team" inquiry="womens">
       <p className="eyebrow">About the team</p>
       <h2 className="section-title mt-4">Compete and keep balance.</h2>
       <TeamPoints points={[

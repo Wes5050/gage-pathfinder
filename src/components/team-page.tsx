@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/page-shell";
 import { siteConfig } from "@/data/config";
@@ -14,7 +14,12 @@ export type TeamLink = {
   imageAlt: string;
 };
 
-export function TeamPlacementCta({ team }: { team: string }) {
+export type TeamInquiry = "mens" | "womens" | "both";
+
+export function TeamPlacementCta({ team, inquiry }: { team: string; inquiry: TeamInquiry }) {
+  const options = inquiry === "both"
+    ? [{ label: "Men's team inquiry", email: siteConfig.teamEmails.mens }, { label: "Women's team inquiry", email: siteConfig.teamEmails.womens }]
+    : [{ label: "Ask about team placement", email: siteConfig.teamEmails[inquiry] }];
   return (
     <section className="bg-ink py-20 text-ink-foreground sm:py-24">
       <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
@@ -22,9 +27,11 @@ export function TeamPlacementCta({ team }: { team: string }) {
         <h2 className="mt-4 font-display text-4xl font-black uppercase leading-none sm:text-5xl">Ask about team placement.</h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-ink-foreground/70">Team spots are by coach invitation. Reach out and our team will talk with you about where your athlete fits best.</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button asChild size="lg" className="h-14 rounded-none px-8 font-display text-xs font-black uppercase">
-            <Link to="/contact" onClick={() => trackCta(`ASK ABOUT TEAM PLACEMENT · ${team}`, "final_conversion")}>Ask about team placement<ArrowRight aria-hidden /></Link>
-          </Button>
+          {options.map((o) => (
+            <Button key={o.email} asChild size="lg" className="h-14 rounded-none px-8 font-display text-xs font-black uppercase">
+              <a href={`mailto:${o.email}`} onClick={() => trackCta(`${o.label.toUpperCase()} · ${team}`, "final_conversion")}><Mail aria-hidden />{o.label}</a>
+            </Button>
+          ))}
           <Button asChild size="lg" variant="outline" className="h-14 rounded-none border-ink-foreground/40 bg-transparent px-8 font-display text-xs font-black uppercase text-ink-foreground hover:bg-ink-foreground hover:text-ink">
             <a href={siteConfig.phoneHref} onClick={() => trackCta("CALL GAGE", "final_conversion")}><Phone aria-hidden />Call {siteConfig.phoneDisplay}</a>
           </Button>
@@ -53,11 +60,11 @@ export function TeamCards({ items }: { items: TeamLink[] }) {
   );
 }
 
-export function TeamLayout({ eyebrow, title, intro, image, team, children }: { eyebrow: string; title: string; intro: string; image: string; team: string; children: ReactNode }) {
+export function TeamLayout({ eyebrow, title, intro, image, team, inquiry, children }: { eyebrow: string; title: string; intro: string; image: string; team: string; inquiry: TeamInquiry; children: ReactNode }) {
   return (
     <PageShell eyebrow={eyebrow} title={title} intro={intro} image={image}>
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">{children}</section>
-      <TeamPlacementCta team={team} />
+      <TeamPlacementCta team={team} inquiry={inquiry} />
     </PageShell>
   );
 }
