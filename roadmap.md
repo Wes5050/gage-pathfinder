@@ -120,3 +120,7 @@
 ## Christmas Clinic (Nov 2026)
 - [x] /christmas-clinic page + Camps & Events card
 - [ ] Blocked: verified clinic registration link, daily schedule, coach vs gymnast pricing, hotline/discount terms (needs GAGE)
+
+## Christmas Clinic imagery hold (Oct 30 2026)
+- [x] Imagery changes paused at client request; saved work preserved
+- [ ] Awaiting client approval of AI-generated competitive gymnastics image direction before any further site image replacement
