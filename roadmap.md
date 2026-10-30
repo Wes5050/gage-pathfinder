@@ -116,3 +116,7 @@
 
 ## Follow-up corrections (Oct 8 2026)
 - [x] Mobile hero face visible; Daytime Ninja -> Contact inquiry; Adventure Club -> Contact inquiry; restricted terms verified absent
+
+## Christmas Clinic (Nov 2026)
+- [x] /christmas-clinic page + Camps & Events card
+- [ ] Blocked: verified clinic registration link, daily schedule, coach vs gymnast pricing, hotline/discount terms (needs GAGE)
