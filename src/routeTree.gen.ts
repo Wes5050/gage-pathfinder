@@ -15,6 +15,7 @@ import { Route as BirthdayPartiesRouteImport } from './routes/birthday-parties'
 import { Route as BookATrialRouteImport } from './routes/book-a-trial'
 import { Route as CampsAndEventsRouteImport } from './routes/camps-and-events'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ChristmasClinicRouteImport } from './routes/christmas-clinic'
 import { Route as CompetitiveTeamsRouteImport } from './routes/competitive-teams'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DragonNinjaRouteImport } from './routes/dragon-ninja'
@@ -59,6 +60,11 @@ const CampsAndEventsRoute = CampsAndEventsRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChristmasClinicRoute = ChristmasClinicRouteImport.update({
+  id: '/christmas-clinic',
+  path: '/christmas-clinic',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompetitiveTeamsRoute = CompetitiveTeamsRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/christmas-clinic': typeof ChristmasClinicRoute
   '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/christmas-clinic': typeof ChristmasClinicRoute
   '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/book-a-trial': typeof BookATrialRoute
   '/camps-and-events': typeof CampsAndEventsRoute
   '/careers': typeof CareersRoute
+  '/christmas-clinic': typeof ChristmasClinicRoute
   '/competitive-teams': typeof CompetitiveTeamsRoute
   '/contact': typeof ContactRoute
   '/dragon-ninja': typeof DragonNinjaRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/christmas-clinic'
     | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/christmas-clinic'
     | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/book-a-trial'
     | '/camps-and-events'
     | '/careers'
+    | '/christmas-clinic'
     | '/competitive-teams'
     | '/contact'
     | '/dragon-ninja'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   BookATrialRoute: typeof BookATrialRoute
   CampsAndEventsRoute: typeof CampsAndEventsRoute
   CareersRoute: typeof CareersRoute
+  ChristmasClinicRoute: typeof ChristmasClinicRoute
   CompetitiveTeamsRoute: typeof CompetitiveTeamsRoute
   ContactRoute: typeof ContactRoute
   DragonNinjaRoute: typeof DragonNinjaRoute
@@ -345,6 +358,13 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/christmas-clinic': {
+      id: '/christmas-clinic'
+      path: '/christmas-clinic'
+      fullPath: '/christmas-clinic'
+      preLoaderRoute: typeof ChristmasClinicRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/competitive-teams': {
@@ -462,6 +482,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookATrialRoute: BookATrialRoute,
   CampsAndEventsRoute: CampsAndEventsRoute,
   CareersRoute: CareersRoute,
+  ChristmasClinicRoute: ChristmasClinicRoute,
   CompetitiveTeamsRoute: CompetitiveTeamsRoute,
   ContactRoute: ContactRoute,
   DragonNinjaRoute: DragonNinjaRoute,
