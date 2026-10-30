@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep uploaded activity photos as Lovable Assets pointers and reuse each matching photo across discovery and program pages, so imagery stays consistent without duplicating binaries.
+- Licensed stock photos (non-GAGE subjects) live in src/data/clinic-photos.ts with credit + source link rendered on-page; never present them as GAGE athletes, because CC BY/BY-SA licenses require attribution and honesty about provenance.
