@@ -33,10 +33,10 @@ const forGymnasts = ["Creative drills that make practice fun", "Effective progre
 const forCoaches = ["Station ideas to take back to your gym", "Exciting ways to get kids excited about dance", "Practical ways to make gymnastics safer and more fun", "Fresh vault, bar, and beam drills"];
 
 const training = [
-  { key: "heroVault", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-center" },
+  { key: "heroVault", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-[72%_center]" },
   { key: "bars", label: "02 · Bars", title: "Bar stations", text: "Station work including kip progressions, plus hand care ideas to help reduce ripping.", pos: "object-[center_30%]" },
   { key: "beam", label: "03 · Beam & dance", title: "Beam games & dance", text: "Beam games that build balance and focus, and fresh ways to get kids excited about dance.", pos: "object-center" },
-  { key: "barsPair", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-[center_20%]" },
+  { key: "barsPair", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-bottom" },
 ] as const;
 
 const bonuses = [
