@@ -106,7 +106,7 @@ function ChristmasClinicPage() {
           <h2 className="section-title mt-4 max-w-3xl text-navy">Big progress starts with better practice.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Creative drills, exciting dance ideas, effective skill progressions, confidence-building techniques, and practical ways to make gymnastics safer and more fun.</p>
           <div className="mt-12 grid gap-px bg-border md:grid-cols-2">
-            {[{ title: "For gymnasts", items: forGymnasts, img: clinicPhotos.barsCast, pos: "object-[center_40%]" }, { title: "For coaches", items: forCoaches, img: clinicPhotos.coachTeam, pos: "object-[center_12%]" }].map((col) => (
+            {[{ title: "For gymnasts", items: forGymnasts, img: clinicPhotos.barsCast, pos: "object-[center_40%]" }, { title: "For coaches", items: forCoaches, img: clinicPhotos.coachTeam, pos: "object-top" }].map((col) => (
               <article key={col.title} className="bg-background">
                 <div className="relative aspect-[16/10] overflow-hidden"><img src={col.img.src} alt={col.img.alt} width={900} height={560} loading="lazy" className={`h-full w-full object-cover ${col.pos}`} /></div>
                 <div className="p-6 sm:p-10">
