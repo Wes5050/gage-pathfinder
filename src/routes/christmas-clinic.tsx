@@ -3,7 +3,7 @@ import { ArrowDown, ArrowRight, CalendarDays, Check, MapPin, Phone, Snowflake, T
 import { Button } from "@/components/ui/button";
 import { ProgramFaq, ProgramPage } from "@/components/program-page";
 import { siteConfig } from "@/data/config";
-import { photos } from "@/data/photos";
+import { clinicPhotos } from "@/data/clinic-photos";
 import { trackCta } from "@/lib/analytics";
 
 const TITLE = "2026 GAGE Christmas Clinic | Dec 28–29 | Blue Springs, MO";
@@ -33,10 +33,10 @@ const forGymnasts = ["Creative drills that make practice fun", "Effective progre
 const forCoaches = ["Station ideas to take back to your gym", "Exciting ways to get kids excited about dance", "Practical ways to make gymnastics safer and more fun", "Fresh vault, bar, and beam drills"];
 
 const training = [
-  { key: "facility", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-center" },
-  { key: "rec", label: "02 · Bars", title: "Bar stations", text: "Station work including kip progressions, plus hand care ideas to help reduce ripping.", pos: "object-top" },
-  { key: "social", label: "03 · Beam & dance", title: "Beam games & dance", text: "Beam games that build balance and focus, and fresh ways to get kids excited about dance.", pos: "object-center" },
-  { key: "coaching", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-[center_25%]" },
+  { key: "vault", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-center" },
+  { key: "bars", label: "02 · Bars", title: "Bar stations", text: "Station work including kip progressions, plus hand care ideas to help reduce ripping.", pos: "object-[center_30%]" },
+  { key: "beam", label: "03 · Beam & dance", title: "Beam games & dance", text: "Beam games that build balance and focus, and fresh ways to get kids excited about dance.", pos: "object-center" },
+  { key: "coachTeam", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-[center_20%]" },
 ] as const;
 
 const bonuses = [
@@ -71,7 +71,7 @@ function ChristmasClinicPage() {
     <ProgramPage>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
-        <img src={photos.rehero.src} alt="GAGE coach spotting a young gymnast on the bar" width={1920} height={1080} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[70%_25%] opacity-70" />
+        <img src={clinicPhotos.heroVault.src} alt={clinicPhotos.heroVault.alt} width={1920} height={1732} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[75%_45%] opacity-75" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--navy-deep)_30%,transparent)_0%,var(--navy-deep)_92%)] lg:bg-[linear-gradient(90deg,var(--navy-deep)_0%,color-mix(in_oklab,var(--navy-deep)_85%,transparent)_42%,transparent_78%)]" />
         <Snowflake aria-hidden className="pointer-events-none absolute right-6 top-24 h-24 w-24 text-navy-foreground/10 lg:right-16 lg:h-40 lg:w-40" strokeWidth={1} />
         <div className={`${wrap} relative flex min-h-[calc(100svh-4rem)] flex-col justify-end pb-14 pt-40 lg:min-h-[760px] lg:pb-24`}>
@@ -106,9 +106,9 @@ function ChristmasClinicPage() {
           <h2 className="section-title mt-4 max-w-3xl text-navy">Big progress starts with better practice.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Creative drills, exciting dance ideas, effective skill progressions, confidence-building techniques, and practical ways to make gymnastics safer and more fun.</p>
           <div className="mt-12 grid gap-px bg-border md:grid-cols-2">
-            {[{ title: "For gymnasts", items: forGymnasts, img: photos.beginner }, { title: "For coaches", items: forCoaches, img: photos.teaching }].map((col) => (
+            {[{ title: "For gymnasts", items: forGymnasts, img: clinicPhotos.floorLeap }, { title: "For coaches", items: forCoaches, img: clinicPhotos.barsPair }].map((col) => (
               <article key={col.title} className="bg-background">
-                <div className="relative aspect-[16/10] overflow-hidden"><img src={col.img.src} alt={col.img.alt} width={900} height={560} loading="lazy" className="h-full w-full object-cover object-[center_30%]" /></div>
+                <div className="relative aspect-[16/10] overflow-hidden"><img src={col.img.src} alt={col.img.alt} width={900} height={560} loading="lazy" className="h-full w-full object-cover object-[center_25%]" /></div>
                 <div className="p-6 sm:p-10">
                   <h3 className="font-display text-2xl font-black uppercase text-navy sm:text-3xl">{col.title}</h3>
                   <ul className="mt-6 space-y-4">{col.items.map((i) => <li key={i} className="flex gap-3 text-base leading-7"><Check className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden />{i}</li>)}</ul>
@@ -127,7 +127,7 @@ function ChristmasClinicPage() {
           <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
             {training.map((t, i) => (
               <article key={t.key} className={i % 2 === 1 ? "sm:mt-16" : undefined}>
-                <div className="aspect-[4/5] overflow-hidden"><img src={photos[t.key].src} alt={photos[t.key].alt} width={800} height={1000} loading="lazy" className={`h-full w-full object-cover ${t.pos}`} /></div>
+                <div className="aspect-[4/5] overflow-hidden"><img src={clinicPhotos[t.key].src} alt={clinicPhotos[t.key].alt} width={800} height={1000} loading="lazy" className={`h-full w-full object-cover ${t.pos}`} /></div>
                 <p className="mt-6 font-display text-xs font-black uppercase tracking-[0.15em] text-primary">{t.label}</p>
                 <h3 className="mt-2 font-display text-2xl font-black uppercase text-navy sm:text-3xl">{t.title}</h3>
                 <p className="mt-3 max-w-md text-base leading-7 text-muted-foreground">{t.text}</p>
@@ -186,13 +186,20 @@ function ChristmasClinicPage() {
 
       {/* Final CTA */}
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
-        <img src={photos.tucoach.src} alt={photos.tucoach.alt} width={1920} height={1080} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-center opacity-30" />
+        <img src={clinicPhotos.floorLeap.src} alt="" width={1920} height={1080} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_30%] opacity-30" />
         <div className="absolute inset-0 bg-navy-deep/60" />
         <div className={`${wrap} relative flex flex-col items-center py-20 text-center lg:py-32`}>
           <Snowflake className="h-8 w-8 text-primary" aria-hidden />
           <h2 className="mt-6 font-display text-[clamp(2.5rem,7vw,5.5rem)] font-black uppercase leading-[.9]">Finish the year strong.</h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-navy-foreground/80">December 28–29, 2026 · Blue Springs, Missouri. Contact GAGE for the daily schedule and gymnast/coach registration details.</p>
           <div className="mt-10"><AskButtons source="final_conversion" /></div>
+        </div>
+      </section>
+      <section aria-label="Photo credits" className="bg-navy-deep text-navy-foreground/60">
+        <div className={`${wrap} py-6 text-xs leading-6`}>
+          <p>Photos are licensed stock images of gymnasts and coaches, not GAGE athletes or staff:{" "}
+            {Object.values(clinicPhotos).map((p, i) => <span key={p.href}>{i > 0 && " · "}<a href={p.href} target="_blank" rel="noreferrer" className={`underline underline-offset-2 hover:text-navy-foreground ${focus}`}>{p.credit}</a></span>)}
+          </p>
         </div>
       </section>
     </ProgramPage>
