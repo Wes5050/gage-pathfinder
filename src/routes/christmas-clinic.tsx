@@ -53,7 +53,7 @@ const faqs = [
   { question: "How do we register?", answer: `Contact GAGE for the daily schedule and gymnast/coach registration details. Call ${siteConfig.phoneDisplay} or email ${siteConfig.email}.` },
 ] as const;
 
-function AskButtons({ source, light = false }: { source: string; light?: boolean }) {
+function AskButtons({ source, light = false }: { source: "programs_grid" | "final_conversion"; light?: boolean }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
       <Button asChild size="lg" className={`h-14 rounded-none px-8 font-display text-xs font-black uppercase ${focus}`}>
@@ -177,7 +177,7 @@ function ChristmasClinicPage() {
                 </div>
               ))}
             </dl>
-            <div className="mt-8"><AskButtons source="clinic_details" /></div>
+            <div className="mt-8"><AskButtons source="programs_grid" /></div>
           </div>
         </div>
       </section>
