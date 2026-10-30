@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, ExternalLink, MoonStar, Phone, ShieldCheck, Snowflake, Sparkles, TentTree, ThermometerSun, TicketCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GoogleReviewsShowcase, ProgramFaq, ProgramPage, googleReviews } from "@/components/program-page";
 import { siteConfig } from "@/data/config";
@@ -36,6 +36,7 @@ const faqs = [
 
 type EventCardProps = {
   contactLink?: boolean;
+  to?: "/contact" | "/christmas-clinic";
   icon: typeof TentTree;
   eyebrow: string;
   title: string;
@@ -49,10 +50,10 @@ type EventCardProps = {
   portal?: boolean;
 };
 
-function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal, contactLink }: EventCardProps) {
+function EventCard({ icon: Icon, eyebrow, title, description, details, image, imageAlt, imagePosition, cta, destination, portal, contactLink, to }: EventCardProps) {
   const action = contactLink ? (
     <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
-      <Link to="/contact" onClick={() => trackCta(cta.toUpperCase(), "programs_grid")}>{cta}<ArrowRight aria-hidden /></Link>
+      <Link to={to ?? "/contact"} onClick={() => trackCta(cta.toUpperCase(), "programs_grid")}>{cta}<ArrowRight aria-hidden /></Link>
     </Button>
   ) : destination ? (
     <Button asChild size="lg" className="h-14 w-full rounded-none px-6 font-display text-xs font-black uppercase">
@@ -116,9 +117,10 @@ function CampsEventsPage() {
       <section id="camps" className="scroll-mt-24 py-20 sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <div className="max-w-3xl"><p className="eyebrow">Camps & Events</p><h2 className="section-title mt-4">More time to move, learn, and play.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">School-break camps and skill clinics. Current dates, ages, and availability are listed with each booking page.</p></div>
-          <div className="mt-12 grid gap-px bg-border lg:grid-cols-2">
+          <div className="mt-12 grid gap-px bg-border lg:grid-cols-2 [&>article:last-child]:lg:col-span-2 [&>article:last-child]:lg:grid-cols-2">
             <EventCard icon={TentTree} eyebrow="Camp days · School breaks & summer" title="Bump City Adventure Club" description="Camp days during school breaks and summer. Booking details are coming soon — contact GAGE to ask about ages, dates, and availability." details="Gymnastics, ninja obstacles, trampoline fun, games, and coach-led teamwork." image={photos.camp.src} imageAlt={photos.camp.alt} imagePosition="object-[center_30%]" cta="Ask About Adventure Club" contactLink />
             <EventCard icon={CalendarDays} eyebrow="Clinics & team camps" title="Clinics & Team Gymnastics Camps" description="Focused skill clinics and team camps are offered seasonally. Call the office to hear what's coming up and who it's for." details="Team camps are separate from recreational camps and Parent Night Out." image={photos.rec.src} imageAlt={photos.rec.alt} imagePosition="object-top" cta="Call for current clinics" />
+            <EventCard icon={Snowflake} eyebrow="Clinic · December 28–29, 2026" title="2026 GAGE Christmas Clinic" description="Two days of fresh drills, dance ideas, and confidence-building for Bronze, Silver, and Levels 3–5 gymnasts and their coaches." details="Blue Springs, Missouri · $150 clinic fee" image={photos.rehero.src} imageAlt="GAGE coach spotting a young gymnast on the bar" imagePosition="object-[center_25%]" cta="Explore the Christmas Clinic" contactLink to="/christmas-clinic" />
           </div>
         </div>
       </section>
