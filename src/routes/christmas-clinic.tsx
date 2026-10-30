@@ -33,10 +33,10 @@ const forGymnasts = ["Creative drills that make practice fun", "Effective progre
 const forCoaches = ["Station ideas to take back to your gym", "Exciting ways to get kids excited about dance", "Practical ways to make gymnastics safer and more fun", "Fresh vault, bar, and beam drills"];
 
 const training = [
-  { key: "vault", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-center" },
+  { key: "heroVault", label: "01 · Vault", title: "Vault drills", text: "Drills and building blocks that sharpen run, hurdle, and body position — so every attempt starts stronger.", pos: "object-center" },
   { key: "bars", label: "02 · Bars", title: "Bar stations", text: "Station work including kip progressions, plus hand care ideas to help reduce ripping.", pos: "object-[center_30%]" },
   { key: "beam", label: "03 · Beam & dance", title: "Beam games & dance", text: "Beam games that build balance and focus, and fresh ways to get kids excited about dance.", pos: "object-center" },
-  { key: "coachTeam", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-[center_20%]" },
+  { key: "barsPair", label: "04 · Confidence", title: "Overcoming fear", text: "Confidence-building techniques and skill-building for the next level — plus a Bump City gymnastics experience.", pos: "object-[center_20%]" },
 ] as const;
 
 const bonuses = [
@@ -71,7 +71,7 @@ function ChristmasClinicPage() {
     <ProgramPage>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
-        <img src={clinicPhotos.heroVault.src} alt={clinicPhotos.heroVault.alt} width={1920} height={1732} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[75%_45%] opacity-75" />
+        <img src={clinicPhotos.floorLeap.src} alt={clinicPhotos.floorLeap.alt} width={1920} height={2097} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[70%_22%] opacity-80" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--navy-deep)_30%,transparent)_0%,var(--navy-deep)_92%)] lg:bg-[linear-gradient(90deg,var(--navy-deep)_0%,color-mix(in_oklab,var(--navy-deep)_85%,transparent)_42%,transparent_78%)]" />
         <Snowflake aria-hidden className="pointer-events-none absolute right-6 top-24 h-24 w-24 text-navy-foreground/10 lg:right-16 lg:h-40 lg:w-40" strokeWidth={1} />
         <div className={`${wrap} relative flex min-h-[calc(100svh-4rem)] flex-col justify-end pb-14 pt-40 lg:min-h-[760px] lg:pb-24`}>
@@ -106,9 +106,9 @@ function ChristmasClinicPage() {
           <h2 className="section-title mt-4 max-w-3xl text-navy">Big progress starts with better practice.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Creative drills, exciting dance ideas, effective skill progressions, confidence-building techniques, and practical ways to make gymnastics safer and more fun.</p>
           <div className="mt-12 grid gap-px bg-border md:grid-cols-2">
-            {[{ title: "For gymnasts", items: forGymnasts, img: clinicPhotos.floorLeap }, { title: "For coaches", items: forCoaches, img: clinicPhotos.barsPair }].map((col) => (
+            {[{ title: "For gymnasts", items: forGymnasts, img: clinicPhotos.barsCast, pos: "object-[center_40%]" }, { title: "For coaches", items: forCoaches, img: clinicPhotos.coachTeam, pos: "object-[center_12%]" }].map((col) => (
               <article key={col.title} className="bg-background">
-                <div className="relative aspect-[16/10] overflow-hidden"><img src={col.img.src} alt={col.img.alt} width={900} height={560} loading="lazy" className="h-full w-full object-cover object-[center_25%]" /></div>
+                <div className="relative aspect-[16/10] overflow-hidden"><img src={col.img.src} alt={col.img.alt} width={900} height={560} loading="lazy" className={`h-full w-full object-cover ${col.pos}`} /></div>
                 <div className="p-6 sm:p-10">
                   <h3 className="font-display text-2xl font-black uppercase text-navy sm:text-3xl">{col.title}</h3>
                   <ul className="mt-6 space-y-4">{col.items.map((i) => <li key={i} className="flex gap-3 text-base leading-7"><Check className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden />{i}</li>)}</ul>
@@ -186,7 +186,7 @@ function ChristmasClinicPage() {
 
       {/* Final CTA */}
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
-        <img src={clinicPhotos.floorLeap.src} alt="" width={1920} height={1080} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_30%] opacity-30" />
+        <img src={clinicPhotos.heroVault.src} alt="" width={1920} height={1080} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_30%] opacity-30" />
         <div className="absolute inset-0 bg-navy-deep/60" />
         <div className={`${wrap} relative flex flex-col items-center py-20 text-center lg:py-32`}>
           <Snowflake className="h-8 w-8 text-primary" aria-hidden />
